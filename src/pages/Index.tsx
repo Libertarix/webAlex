@@ -30,6 +30,15 @@ import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
 import serviceCare from "@/assets/service-care.jpg";
 import logo from "@/assets/logo-icon.png";
+import svcCuras from "@/assets/svc-curas.jpg";
+import svcPuntos from "@/assets/svc-puntos.jpg";
+import svcOstomias from "@/assets/svc-ostomias.jpg";
+import svcSondajes from "@/assets/svc-sondajes.jpg";
+import svcValoracion from "@/assets/svc-valoracion.jpg";
+import svcIntramuscular from "@/assets/svc-intramuscular.jpg";
+import svcSubcutanea from "@/assets/svc-subcutanea.jpg";
+import svcIntravenoso from "@/assets/svc-intravenoso.jpg";
+import svcExtraccion from "@/assets/svc-extraccion.jpg";
 
 const PHONE = "626784327";
 const PHONE_DISPLAY = "626 78 43 27";
@@ -42,38 +51,21 @@ const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
 const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Enfermero+en+Casa+Alejandro+Romero+Granada";
 
 const services = [
-  { icon: Bandage, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "50 €", unit: "/sesión" },
-  { icon: Scissors, title: "Retirada de puntos y grapas", desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.", price: "50 €", unit: "/sesión" },
-  { icon: ShieldCheck, title: "Cuidados de ostomías", desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.", price: "50 €", unit: "/sesión" },
-  { icon: Droplets, title: "Sondajes y dispositivos médicos", desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación sanitaria al paciente y la familia.", price: "50 €", unit: "/sesión" },
-  { icon: ClipboardList, title: "Valoración del estado de salud", desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.", price: "40 €", unit: "/sesión" },
-  { icon: Syringe, title: "Medicación intramuscular", desc: "Preparación y administración con material estéril de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.", price: "40 €", unit: "/sesión" },
-  { icon: Pill, title: "Medicación subcutánea", desc: "Preparación y administración de medicación subcutánea con material estéril: insulina, heparina, vacunas y otras pautas.", price: "40 €", unit: "/sesión" },
-  { icon: Activity, title: "Tratamiento intravenoso", desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.", price: "50 €", unit: "/sesión" },
-  { icon: TestTube, title: "Extracción de muestras", desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.", price: "40 €", unit: "/servicio" },
+  { icon: Bandage, image: svcCuras, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "50 €", unit: "/sesión" },
+  { icon: Scissors, image: svcPuntos, title: "Retirada de puntos y grapas", desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.", price: "50 €", unit: "/sesión" },
+  { icon: ShieldCheck, image: svcOstomias, title: "Cuidados de ostomías", desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.", price: "50 €", unit: "/sesión" },
+  { icon: Droplets, image: svcSondajes, title: "Sondajes y dispositivos médicos", desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación sanitaria al paciente y la familia.", price: "50 €", unit: "/sesión" },
+  { icon: ClipboardList, image: svcValoracion, title: "Valoración del estado de salud", desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.", price: "40 €", unit: "/sesión" },
+  { icon: Syringe, image: svcIntramuscular, title: "Medicación intramuscular", desc: "Preparación y administración con material estéril de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.", price: "40 €", unit: "/sesión" },
+  { icon: Pill, image: svcSubcutanea, title: "Medicación subcutánea", desc: "Preparación y administración de medicación subcutánea con material estéril: insulina, heparina, vacunas y otras pautas.", price: "40 €", unit: "/sesión" },
+  { icon: Activity, image: svcIntravenoso, title: "Tratamiento intravenoso", desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.", price: "50 €", unit: "/sesión" },
+  { icon: TestTube, image: svcExtraccion, title: "Extracción de muestras", desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.", price: "40 €", unit: "/servicio" },
 ];
 
 const coverage = [
   "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
   "Pulianas", "Cájar", "La Zubia", "Cenes de la Vega", "Huétor Vega", "Ogíjares",
   "Las Gabias", "Churriana de la Vega", "Santa Fe", "Pinos Puente",
-];
-
-const experiencia = [
-  { area: "Neurofisiología", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2020 — Actualidad" },
-  { area: "Medicina Interna COVID · Aislamiento de Alto Nivel", lugar: "Hospital Carlos III, Madrid", periodo: "2020" },
-  { area: "Hematología", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2018 — 2019" },
-  { area: "Oncología Médica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2016 — 2017" },
-  { area: "Reanimación, Trauma y Cardiológica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2015" },
-  { area: "Traumatología, Maxilofacial, Cardiología, Radiología, Neumología, Cirugía Oftálmica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2015 — 2018" },
-];
-
-const formacion = [
-  "Máster en Investigación Clínica — Universidad Complutense de Madrid",
-  "Experto Universitario en Urgencias y Emergencias en paciente adulto — CODEM-UCAV",
-  "Experto en Enfermedades Infectocontagiosas — CODEM-UCAV",
-  "Experto en Investigación en Salud — CODEM-UCAV",
-  "Experto en Tricología y Trasplante Capilar (PRP, mesoterapia, técnica FUE/DHI) — IFSES",
 ];
 
 const faqs = [
