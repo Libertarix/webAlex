@@ -464,48 +464,68 @@ const Index = () => {
       </section>
 
       {/* CONTACTO */}
-      <section id="contacto" className="py-20 md:py-28">
+      <section id="contacto" className="bg-gradient-soft py-20 md:py-28">
         <div className="container">
-          <div className="overflow-hidden rounded-[2rem] bg-gradient-hero p-10 md:p-16 text-primary-foreground shadow-soft">
-            <div className="grid gap-10 md:grid-cols-2 md:items-center">
-              <div>
-                <h2 className="text-3xl font-semibold md:text-5xl">¿Necesitas un enfermero hoy?</h2>
-                <p className="mt-4 text-primary-foreground/85 leading-relaxed">
-                  Llámame, escríbeme por WhatsApp o envíame un email. Te atiendo personalmente y valoramos tu caso sin compromiso.
-                </p>
-                <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-background/15 px-4 py-1.5 text-sm font-semibold backdrop-blur-sm">
-                  <Award className="h-4 w-4" /> Alejandro Romero · Col. {COLEGIADO}
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Contacto</span>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">¿Necesitas un enfermero hoy?</h2>
+            <p className="mt-4 text-muted-foreground">
+              Cuéntame brevemente lo que necesitas y te respondo personalmente. Sin compromiso, sin intermediarios y con total confidencialidad.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-5">
+            {/* FORMULARIO */}
+            <div className="lg:col-span-3 rounded-[2rem] border border-border/60 bg-card p-7 md:p-10 shadow-card">
+              <h3 className="text-xl font-semibold text-brand-navy">Escríbeme tu consulta</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Te respondo lo antes posible (normalmente el mismo día).</p>
+              <div className="mt-6">
+                <ContactForm />
+              </div>
+            </div>
+
+            {/* DATOS DE CONTACTO */}
+            <div className="lg:col-span-2 overflow-hidden rounded-[2rem] bg-gradient-hero p-7 md:p-10 text-primary-foreground shadow-soft">
+              <div className="inline-flex items-center gap-2 rounded-full bg-background/15 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
+                <Award className="h-3.5 w-3.5" /> Col. {COLEGIADO}
+              </div>
+              <h3 className="mt-4 text-2xl font-semibold">Contacto directo</h3>
+              <p className="mt-2 text-sm text-primary-foreground/85">Habla conmigo, Alejandro, sin intermediarios.</p>
+
+              <div className="mt-6 space-y-3">
+                <a href={`tel:+34${PHONE}`} className="flex items-center gap-4 rounded-2xl bg-background/10 p-4 backdrop-blur-sm transition hover:bg-background/20">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-background/20"><Phone className="h-5 w-5" /></div>
+                  <div>
+                    <div className="text-xs opacity-80">Teléfono</div>
+                    <div className="text-lg font-semibold">{PHONE_DISPLAY}</div>
+                  </div>
+                </a>
+                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl bg-background/10 p-4 backdrop-blur-sm transition hover:bg-background/20">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-background/20"><MessageCircle className="h-5 w-5" /></div>
+                  <div>
+                    <div className="text-xs opacity-80">WhatsApp</div>
+                    <div className="text-lg font-semibold">Escríbeme ahora</div>
+                  </div>
+                </a>
+                <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-2xl bg-background/10 p-4 backdrop-blur-sm transition hover:bg-background/20">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-background/20"><Mail className="h-5 w-5" /></div>
+                  <div>
+                    <div className="text-xs opacity-80">Email</div>
+                    <div className="text-sm font-semibold break-all">{EMAIL}</div>
+                  </div>
+                </a>
+                <div className="flex items-center gap-4 rounded-2xl bg-background/10 p-4 backdrop-blur-sm">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-background/20"><MapPin className="h-5 w-5" /></div>
+                  <div>
+                    <div className="text-xs opacity-80">Zona</div>
+                    <div className="text-lg font-semibold">Granada y alrededores</div>
+                  </div>
                 </div>
               </div>
-              <div className="space-y-4">
-                <a href={`tel:+34${PHONE}`} className="flex items-center gap-4 rounded-2xl bg-background/10 p-5 backdrop-blur-sm transition hover:bg-background/20">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-background/20"><Phone className="h-5 w-5" /></div>
-                  <div>
-                    <div className="text-sm opacity-80">Teléfono</div>
-                    <div className="text-xl font-semibold">{PHONE_DISPLAY}</div>
-                  </div>
-                </a>
-                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl bg-background/10 p-5 backdrop-blur-sm transition hover:bg-background/20">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-background/20"><MessageCircle className="h-5 w-5" /></div>
-                  <div>
-                    <div className="text-sm opacity-80">WhatsApp</div>
-                    <div className="text-xl font-semibold">Escríbeme ahora</div>
-                  </div>
-                </a>
-                <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-2xl bg-background/10 p-5 backdrop-blur-sm transition hover:bg-background/20">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-background/20"><Mail className="h-5 w-5" /></div>
-                  <div>
-                    <div className="text-sm opacity-80">Email</div>
-                    <div className="text-lg font-semibold break-all">{EMAIL}</div>
-                  </div>
-                </a>
-                <div className="flex items-center gap-4 rounded-2xl bg-background/10 p-5 backdrop-blur-sm">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-background/20"><MapPin className="h-5 w-5" /></div>
-                  <div>
-                    <div className="text-sm opacity-80">Zona</div>
-                    <div className="text-xl font-semibold">Granada y alrededores</div>
-                  </div>
-                </div>
+
+              <div className="mt-6 flex items-start gap-2 rounded-2xl bg-background/10 p-4 text-xs backdrop-blur-sm">
+                <Lock className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>Tus datos están protegidos por el RGPD y el secreto profesional sanitario.</span>
               </div>
             </div>
           </div>
