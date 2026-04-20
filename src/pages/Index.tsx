@@ -270,6 +270,36 @@ const Index = () => {
         </div>
       </section>
 
+      {/* BANNER CAPTADOR */}
+      <section className="relative overflow-hidden bg-gradient-hero py-14 md:py-20">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -bottom-24 w-[460px] opacity-10 blur-2xl select-none"
+        />
+        <div className="container relative text-center text-primary-foreground">
+          <h2 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
+            Cuidar la salud no debería obligarte a salir de casa.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85 md:text-lg leading-relaxed">
+            Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href={`tel:+34${PHONE}`}>
+              <Button size="lg" className="rounded-full bg-background text-brand-navy hover:bg-background/90">
+                <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
+              </Button>
+            </a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="rounded-full border-background/40 bg-transparent text-primary-foreground hover:bg-background/10">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* SERVICIOS */}
       <section id="servicios" className="bg-gradient-soft py-20 md:py-28">
         <div className="container">
@@ -281,20 +311,29 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ icon: Icon, title, desc, price, unit }) => (
-              <Card key={title} className="group flex flex-col border-border/60 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft">
-                <CardContent className="flex flex-1 flex-col p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-brand-navy transition-colors group-hover:bg-brand-navy group-hover:text-primary-foreground">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-semibold text-brand-green">{price}</div>
-                      <div className="text-xs text-muted-foreground">{unit}</div>
-                    </div>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ icon: Icon, image, title, desc, price, unit }) => (
+              <Card key={title} className="group flex flex-col overflow-hidden border-border/60 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={image}
+                    alt={title}
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
+                  <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-2xl bg-background/90 text-brand-navy backdrop-blur-sm">
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold leading-snug text-brand-navy">{title}</h3>
+                  <div className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-right backdrop-blur-sm">
+                    <span className="text-base font-semibold text-brand-green">{price}</span>
+                    <span className="ml-1 text-[11px] text-muted-foreground">{unit}</span>
+                  </div>
+                </div>
+                <CardContent className="flex flex-1 flex-col p-6">
+                  <h3 className="text-lg font-semibold leading-snug text-brand-navy">{title}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
                 </CardContent>
               </Card>
