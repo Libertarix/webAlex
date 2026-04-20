@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import ContactForm from "@/components/ContactForm";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
@@ -25,6 +26,10 @@ import {
   Award,
   Star,
   ExternalLink,
+  Lock,
+  PhoneCall,
+  Home,
+  Sparkles,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
@@ -102,6 +107,7 @@ const faqs = [
 const navLinks = [
   { href: "#sobre-mi", label: "Sobre mí" },
   { href: "#servicios", label: "Servicios" },
+  { href: "#como-trabajo", label: "Cómo trabajo" },
   { href: "#cobertura", label: "Cobertura" },
   { href: "#faq", label: "Preguntas" },
   { href: "#contacto", label: "Contacto" },
@@ -316,6 +322,57 @@ const Index = () => {
         </div>
       </section>
 
+      {/* CÓMO TRABAJO */}
+      <section id="como-trabajo" className="relative overflow-hidden py-20 md:py-28">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-40 top-10 w-[520px] opacity-[0.05] blur-2xl select-none"
+        />
+        <div className="container relative">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Cómo trabajo</span>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Sencillo, cercano y confidencial</h2>
+            <p className="mt-4 text-muted-foreground">
+              Sin formularios largos ni intermediarios. Hablas conmigo desde el primer momento y tus datos se tratan con el mismo cuidado que tu salud.
+            </p>
+          </div>
+
+          <ol className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              { n: "01", icon: Phone, title: "Me llamas o escribes", desc: "Por teléfono, WhatsApp o email. Te respondo personalmente: ningún intermediario, ningún call center." },
+              { n: "02", icon: ClipboardList, title: "Valoramos tu caso", desc: "Te explico qué necesitas, cuánto dura la visita, qué material hace falta y el coste exacto. Sin compromiso y sin sorpresas." },
+              { n: "03", icon: Award, title: "Voy a tu casa", desc: "Acudo en el horario acordado con todo el material estéril. Cuido, explico cada paso y te dejo tranquilidad y seguimiento." },
+            ].map(({ n, icon: Icon, title, desc }) => (
+              <li key={n} className="relative rounded-[1.75rem] border border-border/60 bg-card p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft">
+                <span className="absolute -top-4 left-7 rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-primary-foreground">Paso {n}</span>
+                <div className="mt-2 grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-brand-green">
+                  <Icon className="h-7 w-7" />
+                </div>
+                <h3 className="mt-5 text-xl font-semibold text-brand-navy">{title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-14 grid gap-4 md:grid-cols-4">
+            {[
+              { icon: Lock, title: "Confidencialidad total", desc: "Secreto profesional sanitario y cumplimiento del RGPD. Tus datos solo los uso para atenderte." },
+              { icon: ShieldCheck, title: "Material estéril", desc: "Llevo todo el material necesario, de un solo uso y desechado de forma segura tras la visita." },
+              { icon: Award, title: "Enfermero colegiado", desc: `Col. nº ${COLEGIADO}. Profesional acreditado y con seguro de responsabilidad civil.` },
+              { icon: Home, title: "Misma persona siempre", desc: "Te atiendo yo en cada visita. Continuidad real, sin tener que repetir tu historia." },
+            ].map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
+                <Icon className="h-6 w-6 text-brand-green" />
+                <div className="mt-3 font-semibold text-brand-navy">{title}</div>
+                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* COBERTURA */}
       <section id="cobertura" className="py-20 md:py-28">
         <div className="container grid gap-12 md:grid-cols-2 md:items-center">
@@ -407,48 +464,68 @@ const Index = () => {
       </section>
 
       {/* CONTACTO */}
-      <section id="contacto" className="py-20 md:py-28">
+      <section id="contacto" className="bg-gradient-soft py-20 md:py-28">
         <div className="container">
-          <div className="overflow-hidden rounded-[2rem] bg-gradient-hero p-10 md:p-16 text-primary-foreground shadow-soft">
-            <div className="grid gap-10 md:grid-cols-2 md:items-center">
-              <div>
-                <h2 className="text-3xl font-semibold md:text-5xl">¿Necesitas un enfermero hoy?</h2>
-                <p className="mt-4 text-primary-foreground/85 leading-relaxed">
-                  Llámame, escríbeme por WhatsApp o envíame un email. Te atiendo personalmente y valoramos tu caso sin compromiso.
-                </p>
-                <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-background/15 px-4 py-1.5 text-sm font-semibold backdrop-blur-sm">
-                  <Award className="h-4 w-4" /> Alejandro Romero · Col. {COLEGIADO}
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Contacto</span>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">¿Necesitas un enfermero hoy?</h2>
+            <p className="mt-4 text-muted-foreground">
+              Cuéntame brevemente lo que necesitas y te respondo personalmente. Sin compromiso, sin intermediarios y con total confidencialidad.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-5">
+            {/* FORMULARIO */}
+            <div className="lg:col-span-3 rounded-[2rem] border border-border/60 bg-card p-7 md:p-10 shadow-card">
+              <h3 className="text-xl font-semibold text-brand-navy">Escríbeme tu consulta</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Te respondo lo antes posible (normalmente el mismo día).</p>
+              <div className="mt-6">
+                <ContactForm />
+              </div>
+            </div>
+
+            {/* DATOS DE CONTACTO */}
+            <div className="lg:col-span-2 overflow-hidden rounded-[2rem] bg-gradient-hero p-7 md:p-10 text-primary-foreground shadow-soft">
+              <div className="inline-flex items-center gap-2 rounded-full bg-background/15 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
+                <Award className="h-3.5 w-3.5" /> Col. {COLEGIADO}
+              </div>
+              <h3 className="mt-4 text-2xl font-semibold">Contacto directo</h3>
+              <p className="mt-2 text-sm text-primary-foreground/85">Habla conmigo, Alejandro, sin intermediarios.</p>
+
+              <div className="mt-6 space-y-3">
+                <a href={`tel:+34${PHONE}`} className="flex items-center gap-4 rounded-2xl bg-background/10 p-4 backdrop-blur-sm transition hover:bg-background/20">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-background/20"><Phone className="h-5 w-5" /></div>
+                  <div>
+                    <div className="text-xs opacity-80">Teléfono</div>
+                    <div className="text-lg font-semibold">{PHONE_DISPLAY}</div>
+                  </div>
+                </a>
+                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl bg-background/10 p-4 backdrop-blur-sm transition hover:bg-background/20">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-background/20"><MessageCircle className="h-5 w-5" /></div>
+                  <div>
+                    <div className="text-xs opacity-80">WhatsApp</div>
+                    <div className="text-lg font-semibold">Escríbeme ahora</div>
+                  </div>
+                </a>
+                <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-2xl bg-background/10 p-4 backdrop-blur-sm transition hover:bg-background/20">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-background/20"><Mail className="h-5 w-5" /></div>
+                  <div>
+                    <div className="text-xs opacity-80">Email</div>
+                    <div className="text-sm font-semibold break-all">{EMAIL}</div>
+                  </div>
+                </a>
+                <div className="flex items-center gap-4 rounded-2xl bg-background/10 p-4 backdrop-blur-sm">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-background/20"><MapPin className="h-5 w-5" /></div>
+                  <div>
+                    <div className="text-xs opacity-80">Zona</div>
+                    <div className="text-lg font-semibold">Granada y alrededores</div>
+                  </div>
                 </div>
               </div>
-              <div className="space-y-4">
-                <a href={`tel:+34${PHONE}`} className="flex items-center gap-4 rounded-2xl bg-background/10 p-5 backdrop-blur-sm transition hover:bg-background/20">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-background/20"><Phone className="h-5 w-5" /></div>
-                  <div>
-                    <div className="text-sm opacity-80">Teléfono</div>
-                    <div className="text-xl font-semibold">{PHONE_DISPLAY}</div>
-                  </div>
-                </a>
-                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl bg-background/10 p-5 backdrop-blur-sm transition hover:bg-background/20">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-background/20"><MessageCircle className="h-5 w-5" /></div>
-                  <div>
-                    <div className="text-sm opacity-80">WhatsApp</div>
-                    <div className="text-xl font-semibold">Escríbeme ahora</div>
-                  </div>
-                </a>
-                <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-2xl bg-background/10 p-5 backdrop-blur-sm transition hover:bg-background/20">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-background/20"><Mail className="h-5 w-5" /></div>
-                  <div>
-                    <div className="text-sm opacity-80">Email</div>
-                    <div className="text-lg font-semibold break-all">{EMAIL}</div>
-                  </div>
-                </a>
-                <div className="flex items-center gap-4 rounded-2xl bg-background/10 p-5 backdrop-blur-sm">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-background/20"><MapPin className="h-5 w-5" /></div>
-                  <div>
-                    <div className="text-sm opacity-80">Zona</div>
-                    <div className="text-xl font-semibold">Granada y alrededores</div>
-                  </div>
-                </div>
+
+              <div className="mt-6 flex items-start gap-2 rounded-2xl bg-background/10 p-4 text-xs backdrop-blur-sm">
+                <Lock className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>Tus datos están protegidos por el RGPD y el secreto profesional sanitario.</span>
               </div>
             </div>
           </div>
