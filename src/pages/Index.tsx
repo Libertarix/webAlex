@@ -118,24 +118,24 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
-        <nav className="container flex h-20 items-center justify-between gap-4">
+        <nav className="container flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3 md:py-4">
           <a href="#inicio" className="flex items-center gap-3 shrink-0" aria-label="Enfermero en Casa - Inicio">
-            <img src={logo} alt="Logo Enfermero en Casa" className="h-12 w-12 object-contain" />
-            <div className="leading-tight hidden sm:block">
-              <div className="font-display text-base font-semibold text-brand-navy md:text-lg">Enfermero <span className="text-brand-green">en Casa</span></div>
-              <div className="text-[11px] text-muted-foreground">Alejandro Romero · Col. {COLEGIADO}</div>
+            <img src={logo} alt="Logo Enfermero en Casa" className="h-11 w-11 object-contain md:h-12 md:w-12" />
+            <div className="leading-tight">
+              <div className="font-display text-sm font-semibold text-brand-navy md:text-base">Enfermero <span className="text-brand-green">en Casa</span></div>
+              <div className="text-[10px] text-muted-foreground md:text-[11px]">Alejandro Romero · Col. {COLEGIADO}</div>
             </div>
           </a>
 
-          <div className="flex items-center gap-2 sm:gap-5 md:gap-7 text-xs sm:text-sm font-medium text-muted-foreground overflow-x-auto">
+          <div className="order-3 flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[13px] font-medium text-muted-foreground md:order-2 md:w-auto md:gap-x-6 md:text-sm">
             {navLinks.map((l) => (
               <a key={l.href} href={l.href} className="whitespace-nowrap hover:text-brand-navy transition-colors">{l.label}</a>
             ))}
           </div>
 
-          <a href={`tel:+34${PHONE}`} className="hidden md:block shrink-0">
+          <a href={`tel:+34${PHONE}`} className="order-2 shrink-0 md:order-3">
             <Button size="sm" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
-              <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
+              <Phone className="h-4 w-4" /> <span className="hidden sm:inline">{PHONE_DISPLAY}</span><span className="sm:hidden">Llamar</span>
             </Button>
           </a>
         </nav>
