@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import ContactForm from "@/components/ContactForm";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
@@ -25,6 +26,10 @@ import {
   Award,
   Star,
   ExternalLink,
+  Lock,
+  PhoneCall,
+  Home,
+  Sparkles,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
