@@ -213,13 +213,13 @@ const Index = () => {
               <Award className="h-4 w-4 text-brand-green" /> Nº Colegiado {COLEGIADO}
             </div>
             <p className="mt-6 text-muted-foreground leading-relaxed">
-              Llevo <strong className="text-foreground">más de 10 años dedicándome a la enfermería</strong>. Mi recorrido profesional comenzó en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, uno de los hospitales de referencia del país, donde he trabajado en servicios tan diversos como Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y, actualmente, Neurofisiología. Durante la pandemia formé parte del equipo de la <strong className="text-foreground">Unidad de Aislamiento de Alto Nivel del Hospital Carlos III</strong>, atendiendo a pacientes COVID en condiciones de máxima exigencia.
+              Llevo <strong className="text-foreground">más de diez años cuidando de personas</strong>. Empecé en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, donde he ido pasando por servicios muy distintos —Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y, ahora mismo, Neurofisiología—. Cada planta me ha enseñado algo: a tener mano firme, cabeza fría y, sobre todo, a escuchar.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Esa trayectoria hospitalaria, combinada con la atención a domicilio en Granada y los pueblos de alrededor, me ha dado una visión integral del cuidado: rigor clínico, técnica depurada y la sensibilidad para entender lo que el paciente y su familia viven cada día. Complemento mi práctica con un <strong className="text-foreground">Máster en Investigación Clínica (UCM)</strong> y formación experta en Urgencias y Emergencias, Enfermedades Infectocontagiosas e Investigación en Salud.
+              En 2020, durante lo más duro de la pandemia, me incorporé a la <strong className="text-foreground">Unidad de Aislamiento de Alto Nivel del Hospital Carlos III</strong> para atender a pacientes COVID. Fueron meses muy exigentes, pero también los que más me marcaron como enfermero: aprendí lo que significa estar al lado de alguien cuando su familia no puede estarlo. A todo eso he sumado un <strong className="text-foreground">Máster en Investigación Clínica (UCM)</strong> y formación específica en urgencias e infecciosas, porque me gusta seguir aprendiendo.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Creo firmemente que todas las personas merecen recibir cuidados de calidad sin tener que salir de casa, especialmente cuando la salud o la movilidad lo dificultan. Por eso trabajo desde la cercanía, la profesionalidad y el respeto, escuchando lo que necesitas, explicando cada paso y tratando a cada paciente como me gustaría que tratasen a mi familia.
+              Hoy llevo toda esa experiencia a casa de mis pacientes en Granada y los pueblos de alrededor. Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
             </p>
             <div className="mt-8 grid grid-cols-3 gap-6">
               <div>
@@ -235,37 +235,6 @@ const Index = () => {
                 <div className="text-xs text-muted-foreground">Trato cercano</div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Trayectoria detallada */}
-        <div className="container relative mt-20 grid gap-10 md:grid-cols-2">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Trayectoria hospitalaria</span>
-            <h3 className="mt-3 text-2xl font-semibold text-brand-navy md:text-3xl">Experiencia en hospitales de referencia</h3>
-            <ul className="mt-6 space-y-4">
-              {experiencia.map((e) => (
-                <li key={e.area} className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="font-semibold text-brand-navy">{e.area}</div>
-                    <div className="text-xs whitespace-nowrap text-muted-foreground">{e.periodo}</div>
-                  </div>
-                  <div className="mt-1 text-sm text-muted-foreground">{e.lugar}</div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Formación</span>
-            <h3 className="mt-3 text-2xl font-semibold text-brand-navy md:text-3xl">Formación continua y especialización</h3>
-            <ul className="mt-6 space-y-3">
-              {formacion.map((f) => (
-                <li key={f} className="flex items-start gap-3 rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-green" />
-                  <span className="text-sm text-foreground/90 leading-relaxed">{f}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
