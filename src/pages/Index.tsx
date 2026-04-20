@@ -107,6 +107,7 @@ const faqs = [
 const navLinks = [
   { href: "#sobre-mi", label: "Sobre mí" },
   { href: "#servicios", label: "Servicios" },
+  { href: "#como-trabajo", label: "Cómo trabajo" },
   { href: "#cobertura", label: "Cobertura" },
   { href: "#faq", label: "Preguntas" },
   { href: "#contacto", label: "Contacto" },
