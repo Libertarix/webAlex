@@ -59,7 +59,7 @@ export const ContactForm = () => {
     const data = validate();
     if (!data) return;
     const subject = encodeURIComponent(`Consulta web · ${data.name}`);
-    const body = encodeURIComponent(buildBody(data));
+    const body = encodeURIComponent(buildBody({ name: data.name, phone: data.phone, message: data.message }));
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
     toast({
       title: "Abriendo tu correo…",
@@ -70,7 +70,7 @@ export const ContactForm = () => {
   const handleWhatsapp = () => {
     const data = validate();
     if (!data) return;
-    const text = encodeURIComponent(buildBody(data));
+    const text = encodeURIComponent(buildBody({ name: data.name, phone: data.phone, message: data.message }));
     window.open(`https://wa.me/34${PHONE}?text=${text}`, "_blank", "noopener,noreferrer");
   };
 
