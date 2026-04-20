@@ -322,6 +322,57 @@ const Index = () => {
         </div>
       </section>
 
+      {/* CÓMO TRABAJO */}
+      <section id="como-trabajo" className="relative overflow-hidden py-20 md:py-28">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-40 top-10 w-[520px] opacity-[0.05] blur-2xl select-none"
+        />
+        <div className="container relative">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Cómo trabajo</span>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Sencillo, cercano y confidencial</h2>
+            <p className="mt-4 text-muted-foreground">
+              Sin formularios largos ni intermediarios. Hablas conmigo desde el primer momento y tus datos se tratan con el mismo cuidado que tu salud.
+            </p>
+          </div>
+
+          <ol className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              { n: "01", icon: Phone, title: "Me llamas o escribes", desc: "Por teléfono, WhatsApp o email. Te respondo personalmente: ningún intermediario, ningún call center." },
+              { n: "02", icon: ClipboardList, title: "Valoramos tu caso", desc: "Te explico qué necesitas, cuánto dura la visita, qué material hace falta y el coste exacto. Sin compromiso y sin sorpresas." },
+              { n: "03", icon: Award, title: "Voy a tu casa", desc: "Acudo en el horario acordado con todo el material estéril. Cuido, explico cada paso y te dejo tranquilidad y seguimiento." },
+            ].map(({ n, icon: Icon, title, desc }) => (
+              <li key={n} className="relative rounded-[1.75rem] border border-border/60 bg-card p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft">
+                <span className="absolute -top-4 left-7 rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-primary-foreground">Paso {n}</span>
+                <div className="mt-2 grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-brand-green">
+                  <Icon className="h-7 w-7" />
+                </div>
+                <h3 className="mt-5 text-xl font-semibold text-brand-navy">{title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-14 grid gap-4 md:grid-cols-4">
+            {[
+              { icon: Lock, title: "Confidencialidad total", desc: "Secreto profesional sanitario y cumplimiento del RGPD. Tus datos solo los uso para atenderte." },
+              { icon: ShieldCheck, title: "Material estéril", desc: "Llevo todo el material necesario, de un solo uso y desechado de forma segura tras la visita." },
+              { icon: Award, title: "Enfermero colegiado", desc: `Col. nº ${COLEGIADO}. Profesional acreditado y con seguro de responsabilidad civil.` },
+              { icon: Home, title: "Misma persona siempre", desc: "Te atiendo yo en cada visita. Continuidad real, sin tener que repetir tu historia." },
+            ].map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
+                <Icon className="h-6 w-6 text-brand-green" />
+                <div className="mt-3 font-semibold text-brand-navy">{title}</div>
+                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* COBERTURA */}
       <section id="cobertura" className="py-20 md:py-28">
         <div className="container grid gap-12 md:grid-cols-2 md:items-center">
