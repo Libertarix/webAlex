@@ -14,7 +14,9 @@ import {
   MapPin,
   Clock,
   CheckCircle2,
-  Mail,
+  Scissors,
+  ClipboardList,
+  TestTube,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
@@ -27,14 +29,69 @@ const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
 )}`;
 
 const services = [
-  { icon: Bandage, title: "Curas a domicilio", desc: "Curas de heridas crónicas, postoperatorias, úlceras por presión y quemaduras." },
-  { icon: Syringe, title: "Inyectables", desc: "Administración de inyectables intramusculares, subcutáneos y vacunas." },
-  { icon: Droplets, title: "Sondajes", desc: "Sondaje vesical, recambio y cuidados de sonda en pacientes encamados." },
-  { icon: HeartPulse, title: "Control de constantes", desc: "Tensión arterial, glucemia, saturación y seguimiento de pacientes crónicos." },
-  { icon: Pill, title: "Administración de medicación", desc: "Preparación, control y administración pautada de tratamientos." },
-  { icon: Activity, title: "Extracciones y analíticas", desc: "Extracciones de sangre a domicilio con entrega en laboratorio." },
-  { icon: Stethoscope, title: "Cuidados al paciente encamado", desc: "Higiene, cambios posturales, prevención de úlceras y movilizaciones." },
-  { icon: ShieldCheck, title: "Seguimiento postoperatorio", desc: "Retirada de puntos, grapas y control tras intervenciones quirúrgicas." },
+  {
+    icon: Bandage,
+    title: "Curas de heridas, lesiones y escaras",
+    desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.",
+    price: "50 €",
+    unit: "/sesión",
+  },
+  {
+    icon: Scissors,
+    title: "Retirada de puntos y grapas",
+    desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.",
+    price: "50 €",
+    unit: "/sesión",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Cuidados de ostomías",
+    desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.",
+    price: "50 €",
+    unit: "/sesión",
+  },
+  {
+    icon: Droplets,
+    title: "Sondajes y dispositivos médicos",
+    desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación sanitaria al paciente y la familia.",
+    price: "50 €",
+    unit: "/sesión",
+  },
+  {
+    icon: ClipboardList,
+    title: "Valoración del estado de salud",
+    desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.",
+    price: "40 €",
+    unit: "/sesión",
+  },
+  {
+    icon: Syringe,
+    title: "Medicación intramuscular",
+    desc: "Preparación y administración con material estéril de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.",
+    price: "40 €",
+    unit: "/sesión",
+  },
+  {
+    icon: Pill,
+    title: "Medicación subcutánea",
+    desc: "Preparación y administración de medicación subcutánea con material estéril: insulina, heparina, vacunas y otras pautas.",
+    price: "40 €",
+    unit: "/sesión",
+  },
+  {
+    icon: Activity,
+    title: "Tratamiento intravenoso",
+    desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.",
+    price: "50 €",
+    unit: "/sesión",
+  },
+  {
+    icon: TestTube,
+    title: "Extracción de muestras",
+    desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.",
+    price: "40 €",
+    unit: "/servicio",
+  },
 ];
 
 const coverage = [
@@ -131,22 +188,28 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map(({ icon: Icon, title, desc }) => (
-              <Card key={title} className="group border-border/60 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft">
-                <CardContent className="p-6">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                    <Icon className="h-6 w-6" />
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ icon: Icon, title, desc, price, unit }) => (
+              <Card key={title} className="group flex flex-col border-border/60 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft">
+                <CardContent className="flex flex-1 flex-col p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-semibold text-primary">{price}</div>
+                      <div className="text-xs text-muted-foreground">{unit}</div>
+                    </div>
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold">{title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                  <h3 className="mt-5 text-lg font-semibold leading-snug">{title}</h3>
+                  <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           <p className="mt-10 text-center text-sm text-muted-foreground">
-            Las tarifas se adaptan al tipo y frecuencia del servicio.{" "}
+            Disponibles <span className="font-semibold text-foreground">packs de varias sesiones</span> con condiciones especiales.{" "}
             <a href={`tel:+34${PHONE}`} className="font-semibold text-primary hover:underline">Consulta sin compromiso</a>.
           </p>
         </div>
