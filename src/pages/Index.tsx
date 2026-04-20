@@ -186,6 +186,36 @@ const Index = () => {
         </div>
       </section>
 
+      {/* BANNER CAPTADOR */}
+      <section className="relative overflow-hidden bg-gradient-hero py-14 md:py-20">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -bottom-24 w-[460px] opacity-10 blur-2xl select-none"
+        />
+        <div className="container relative text-center text-primary-foreground">
+          <h2 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
+            Cuidar la salud no debería obligarte a salir de casa.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85 md:text-lg leading-relaxed">
+            Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href={`tel:+34${PHONE}`}>
+              <Button size="lg" className="rounded-full bg-background text-brand-navy hover:bg-background/90">
+                <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
+              </Button>
+            </a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="rounded-full border-background/40 bg-transparent text-primary-foreground hover:bg-background/10">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* SOBRE MÍ */}
       <section id="sobre-mi" className="relative py-20 md:py-28 overflow-hidden">
         <img
