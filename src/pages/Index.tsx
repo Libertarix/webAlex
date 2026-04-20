@@ -30,6 +30,15 @@ import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
 import serviceCare from "@/assets/service-care.jpg";
 import logo from "@/assets/logo-icon.png";
+import svcCuras from "@/assets/svc-curas.jpg";
+import svcPuntos from "@/assets/svc-puntos.jpg";
+import svcOstomias from "@/assets/svc-ostomias.jpg";
+import svcSondajes from "@/assets/svc-sondajes.jpg";
+import svcValoracion from "@/assets/svc-valoracion.jpg";
+import svcIntramuscular from "@/assets/svc-intramuscular.jpg";
+import svcSubcutanea from "@/assets/svc-subcutanea.jpg";
+import svcIntravenoso from "@/assets/svc-intravenoso.jpg";
+import svcExtraccion from "@/assets/svc-extraccion.jpg";
 
 const PHONE = "626784327";
 const PHONE_DISPLAY = "626 78 43 27";
@@ -42,38 +51,21 @@ const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
 const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Enfermero+en+Casa+Alejandro+Romero+Granada";
 
 const services = [
-  { icon: Bandage, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "50 €", unit: "/sesión" },
-  { icon: Scissors, title: "Retirada de puntos y grapas", desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.", price: "50 €", unit: "/sesión" },
-  { icon: ShieldCheck, title: "Cuidados de ostomías", desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.", price: "50 €", unit: "/sesión" },
-  { icon: Droplets, title: "Sondajes y dispositivos médicos", desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación sanitaria al paciente y la familia.", price: "50 €", unit: "/sesión" },
-  { icon: ClipboardList, title: "Valoración del estado de salud", desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.", price: "40 €", unit: "/sesión" },
-  { icon: Syringe, title: "Medicación intramuscular", desc: "Preparación y administración con material estéril de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.", price: "40 €", unit: "/sesión" },
-  { icon: Pill, title: "Medicación subcutánea", desc: "Preparación y administración de medicación subcutánea con material estéril: insulina, heparina, vacunas y otras pautas.", price: "40 €", unit: "/sesión" },
-  { icon: Activity, title: "Tratamiento intravenoso", desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.", price: "50 €", unit: "/sesión" },
-  { icon: TestTube, title: "Extracción de muestras", desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.", price: "40 €", unit: "/servicio" },
+  { icon: Bandage, image: svcCuras, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "50 €", unit: "/sesión" },
+  { icon: Scissors, image: svcPuntos, title: "Retirada de puntos y grapas", desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.", price: "50 €", unit: "/sesión" },
+  { icon: ShieldCheck, image: svcOstomias, title: "Cuidados de ostomías", desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.", price: "50 €", unit: "/sesión" },
+  { icon: Droplets, image: svcSondajes, title: "Sondajes y dispositivos médicos", desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación sanitaria al paciente y la familia.", price: "50 €", unit: "/sesión" },
+  { icon: ClipboardList, image: svcValoracion, title: "Valoración del estado de salud", desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.", price: "40 €", unit: "/sesión" },
+  { icon: Syringe, image: svcIntramuscular, title: "Medicación intramuscular", desc: "Preparación y administración con material estéril de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.", price: "40 €", unit: "/sesión" },
+  { icon: Pill, image: svcSubcutanea, title: "Medicación subcutánea", desc: "Preparación y administración de medicación subcutánea con material estéril: insulina, heparina, vacunas y otras pautas.", price: "40 €", unit: "/sesión" },
+  { icon: Activity, image: svcIntravenoso, title: "Tratamiento intravenoso", desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.", price: "50 €", unit: "/sesión" },
+  { icon: TestTube, image: svcExtraccion, title: "Extracción de muestras", desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.", price: "40 €", unit: "/servicio" },
 ];
 
 const coverage = [
   "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
   "Pulianas", "Cájar", "La Zubia", "Cenes de la Vega", "Huétor Vega", "Ogíjares",
   "Las Gabias", "Churriana de la Vega", "Santa Fe", "Pinos Puente",
-];
-
-const experiencia = [
-  { area: "Neurofisiología", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2020 — Actualidad" },
-  { area: "Medicina Interna COVID · Aislamiento de Alto Nivel", lugar: "Hospital Carlos III, Madrid", periodo: "2020" },
-  { area: "Hematología", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2018 — 2019" },
-  { area: "Oncología Médica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2016 — 2017" },
-  { area: "Reanimación, Trauma y Cardiológica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2015" },
-  { area: "Traumatología, Maxilofacial, Cardiología, Radiología, Neumología, Cirugía Oftálmica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2015 — 2018" },
-];
-
-const formacion = [
-  "Máster en Investigación Clínica — Universidad Complutense de Madrid",
-  "Experto Universitario en Urgencias y Emergencias en paciente adulto — CODEM-UCAV",
-  "Experto en Enfermedades Infectocontagiosas — CODEM-UCAV",
-  "Experto en Investigación en Salud — CODEM-UCAV",
-  "Experto en Tricología y Trasplante Capilar (PRP, mesoterapia, técnica FUE/DHI) — IFSES",
 ];
 
 const faqs = [
@@ -221,13 +213,13 @@ const Index = () => {
               <Award className="h-4 w-4 text-brand-green" /> Nº Colegiado {COLEGIADO}
             </div>
             <p className="mt-6 text-muted-foreground leading-relaxed">
-              Llevo <strong className="text-foreground">más de 10 años dedicándome a la enfermería</strong>. Mi recorrido profesional comenzó en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, uno de los hospitales de referencia del país, donde he trabajado en servicios tan diversos como Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y, actualmente, Neurofisiología. Durante la pandemia formé parte del equipo de la <strong className="text-foreground">Unidad de Aislamiento de Alto Nivel del Hospital Carlos III</strong>, atendiendo a pacientes COVID en condiciones de máxima exigencia.
+              Llevo <strong className="text-foreground">más de diez años cuidando de personas</strong>. Empecé en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, donde he ido pasando por servicios muy distintos —Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y, ahora mismo, Neurofisiología—. Cada planta me ha enseñado algo: a tener mano firme, cabeza fría y, sobre todo, a escuchar.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Esa trayectoria hospitalaria, combinada con la atención a domicilio en Granada y los pueblos de alrededor, me ha dado una visión integral del cuidado: rigor clínico, técnica depurada y la sensibilidad para entender lo que el paciente y su familia viven cada día. Complemento mi práctica con un <strong className="text-foreground">Máster en Investigación Clínica (UCM)</strong> y formación experta en Urgencias y Emergencias, Enfermedades Infectocontagiosas e Investigación en Salud.
+              En 2020, durante lo más duro de la pandemia, me incorporé a la <strong className="text-foreground">Unidad de Aislamiento de Alto Nivel del Hospital Carlos III</strong> para atender a pacientes COVID. Fueron meses muy exigentes, pero también los que más me marcaron como enfermero: aprendí lo que significa estar al lado de alguien cuando su familia no puede estarlo. A todo eso he sumado un <strong className="text-foreground">Máster en Investigación Clínica (UCM)</strong> y formación específica en urgencias e infecciosas, porque me gusta seguir aprendiendo.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Creo firmemente que todas las personas merecen recibir cuidados de calidad sin tener que salir de casa, especialmente cuando la salud o la movilidad lo dificultan. Por eso trabajo desde la cercanía, la profesionalidad y el respeto, escuchando lo que necesitas, explicando cada paso y tratando a cada paciente como me gustaría que tratasen a mi familia.
+              Hoy llevo toda esa experiencia a casa de mis pacientes en Granada y los pueblos de alrededor. Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
             </p>
             <div className="mt-8 grid grid-cols-3 gap-6">
               <div>
@@ -245,35 +237,34 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Trayectoria detallada */}
-        <div className="container relative mt-20 grid gap-10 md:grid-cols-2">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Trayectoria hospitalaria</span>
-            <h3 className="mt-3 text-2xl font-semibold text-brand-navy md:text-3xl">Experiencia en hospitales de referencia</h3>
-            <ul className="mt-6 space-y-4">
-              {experiencia.map((e) => (
-                <li key={e.area} className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="font-semibold text-brand-navy">{e.area}</div>
-                    <div className="text-xs whitespace-nowrap text-muted-foreground">{e.periodo}</div>
-                  </div>
-                  <div className="mt-1 text-sm text-muted-foreground">{e.lugar}</div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Formación</span>
-            <h3 className="mt-3 text-2xl font-semibold text-brand-navy md:text-3xl">Formación continua y especialización</h3>
-            <ul className="mt-6 space-y-3">
-              {formacion.map((f) => (
-                <li key={f} className="flex items-start gap-3 rounded-2xl border border-border/60 bg-card p-5 shadow-card">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-green" />
-                  <span className="text-sm text-foreground/90 leading-relaxed">{f}</span>
-                </li>
-              ))}
-            </ul>
+      {/* BANNER CAPTADOR */}
+      <section className="relative overflow-hidden bg-gradient-hero py-14 md:py-20">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -bottom-24 w-[460px] opacity-10 blur-2xl select-none"
+        />
+        <div className="container relative text-center text-primary-foreground">
+          <h2 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
+            Cuidar la salud no debería obligarte a salir de casa.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85 md:text-lg leading-relaxed">
+            Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href={`tel:+34${PHONE}`}>
+              <Button size="lg" className="rounded-full bg-background text-brand-navy hover:bg-background/90">
+                <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
+              </Button>
+            </a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="rounded-full border-background/40 bg-transparent text-primary-foreground hover:bg-background/10">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -289,20 +280,29 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ icon: Icon, title, desc, price, unit }) => (
-              <Card key={title} className="group flex flex-col border-border/60 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft">
-                <CardContent className="flex flex-1 flex-col p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary text-brand-navy transition-colors group-hover:bg-brand-navy group-hover:text-primary-foreground">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-semibold text-brand-green">{price}</div>
-                      <div className="text-xs text-muted-foreground">{unit}</div>
-                    </div>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ icon: Icon, image, title, desc, price, unit }) => (
+              <Card key={title} className="group flex flex-col overflow-hidden border-border/60 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={image}
+                    alt={title}
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
+                  <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-2xl bg-background/90 text-brand-navy backdrop-blur-sm">
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold leading-snug text-brand-navy">{title}</h3>
+                  <div className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-right backdrop-blur-sm">
+                    <span className="text-base font-semibold text-brand-green">{price}</span>
+                    <span className="ml-1 text-[11px] text-muted-foreground">{unit}</span>
+                  </div>
+                </div>
+                <CardContent className="flex flex-1 flex-col p-6">
+                  <h3 className="text-lg font-semibold leading-snug text-brand-navy">{title}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
                 </CardContent>
               </Card>
