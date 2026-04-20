@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -23,14 +22,14 @@ import {
   ClipboardList,
   TestTube,
   Mail,
-  Menu,
-  X,
   Award,
+  Star,
+  ExternalLink,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
 import serviceCare from "@/assets/service-care.jpg";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-icon.png";
 
 const PHONE = "626784327";
 const PHONE_DISPLAY = "626 78 43 27";
@@ -39,6 +38,8 @@ const COLEGIADO = "47384";
 const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
   "Hola Alejandro, me gustaría información sobre los servicios de enfermería a domicilio."
 )}`;
+// TODO: sustituir por el enlace real al perfil de Google Business cuando lo tengas
+const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Enfermero+en+Casa+Alejandro+Romero+Granada";
 
 const services = [
   { icon: Bandage, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "50 €", unit: "/sesión" },
@@ -58,94 +59,100 @@ const coverage = [
   "Las Gabias", "Churriana de la Vega", "Santa Fe", "Pinos Puente",
 ];
 
-const testimonials = [
-  { name: "María L.", text: "Una atención cercana y muy profesional. Vino a casa para las curas de mi madre y todo perfecto." },
-  { name: "Antonio R.", text: "Puntual, cuidadoso y con mucha paciencia. Recomendable al 100%." },
-  { name: "Carmen S.", text: "Me solucionó un sondaje en el mismo día. Muy agradecida por la rapidez y el trato." },
+const experiencia = [
+  { area: "Neurofisiología", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2020 — Actualidad" },
+  { area: "Medicina Interna COVID · Aislamiento de Alto Nivel", lugar: "Hospital Carlos III, Madrid", periodo: "2020" },
+  { area: "Hematología", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2018 — 2019" },
+  { area: "Oncología Médica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2016 — 2017" },
+  { area: "Reanimación, Trauma y Cardiológica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2015" },
+  { area: "Traumatología, Maxilofacial, Cardiología, Radiología, Neumología, Cirugía Oftálmica", lugar: "Hospital Universitario La Paz, Madrid", periodo: "2015 — 2018" },
+];
+
+const formacion = [
+  "Máster en Investigación Clínica — Universidad Complutense de Madrid",
+  "Experto Universitario en Urgencias y Emergencias en paciente adulto — CODEM-UCAV",
+  "Experto en Enfermedades Infectocontagiosas — CODEM-UCAV",
+  "Experto en Investigación en Salud — CODEM-UCAV",
+  "Experto en Tricología y Trasplante Capilar (PRP, mesoterapia, técnica FUE/DHI) — IFSES",
 ];
 
 const faqs = [
-  { q: "¿En qué zonas de Granada atiendes?", a: "Atiendo en Granada capital y en los municipios del área metropolitana: Armilla, Maracena, Albolote, Atarfe, La Zubia, Cájar, Huétor Vega, Ogíjares, Las Gabias, Churriana, Cenes de la Vega, Peligros, Pulianas, Santa Fe y Pinos Puente. Si tu localidad no está, llámame y lo confirmamos." },
-  { q: "¿Eres enfermero colegiado?", a: `Sí. Soy Alejandro Romero, enfermero colegiado nº ${COLEGIADO}, con más de 10 años de experiencia tanto en atención hospitalaria como a domicilio.` },
-  { q: "¿Cuánto tardas en venir a casa?", a: "En la mayoría de casos puedo atender el mismo día o al día siguiente. Para situaciones urgentes, lo mejor es llamar directamente." },
-  { q: "¿Qué formas de pago aceptas?", a: "Efectivo, Bizum y transferencia bancaria al finalizar la sesión. Para packs de varias sesiones, condiciones especiales." },
-  { q: "¿Atiendes fines de semana y festivos?", a: "Sí, atiendo todos los días del año coordinando previamente la visita." },
+  {
+    q: "¿En qué zonas de Granada atiendes?",
+    a: "Atiendo en Granada capital y en todo el área metropolitana: Armilla, Maracena, Albolote, Atarfe, La Zubia, Cájar, Huétor Vega, Ogíjares, Las Gabias, Churriana de la Vega, Cenes de la Vega, Peligros, Pulianas, Santa Fe y Pinos Puente. Si tu localidad no aparece en el listado, llámame y lo confirmamos sin compromiso; muchas veces puedo desplazarme a poblaciones cercanas valorando previamente la zona y el horario.",
+  },
+  {
+    q: "¿Cuánto tardas en venir a casa?",
+    a: "En la mayoría de los casos puedo atender el mismo día o al día siguiente, según la franja horaria que necesites. Para curas con seguimiento, sondajes o pautas de medicación, planificamos las visitas para que coincidan con tu rutina. Si se trata de una situación urgente (sondajes, retención, sueroterapia, dolor mal controlado, etc.), lo más rápido es llamarme directamente al teléfono.",
+  },
+  {
+    q: "¿Qué formas de pago aceptas?",
+    a: "Puedes pagar al finalizar cada sesión en efectivo, por Bizum o mediante transferencia bancaria. Para tratamientos que requieren varias visitas (curas seriadas, pautas de inyectables, seguimientos prolongados) ofrezco packs de sesiones con condiciones especiales. Siempre entrego justificante del servicio realizado para que puedas presentarlo en tu seguro privado o donde lo necesites.",
+  },
+  {
+    q: "¿Atiendes fines de semana y festivos?",
+    a: "Sí, trabajo todos los días del año coordinando previamente la visita. Sábados, domingos y festivos están disponibles igual que cualquier día laborable, especialmente para curas que no pueden interrumpirse, administración de medicación pautada o cuidados de sondas y ostomías que requieren continuidad.",
+  },
+  {
+    q: "¿Resuelves dudas antes de contratar el servicio?",
+    a: "Por supuesto. Puedes llamarme o escribirme por WhatsApp y te explico sin compromiso qué tipo de cuidado necesitas, cuánto duraría la visita, qué material hace falta y cuál sería el coste exacto. Atiendo personalmente todas las consultas, así que hablarás siempre directamente conmigo y no con un intermediario.",
+  },
+  {
+    q: "¿Trabajas solo o tienes un equipo?",
+    a: "Trabajo solo. Eso significa que la persona que valora tu caso por teléfono es la misma que acude a tu domicilio y la que hace el seguimiento posterior. Garantizo continuidad asistencial: conoces a tu enfermero, no tienes que repetir tu historia en cada visita y puedes contactar conmigo directamente para cualquier duda entre sesiones.",
+  },
+  {
+    q: "¿Puedo contratarte para cuidar de un familiar mayor o dependiente?",
+    a: "Sí, es uno de los perfiles que más atiendo. Realizo valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas, estado cognitivo), aplico los cuidados necesarios y formo a la familia o cuidadores principales para que puedan continuar el cuidado con seguridad entre visita y visita.",
+  },
 ];
 
 const navLinks = [
   { href: "#sobre-mi", label: "Sobre mí" },
   { href: "#servicios", label: "Servicios" },
   { href: "#cobertura", label: "Cobertura" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#faq", label: "Preguntas" },
   { href: "#contacto", label: "Contacto" },
 ];
 
 const Index = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-background">
       {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
-        <nav className="container flex h-20 items-center justify-between">
-          <a href="#inicio" className="flex items-center gap-3" aria-label="Enfermero en Casa - Inicio">
+        <nav className="container flex h-20 items-center justify-between gap-4">
+          <a href="#inicio" className="flex items-center gap-3 shrink-0" aria-label="Enfermero en Casa - Inicio">
             <img src={logo} alt="Logo Enfermero en Casa" className="h-12 w-12 object-contain" />
-            <div className="leading-tight">
-              <div className="font-display text-lg font-semibold text-brand-navy">Enfermero <span className="text-brand-green">en Casa</span></div>
+            <div className="leading-tight hidden sm:block">
+              <div className="font-display text-base font-semibold text-brand-navy md:text-lg">Enfermero <span className="text-brand-green">en Casa</span></div>
               <div className="text-[11px] text-muted-foreground">Alejandro Romero · Col. {COLEGIADO}</div>
             </div>
           </a>
 
-          <div className="hidden items-center gap-7 lg:flex text-sm font-medium text-muted-foreground">
+          <div className="flex items-center gap-2 sm:gap-5 md:gap-7 text-xs sm:text-sm font-medium text-muted-foreground overflow-x-auto">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="hover:text-brand-navy transition-colors">{l.label}</a>
+              <a key={l.href} href={l.href} className="whitespace-nowrap hover:text-brand-navy transition-colors">{l.label}</a>
             ))}
           </div>
 
-          <div className="hidden md:block">
-            <a href={`tel:+34${PHONE}`}>
-              <Button size="sm" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
-                <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
-              </Button>
-            </a>
-          </div>
-
-          <button
-            type="button"
-            aria-label="Abrir menú"
-            className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-border/60"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <a href={`tel:+34${PHONE}`} className="hidden md:block shrink-0">
+            <Button size="sm" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
+              <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
+            </Button>
+          </a>
         </nav>
-
-        {menuOpen && (
-          <div className="lg:hidden border-t border-border/60 bg-background">
-            <div className="container flex flex-col gap-1 py-4">
-              {navLinks.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-lg px-3 py-3 text-sm font-medium text-foreground/80 hover:bg-secondary"
-                >
-                  {l.label}
-                </a>
-              ))}
-              <a href={`tel:+34${PHONE}`} className="mt-2">
-                <Button className="w-full rounded-full bg-brand-navy hover:bg-brand-navy/90">
-                  <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
-                </Button>
-              </a>
-            </div>
-          </div>
-        )}
       </header>
 
       {/* HERO */}
       <section id="inicio" className="relative overflow-hidden bg-gradient-soft">
-        <div className="container grid gap-12 py-16 md:grid-cols-2 md:py-24 md:items-center">
+        {/* Imagen difuminada de fondo (logo) */}
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-20 -bottom-20 w-[520px] opacity-[0.06] blur-2xl select-none"
+        />
+        <div className="container relative grid gap-12 py-16 md:grid-cols-2 md:py-24 md:items-center">
           <div className="animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-secondary-foreground">
               <MapPin className="h-3.5 w-3.5 text-brand-green" /> Granada y alrededores
@@ -154,7 +161,7 @@ const Index = () => {
               Enfermero a domicilio en <span className="text-brand-green">Granada</span>
             </h1>
             <p className="mt-6 max-w-lg text-lg text-muted-foreground leading-relaxed">
-              Soy <strong className="text-foreground">Alejandro Romero</strong>, enfermero colegiado (nº {COLEGIADO}) con más de 10 años de experiencia en atención hospitalaria y a domicilio. Curas, sondajes, inyectables y cuidados profesionales en la comodidad de tu casa.
+              Soy <strong className="text-foreground">Alejandro Romero</strong>, enfermero colegiado (nº {COLEGIADO}) con más de 10 años de experiencia en hospitales de referencia y atención a domicilio. Curas, sondajes, inyectables y cuidados profesionales en la comodidad de tu casa.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={`tel:+34${PHONE}`}>
@@ -188,8 +195,14 @@ const Index = () => {
       </section>
 
       {/* SOBRE MÍ */}
-      <section id="sobre-mi" className="py-20 md:py-28">
-        <div className="container grid gap-12 md:grid-cols-2 md:items-center">
+      <section id="sobre-mi" className="relative py-20 md:py-28 overflow-hidden">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 w-[480px] opacity-[0.05] blur-2xl select-none"
+        />
+        <div className="container relative grid gap-12 md:grid-cols-2 md:items-center">
           <div className="relative order-2 md:order-1">
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-15 blur-2xl" />
             <img
@@ -208,7 +221,10 @@ const Index = () => {
               <Award className="h-4 w-4 text-brand-green" /> Nº Colegiado {COLEGIADO}
             </div>
             <p className="mt-6 text-muted-foreground leading-relaxed">
-              Llevo <strong className="text-foreground">más de 10 años dedicándome a la enfermería</strong>, combinando la experiencia en el ámbito hospitalario con la atención a domicilio en Granada y los pueblos de alrededor. Esa doble trayectoria me ha permitido desarrollar una visión integral del cuidado: rigor clínico, técnica depurada y una mirada cercana a lo que el paciente vive en su día a día.
+              Llevo <strong className="text-foreground">más de 10 años dedicándome a la enfermería</strong>. Mi recorrido profesional comenzó en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, uno de los hospitales de referencia del país, donde he trabajado en servicios tan diversos como Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y, actualmente, Neurofisiología. Durante la pandemia formé parte del equipo de la <strong className="text-foreground">Unidad de Aislamiento de Alto Nivel del Hospital Carlos III</strong>, atendiendo a pacientes COVID en condiciones de máxima exigencia.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Esa trayectoria hospitalaria, combinada con la atención a domicilio en Granada y los pueblos de alrededor, me ha dado una visión integral del cuidado: rigor clínico, técnica depurada y la sensibilidad para entender lo que el paciente y su familia viven cada día. Complemento mi práctica con un <strong className="text-foreground">Máster en Investigación Clínica (UCM)</strong> y formación experta en Urgencias y Emergencias, Enfermedades Infectocontagiosas e Investigación en Salud.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Creo firmemente que todas las personas merecen recibir cuidados de calidad sin tener que salir de casa, especialmente cuando la salud o la movilidad lo dificultan. Por eso trabajo desde la cercanía, la profesionalidad y el respeto, escuchando lo que necesitas, explicando cada paso y tratando a cada paciente como me gustaría que tratasen a mi familia.
@@ -219,14 +235,45 @@ const Index = () => {
                 <div className="text-xs text-muted-foreground">Años de experiencia</div>
               </div>
               <div>
-                <div className="text-3xl font-semibold text-brand-navy">2</div>
-                <div className="text-xs text-muted-foreground">Hospital + domicilio</div>
+                <div className="text-3xl font-semibold text-brand-navy">11+</div>
+                <div className="text-xs text-muted-foreground">Servicios hospitalarios</div>
               </div>
               <div>
                 <div className="text-3xl font-semibold text-brand-navy">100%</div>
                 <div className="text-xs text-muted-foreground">Trato cercano</div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Trayectoria detallada */}
+        <div className="container relative mt-20 grid gap-10 md:grid-cols-2">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Trayectoria hospitalaria</span>
+            <h3 className="mt-3 text-2xl font-semibold text-brand-navy md:text-3xl">Experiencia en hospitales de referencia</h3>
+            <ul className="mt-6 space-y-4">
+              {experiencia.map((e) => (
+                <li key={e.area} className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="font-semibold text-brand-navy">{e.area}</div>
+                    <div className="text-xs whitespace-nowrap text-muted-foreground">{e.periodo}</div>
+                  </div>
+                  <div className="mt-1 text-sm text-muted-foreground">{e.lugar}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Formación</span>
+            <h3 className="mt-3 text-2xl font-semibold text-brand-navy md:text-3xl">Formación continua y especialización</h3>
+            <ul className="mt-6 space-y-3">
+              {formacion.map((f) => (
+                <li key={f} className="flex items-start gap-3 rounded-2xl border border-border/60 bg-card p-5 shadow-card">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-green" />
+                  <span className="text-sm text-foreground/90 leading-relaxed">{f}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -300,34 +347,53 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TESTIMONIOS */}
+      {/* RESEÑAS GOOGLE */}
       <section className="bg-secondary/40 py-20 md:py-28">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Testimonios</span>
-            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Lo que dicen los pacientes</h2>
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Opiniones</span>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Reseñas en Google</h2>
+            <p className="mt-4 text-muted-foreground">
+              Las valoraciones de mis pacientes están publicadas directamente en mi perfil de Google. Léelas, déjame la tuya o consulta la puntuación actualizada en cualquier momento.
+            </p>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <Card key={t.name} className="border-border/60 shadow-card">
-                <CardContent className="p-7">
-                  <div className="text-4xl leading-none text-brand-green">“</div>
-                  <p className="mt-2 text-foreground/90 leading-relaxed">{t.text}</p>
-                  <div className="mt-6 text-sm font-semibold text-brand-navy">{t.name}</div>
-                  <div className="text-xs text-muted-foreground">Paciente · Granada</div>
-                </CardContent>
-              </Card>
-            ))}
+
+          <div className="mt-12 mx-auto max-w-2xl rounded-[2rem] border border-border/60 bg-card p-8 md:p-10 shadow-card text-center">
+            <div className="flex items-center justify-center gap-1 text-brand-green">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} className="h-6 w-6 fill-current" />
+              ))}
+            </div>
+            <p className="mt-4 text-foreground/90 leading-relaxed">
+              Conecto esta sección con mi <strong className="text-brand-navy">Perfil de Empresa de Google</strong>, donde puedes leer las opiniones reales de mis pacientes y dejar la tuya tras un servicio.
+            </p>
+            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block">
+              <Button size="lg" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
+                <ExternalLink className="h-4 w-4" /> Ver reseñas en Google
+              </Button>
+            </a>
+            <p className="mt-4 text-xs text-muted-foreground">
+              ¿Aún no tienes el enlace exacto? Pásame la URL de tu Perfil de Empresa de Google y lo conectamos. También podemos integrar un widget que muestre las reseñas dentro de la web automáticamente.
+            </p>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-20 md:py-28">
-        <div className="container max-w-3xl">
+      <section id="faq" className="relative py-20 md:py-28 overflow-hidden">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute right-0 top-10 w-[420px] opacity-[0.05] blur-2xl select-none"
+        />
+        <div className="container relative max-w-3xl">
           <div className="text-center">
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Preguntas frecuentes</span>
-            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Resolvemos tus dudas</h2>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Resuelvo tus dudas</h2>
+            <p className="mt-4 text-muted-foreground">
+              Las consultas más habituales antes de contratar el servicio. Si no encuentras tu respuesta, llámame o escríbeme por WhatsApp.
+            </p>
           </div>
           <Accordion type="single" collapsible className="mt-10">
             {faqs.map((f, i) => (
