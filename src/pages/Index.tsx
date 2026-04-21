@@ -224,7 +224,7 @@ const Index = () => {
           </div>
           <div className="order-1 md:order-2">
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Sobre mí</span>
-            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Alejandro Romero, enfermero colegiado en Granada</h2>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Mi historia</h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               Llevo <strong className="text-foreground">más de diez años cuidando de personas</strong>. Empecé en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, donde fui pasando por servicios muy distintos —Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y Neurofisiología—. Cada planta me enseñó algo: a tener mano firme, cabeza fría y, sobre todo, a escuchar.
             </p>
