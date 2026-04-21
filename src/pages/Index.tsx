@@ -111,18 +111,18 @@ const Index = () => {
       </header>
 
       {/* BANNER CAPTADOR */}
-      <section id="inicio" className="relative overflow-hidden bg-gradient-hero py-14 md:py-20">
+      <section id="inicio" className="relative overflow-hidden bg-gradient-hero py-20 md:py-32">
         <img
           src={logo}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -bottom-24 w-[460px] opacity-10 blur-2xl select-none"
+          className="pointer-events-none absolute -right-24 -bottom-24 w-[520px] opacity-10 blur-2xl select-none"
         />
         <div className="container relative text-center text-primary-foreground">
-          <h2 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
+          <h2 className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.05] md:text-7xl">
             Cuidar la salud no debería obligarte a salir de casa.
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85 md:text-lg leading-relaxed">
+          <p className="mx-auto mt-7 max-w-2xl text-lg text-primary-foreground/90 md:text-2xl leading-relaxed">
             Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
           </p>
         </div>
