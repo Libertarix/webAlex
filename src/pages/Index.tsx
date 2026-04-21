@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
+import WhatsAppFab from "@/components/WhatsAppFab";
+import { services } from "@/data/services";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
