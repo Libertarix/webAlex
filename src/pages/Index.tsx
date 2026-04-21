@@ -241,31 +241,41 @@ const Index = () => {
           </div>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ icon: Icon, image, title, desc, price, unit }) => (
-              <Card key={title} className="group flex flex-col overflow-hidden border-border/60 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={image}
-                    alt={title}
-                    width={800}
-                    height={600}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
-                  <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-2xl bg-background/90 text-brand-navy backdrop-blur-sm">
-                    <Icon className="h-5 w-5" />
+            {services.map(({ slug, icon: Icon, image, title, desc, price, unit }) => (
+              <Link
+                key={slug}
+                to={`/servicios/${slug}`}
+                aria-label={`Ver detalles del servicio: ${title}`}
+                className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
+              >
+                <Card className="flex h-full flex-col overflow-hidden border-border/60 shadow-card transition-all group-hover:-translate-y-1 group-hover:shadow-soft">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={image}
+                      alt={title}
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
+                    <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-2xl bg-background/90 text-brand-navy backdrop-blur-sm">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-right backdrop-blur-sm">
+                      <span className="text-base font-semibold text-brand-green">{price}</span>
+                      <span className="ml-1 text-[11px] text-muted-foreground">{unit}</span>
+                    </div>
                   </div>
-                  <div className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-right backdrop-blur-sm">
-                    <span className="text-base font-semibold text-brand-green">{price}</span>
-                    <span className="ml-1 text-[11px] text-muted-foreground">{unit}</span>
-                  </div>
-                </div>
-                <CardContent className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-semibold leading-snug text-brand-navy">{title}</h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
-                </CardContent>
-              </Card>
+                  <CardContent className="flex flex-1 flex-col p-6">
+                    <h3 className="text-lg font-semibold leading-snug text-brand-navy">{title}</h3>
+                    <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                    <span className="mt-4 inline-flex items-center text-sm font-semibold text-brand-green group-hover:underline">
+                      Ver servicio →
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
 
