@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
+import WhatsAppFab from "@/components/WhatsAppFab";
+import { services } from "@/data/services";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
@@ -10,40 +13,23 @@ import {
 import {
   Phone,
   MessageCircle,
-  Syringe,
-  Bandage,
-  Pill,
   Activity,
-  Droplets,
   ShieldCheck,
   MapPin,
   Clock,
   CheckCircle2,
-  Scissors,
   ClipboardList,
-  TestTube,
   Mail,
   Award,
   Star,
   ExternalLink,
   Lock,
-  PhoneCall,
   Home,
-  Sparkles,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
 import serviceCare from "@/assets/service-care.jpg";
 import logo from "@/assets/logo-icon.png";
-import svcCuras from "@/assets/svc-curas.jpg";
-import svcPuntos from "@/assets/svc-puntos.jpg";
-import svcOstomias from "@/assets/svc-ostomias.jpg";
-import svcSondajes from "@/assets/svc-sondajes.jpg";
-import svcValoracion from "@/assets/svc-valoracion.jpg";
-import svcIntramuscular from "@/assets/svc-intramuscular.jpg";
-import svcSubcutanea from "@/assets/svc-subcutanea.jpg";
-import svcIntravenoso from "@/assets/svc-intravenoso.jpg";
-import svcExtraccion from "@/assets/svc-extraccion.jpg";
 
 const PHONE = "626784327";
 const PHONE_DISPLAY = "626 78 43 27";
@@ -54,18 +40,6 @@ const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
 )}`;
 // TODO: sustituir por el enlace real al perfil de Google Business cuando lo tengas
 const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Enfermero+en+Casa+Alejandro+Romero+Granada";
-
-const services = [
-  { icon: Bandage, image: svcCuras, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "49 €", unit: "/sesión" },
-  { icon: Scissors, image: svcPuntos, title: "Retirada de puntos y grapas", desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.", price: "49 €", unit: "/sesión" },
-  { icon: ShieldCheck, image: svcOstomias, title: "Cuidados de ostomías", desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.", price: "49 €", unit: "/sesión" },
-  { icon: Droplets, image: svcSondajes, title: "Sondajes y dispositivos médicos", desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación al paciente y la familia.", price: "49 €", unit: "/sesión" },
-  { icon: ClipboardList, image: svcValoracion, title: "Valoración del estado de salud", desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.", price: "39 €", unit: "/sesión" },
-  { icon: Syringe, image: svcIntramuscular, title: "Medicación intramuscular", desc: "Preparación y administración con material adecuado de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.", price: "39 €", unit: "/sesión" },
-  { icon: Pill, image: svcSubcutanea, title: "Medicación subcutánea", desc: "Preparación y administración de medicación subcutánea: insulina, heparina, vacunas y otras pautas.", price: "39 €", unit: "/sesión" },
-  { icon: Activity, image: svcIntravenoso, title: "Tratamiento intravenoso", desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.", price: "49 €", unit: "/sesión" },
-  { icon: TestTube, image: svcExtraccion, title: "Extracción de muestras", desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.", price: "39 €", unit: "/servicio" },
-];
 
 const coverage = [
   "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
@@ -137,18 +111,18 @@ const Index = () => {
       </header>
 
       {/* BANNER CAPTADOR */}
-      <section id="inicio" className="relative overflow-hidden bg-gradient-hero py-14 md:py-20">
+      <section id="inicio" className="relative overflow-hidden bg-gradient-hero py-20 md:py-32">
         <img
           src={logo}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -bottom-24 w-[460px] opacity-10 blur-2xl select-none"
+          className="pointer-events-none absolute -right-24 -bottom-24 w-[520px] opacity-10 blur-2xl select-none"
         />
         <div className="container relative text-center text-primary-foreground">
-          <h2 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
+          <h2 className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.05] md:text-7xl">
             Cuidar la salud no debería obligarte a salir de casa.
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85 md:text-lg leading-relaxed">
+          <p className="mx-auto mt-7 max-w-2xl text-lg text-primary-foreground/90 md:text-2xl leading-relaxed">
             Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
           </p>
         </div>
@@ -267,31 +241,41 @@ const Index = () => {
           </div>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ icon: Icon, image, title, desc, price, unit }) => (
-              <Card key={title} className="group flex flex-col overflow-hidden border-border/60 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={image}
-                    alt={title}
-                    width={800}
-                    height={600}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
-                  <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-2xl bg-background/90 text-brand-navy backdrop-blur-sm">
-                    <Icon className="h-5 w-5" />
+            {services.map(({ slug, icon: Icon, image, title, desc, price, unit }) => (
+              <Link
+                key={slug}
+                to={`/servicios/${slug}`}
+                aria-label={`Ver detalles del servicio: ${title}`}
+                className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
+              >
+                <Card className="flex h-full flex-col overflow-hidden border-border/60 shadow-card transition-all group-hover:-translate-y-1 group-hover:shadow-soft">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={image}
+                      alt={title}
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
+                    <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-2xl bg-background/90 text-brand-navy backdrop-blur-sm">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-right backdrop-blur-sm">
+                      <span className="text-base font-semibold text-brand-green">{price}</span>
+                      <span className="ml-1 text-[11px] text-muted-foreground">{unit}</span>
+                    </div>
                   </div>
-                  <div className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-right backdrop-blur-sm">
-                    <span className="text-base font-semibold text-brand-green">{price}</span>
-                    <span className="ml-1 text-[11px] text-muted-foreground">{unit}</span>
-                  </div>
-                </div>
-                <CardContent className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-semibold leading-snug text-brand-navy">{title}</h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
-                </CardContent>
-              </Card>
+                  <CardContent className="flex flex-1 flex-col p-6">
+                    <h3 className="text-lg font-semibold leading-snug text-brand-navy">{title}</h3>
+                    <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                    <span className="mt-4 inline-flex items-center text-sm font-semibold text-brand-green group-hover:underline">
+                      Ver servicio →
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
 
@@ -527,17 +511,7 @@ const Index = () => {
       </footer>
 
       {/* Floating WhatsApp */}
-      <a
-        href={WHATSAPP}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Contactar por WhatsApp"
-        className="fixed bottom-6 right-6 z-50 grid h-16 w-16 place-items-center rounded-full bg-[#25D366] text-white shadow-soft transition hover:scale-110 hover:bg-[#1ebe57]"
-      >
-        <svg viewBox="0 0 32 32" className="h-9 w-9" aria-hidden="true" fill="currentColor">
-          <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.687.244-1.045 0-.387-1.347-.8-1.703-.946zm-2.97 7.973c-1.733 0-3.43-.516-4.886-1.45L7.93 24.97l1.27-3.776a8.79 8.79 0 0 1-1.69-5.193c0-4.886 3.984-8.87 8.87-8.87s8.87 3.984 8.87 8.87-3.985 8.87-8.87 8.87zm0-19.594c-5.926 0-10.738 4.812-10.738 10.738a10.7 10.7 0 0 0 1.526 5.5L5 27l3.31-1.063a10.65 10.65 0 0 0 5.83 1.728c5.926 0 10.738-4.812 10.738-10.738S22.066 5.584 16.14 5.584z"/>
-        </svg>
-      </a>
+      <WhatsAppFab href={WHATSAPP} />
     </div>
   );
 };
