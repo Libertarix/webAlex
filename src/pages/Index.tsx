@@ -56,15 +56,15 @@ const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
 const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Enfermero+en+Casa+Alejandro+Romero+Granada";
 
 const services = [
-  { icon: Bandage, image: svcCuras, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "50 €", unit: "/sesión" },
-  { icon: Scissors, image: svcPuntos, title: "Retirada de puntos y grapas", desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.", price: "50 €", unit: "/sesión" },
-  { icon: ShieldCheck, image: svcOstomias, title: "Cuidados de ostomías", desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.", price: "50 €", unit: "/sesión" },
-  { icon: Droplets, image: svcSondajes, title: "Sondajes y dispositivos médicos", desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación sanitaria al paciente y la familia.", price: "50 €", unit: "/sesión" },
-  { icon: ClipboardList, image: svcValoracion, title: "Valoración del estado de salud", desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.", price: "40 €", unit: "/sesión" },
-  { icon: Syringe, image: svcIntramuscular, title: "Medicación intramuscular", desc: "Preparación y administración con material estéril de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.", price: "40 €", unit: "/sesión" },
-  { icon: Pill, image: svcSubcutanea, title: "Medicación subcutánea", desc: "Preparación y administración de medicación subcutánea con material estéril: insulina, heparina, vacunas y otras pautas.", price: "40 €", unit: "/sesión" },
-  { icon: Activity, image: svcIntravenoso, title: "Tratamiento intravenoso", desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.", price: "50 €", unit: "/sesión" },
-  { icon: TestTube, image: svcExtraccion, title: "Extracción de muestras", desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.", price: "40 €", unit: "/servicio" },
+  { icon: Bandage, image: svcCuras, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "49 €", unit: "/sesión" },
+  { icon: Scissors, image: svcPuntos, title: "Retirada de puntos y grapas", desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.", price: "49 €", unit: "/sesión" },
+  { icon: ShieldCheck, image: svcOstomias, title: "Cuidados de ostomías", desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.", price: "49 €", unit: "/sesión" },
+  { icon: Droplets, image: svcSondajes, title: "Sondajes y dispositivos médicos", desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación al paciente y la familia.", price: "49 €", unit: "/sesión" },
+  { icon: ClipboardList, image: svcValoracion, title: "Valoración del estado de salud", desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.", price: "39 €", unit: "/sesión" },
+  { icon: Syringe, image: svcIntramuscular, title: "Medicación intramuscular", desc: "Preparación y administración con material adecuado de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.", price: "39 €", unit: "/sesión" },
+  { icon: Pill, image: svcSubcutanea, title: "Medicación subcutánea", desc: "Preparación y administración de medicación subcutánea: insulina, heparina, vacunas y otras pautas.", price: "39 €", unit: "/sesión" },
+  { icon: Activity, image: svcIntravenoso, title: "Tratamiento intravenoso", desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.", price: "49 €", unit: "/sesión" },
+  { icon: TestTube, image: svcExtraccion, title: "Extracción de muestras", desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.", price: "39 €", unit: "/servicio" },
 ];
 
 const coverage = [
@@ -96,7 +96,7 @@ const faqs = [
   },
   {
     q: "¿Trabajas solo o tienes un equipo?",
-    a: "Trabajo solo. Eso significa que la persona que valora tu caso por teléfono es la misma que acude a tu domicilio y la que hace el seguimiento posterior. Garantizo continuidad asistencial: conoces a tu enfermero, no tienes que repetir tu historia en cada visita y puedes contactar conmigo directamente para cualquier duda entre sesiones.",
+    a: "Trabajo solo, así que la persona que valora tu caso por teléfono es la misma que acude a tu domicilio y la que hace el seguimiento. Además, colaboro habitualmente con clínicas privadas y centros de transfusión de Granada, y me coordino con tu equipo de Atención Primaria siempre que sea necesario para garantizar continuidad asistencial. Conoces a tu enfermero, no tienes que repetir tu historia y puedes contactar conmigo directamente entre visitas.",
   },
   {
     q: "¿Puedo contratarte para cuidar de un familiar mayor o dependiente?",
@@ -133,11 +133,6 @@ const Index = () => {
             ))}
           </div>
 
-          <a href={`tel:+34${PHONE}`} className="order-2 shrink-0 md:order-3">
-            <Button size="sm" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
-              <Phone className="h-4 w-4" /> <span className="hidden sm:inline">{PHONE_DISPLAY}</span><span className="sm:hidden">Llamar</span>
-            </Button>
-          </a>
         </nav>
       </header>
 
@@ -161,6 +156,9 @@ const Index = () => {
             <p className="mt-6 max-w-lg text-lg text-muted-foreground leading-relaxed">
               Soy <strong className="text-foreground">Alejandro Romero</strong>, enfermero colegiado (nº {COLEGIADO}) con más de 10 años de experiencia en hospitales de referencia y atención a domicilio. Curas, sondajes, inyectables y cuidados profesionales en la comodidad de tu casa.
             </p>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-brand-navy">
+              <Sparkles className="h-3.5 w-3.5 text-brand-green" /> Packs de varias sesiones con condiciones especiales
+            </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={`tel:+34${PHONE}`}>
                 <Button size="lg" className="rounded-full bg-brand-navy hover:bg-brand-navy/90 shadow-soft">
@@ -174,9 +172,9 @@ const Index = () => {
               </a>
             </div>
             <div className="mt-10 flex flex-wrap gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2"><Award className="h-4 w-4 text-brand-green" /> Colegiado nº {COLEGIADO}</div>
               <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-brand-green" /> +10 años de experiencia</div>
               <div className="flex items-center gap-2"><Clock className="h-4 w-4 text-brand-green" /> Atención rápida</div>
+              <div className="flex items-center gap-2"><Lock className="h-4 w-4 text-brand-green" /> Confidencialidad total</div>
             </div>
           </div>
           <div className="relative">
@@ -207,18 +205,6 @@ const Index = () => {
           <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85 md:text-lg leading-relaxed">
             Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href={`tel:+34${PHONE}`}>
-              <Button size="lg" className="rounded-full bg-background text-brand-navy hover:bg-background/90">
-                <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
-              </Button>
-            </a>
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline" className="rounded-full border-background/40 bg-transparent text-primary-foreground hover:bg-background/10">
-                <MessageCircle className="h-4 w-4" /> WhatsApp
-              </Button>
-            </a>
-          </div>
         </div>
       </section>
 
@@ -245,14 +231,14 @@ const Index = () => {
           <div className="order-1 md:order-2">
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Sobre mí</span>
             <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Alejandro Romero, enfermero colegiado en Granada</h2>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-sm font-semibold text-brand-navy">
-              <Award className="h-4 w-4 text-brand-green" /> Nº Colegiado {COLEGIADO}
-            </div>
             <p className="mt-6 text-muted-foreground leading-relaxed">
-              Llevo <strong className="text-foreground">más de diez años cuidando de personas</strong>. Empecé en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, donde he ido pasando por servicios muy distintos —Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y, ahora mismo, Neurofisiología—. Cada planta me ha enseñado algo: a tener mano firme, cabeza fría y, sobre todo, a escuchar.
+              Llevo <strong className="text-foreground">más de diez años cuidando de personas</strong>. Empecé en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, donde fui pasando por servicios muy distintos —Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y Neurofisiología—. Cada planta me enseñó algo: a tener mano firme, cabeza fría y, sobre todo, a escuchar.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              En 2020, durante lo más duro de la pandemia, me incorporé a la <strong className="text-foreground">Unidad de Aislamiento de Alto Nivel del Hospital Carlos III</strong> para atender a pacientes COVID. Fueron meses muy exigentes, pero también los que más me marcaron como enfermero: aprendí lo que significa estar al lado de alguien cuando su familia no puede estarlo. A todo eso he sumado un <strong className="text-foreground">Máster en Investigación Clínica (UCM)</strong> y formación específica en urgencias e infecciosas, porque me gusta seguir aprendiendo.
+              En 2020, durante lo más duro de la pandemia, me incorporé a la <strong className="text-foreground">Unidad de Aislamiento de Alto Nivel del Hospital Carlos III</strong> para atender a pacientes COVID. Fueron meses muy exigentes, pero también los que más me marcaron: aprendí lo que significa estar al lado de alguien cuando su familia no puede estarlo. A todo eso he sumado un <strong className="text-foreground">Máster en Investigación Clínica (UCM)</strong> y formación específica en urgencias e infecciosas.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Hoy formo parte del <strong className="text-foreground">Servicio Andaluz de Salud</strong>, donde obtuve plaza, y trabajo en la <strong className="text-foreground">planta de Cirugía del Hospital Universitario San Cecilio de Granada</strong>. Compagino mi labor en el hospital con la atención a domicilio en la ciudad y los pueblos del cinturón.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Hoy llevo toda esa experiencia a casa de mis pacientes en Granada y los pueblos de alrededor. Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
@@ -341,9 +327,9 @@ const Index = () => {
 
           <ol className="mt-14 grid gap-6 md:grid-cols-3">
             {[
-              { n: "01", icon: Phone, title: "Me llamas o escribes", desc: "Por teléfono, WhatsApp o email. Te respondo personalmente: ningún intermediario, ningún call center." },
-              { n: "02", icon: ClipboardList, title: "Valoramos tu caso", desc: "Te explico qué necesitas, cuánto dura la visita, qué material hace falta y el coste exacto. Sin compromiso y sin sorpresas." },
-              { n: "03", icon: Award, title: "Voy a tu casa", desc: "Acudo en el horario acordado con todo el material estéril. Cuido, explico cada paso y te dejo tranquilidad y seguimiento." },
+              { n: "1", icon: Phone, title: "Me llamas o escribes", desc: "Por teléfono, WhatsApp o email. Te respondo personalmente: ningún intermediario, ningún call center." },
+              { n: "2", icon: ClipboardList, title: "Valoramos tu caso", desc: "Te explico qué necesitas, cuánto dura la visita, qué material hace falta y el coste exacto. Sin compromiso y sin sorpresas." },
+              { n: "3", icon: Award, title: "Voy a tu casa", desc: "Acudo en el horario acordado con todo el material necesario. Cuido, explico cada paso y te dejo tranquilidad y seguimiento." },
             ].map(({ n, icon: Icon, title, desc }) => (
               <li key={n} className="relative rounded-[1.75rem] border border-border/60 bg-card p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft">
                 <span className="absolute -top-4 left-7 rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-primary-foreground">Paso {n}</span>
@@ -356,11 +342,10 @@ const Index = () => {
             ))}
           </ol>
 
-          <div className="mt-14 grid gap-4 md:grid-cols-4">
+          <div className="mt-14 grid gap-4 md:grid-cols-3">
             {[
               { icon: Lock, title: "Confidencialidad total", desc: "Secreto profesional sanitario y cumplimiento del RGPD. Tus datos solo los uso para atenderte." },
-              { icon: ShieldCheck, title: "Material estéril", desc: "Llevo todo el material necesario, de un solo uso y desechado de forma segura tras la visita." },
-              { icon: Award, title: "Enfermero colegiado", desc: `Col. nº ${COLEGIADO}. Profesional acreditado y con seguro de responsabilidad civil.` },
+              { icon: ShieldCheck, title: "Material adecuado", desc: "Llevo el material necesario para cada visita, de un solo uso y desechado de forma segura." },
               { icon: Home, title: "Misma persona siempre", desc: "Te atiendo yo en cada visita. Continuidad real, sin tener que repetir tu historia." },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="rounded-2xl border border-border/60 bg-card p-5 shadow-card">
@@ -553,9 +538,12 @@ const Index = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
-        className="fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-brand-green text-primary-foreground shadow-soft transition hover:scale-110"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-[#25D366] pl-4 pr-5 py-3 text-white shadow-soft transition hover:scale-105 hover:bg-[#1ebe57]"
       >
-        <MessageCircle className="h-6 w-6" />
+        <svg viewBox="0 0 32 32" className="h-7 w-7 shrink-0" aria-hidden="true" fill="currentColor">
+          <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.687.244-1.045 0-.387-1.347-.8-1.703-.946zm-2.97 7.973c-1.733 0-3.43-.516-4.886-1.45L7.93 24.97l1.27-3.776a8.79 8.79 0 0 1-1.69-5.193c0-4.886 3.984-8.87 8.87-8.87s8.87 3.984 8.87 8.87-3.985 8.87-8.87 8.87zm0-19.594c-5.926 0-10.738 4.812-10.738 10.738a10.7 10.7 0 0 0 1.526 5.5L5 27l3.31-1.063a10.65 10.65 0 0 0 5.83 1.728c5.926 0 10.738-4.812 10.738-10.738S22.066 5.584 16.14 5.584z"/>
+        </svg>
+        <span className="text-sm font-semibold">WhatsApp</span>
       </a>
     </div>
   );
