@@ -96,7 +96,7 @@ const faqs = [
   },
   {
     q: "¿Trabajas solo o tienes un equipo?",
-    a: "Trabajo solo, así que la persona que valora tu caso por teléfono es la misma que acude a tu domicilio y la que hace el seguimiento. Además, colaboro habitualmente con clínicas privadas y centros de transfusión de Granada, y me coordino con tu equipo de Atención Primaria siempre que sea necesario para garantizar continuidad asistencial. Conoces a tu enfermero, no tienes que repetir tu historia y puedes contactar conmigo directamente entre visitas.",
+    a: "Trabajo solo, así que la persona que valora tu caso por teléfono es la misma que acude a tu domicilio y la que hace el seguimiento. Además, colaboro habitualmente con clínicas privadas y centros de extracciones de Granada, y me coordino con tu equipo de Atención Primaria siempre que sea necesario para garantizar continuidad asistencial. Conoces a tu enfermero, no tienes que repetir tu historia y puedes contactar conmigo directamente entre visitas.",
   },
   {
     q: "¿Puedo contratarte para cuidar de un familiar mayor o dependiente?",
@@ -136,8 +136,26 @@ const Index = () => {
         </nav>
       </header>
 
+      {/* BANNER CAPTADOR */}
+      <section id="inicio" className="relative overflow-hidden bg-gradient-hero py-14 md:py-20">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -bottom-24 w-[460px] opacity-10 blur-2xl select-none"
+        />
+        <div className="container relative text-center text-primary-foreground">
+          <h2 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
+            Cuidar la salud no debería obligarte a salir de casa.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85 md:text-lg leading-relaxed">
+            Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
+          </p>
+        </div>
+      </section>
+
       {/* HERO */}
-      <section id="inicio" className="relative overflow-hidden bg-gradient-soft">
+      <section className="relative overflow-hidden bg-gradient-soft">
         {/* Imagen difuminada de fondo (logo) */}
         <img
           src={logo}
@@ -147,18 +165,12 @@ const Index = () => {
         />
         <div className="container relative grid gap-12 py-16 md:grid-cols-2 md:py-24 md:items-center">
           <div className="animate-fade-up">
-            <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-secondary-foreground">
-              <MapPin className="h-3.5 w-3.5 text-brand-green" /> Granada y alrededores
-            </span>
-            <h1 className="mt-6 text-4xl font-semibold leading-[1.05] text-brand-navy md:text-6xl">
+            <h1 className="text-4xl font-semibold leading-[1.05] text-brand-navy md:text-6xl">
               Enfermero a domicilio en <span className="text-brand-green">Granada</span>
             </h1>
             <p className="mt-6 max-w-lg text-lg text-muted-foreground leading-relaxed">
               Soy <strong className="text-foreground">Alejandro Romero</strong>, enfermero colegiado (nº {COLEGIADO}) con más de 10 años de experiencia en hospitales de referencia y atención a domicilio. Curas, sondajes, inyectables y cuidados profesionales en la comodidad de tu casa.
             </p>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-brand-navy">
-              <Sparkles className="h-3.5 w-3.5 text-brand-green" /> Packs de varias sesiones con condiciones especiales
-            </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={`tel:+34${PHONE}`}>
                 <Button size="lg" className="rounded-full bg-brand-navy hover:bg-brand-navy/90 shadow-soft">
@@ -190,24 +202,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* BANNER CAPTADOR */}
-      <section className="relative overflow-hidden bg-gradient-hero py-14 md:py-20">
-        <img
-          src={logo}
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -bottom-24 w-[460px] opacity-10 blur-2xl select-none"
-        />
-        <div className="container relative text-center text-primary-foreground">
-          <h2 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
-            Cuidar la salud no debería obligarte a salir de casa.
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-primary-foreground/85 md:text-lg leading-relaxed">
-            Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
-          </p>
-        </div>
-      </section>
-
       {/* SOBRE MÍ */}
       <section id="sobre-mi" className="relative py-20 md:py-28 overflow-hidden">
         <img
@@ -230,7 +224,7 @@ const Index = () => {
           </div>
           <div className="order-1 md:order-2">
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Sobre mí</span>
-            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Alejandro Romero, enfermero colegiado en Granada</h2>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Mi historia</h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               Llevo <strong className="text-foreground">más de diez años cuidando de personas</strong>. Empecé en el <strong className="text-foreground">Hospital Universitario La Paz de Madrid</strong>, donde fui pasando por servicios muy distintos —Oncología, Hematología, Reanimación, Traumatología, Cardiología, Neumología, Maxilofacial y Neurofisiología—. Cada planta me enseñó algo: a tener mano firme, cabeza fría y, sobre todo, a escuchar.
             </p>
@@ -538,12 +532,11 @@ const Index = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-[#25D366] pl-4 pr-5 py-3 text-white shadow-soft transition hover:scale-105 hover:bg-[#1ebe57]"
+        className="fixed bottom-6 right-6 z-50 grid h-16 w-16 place-items-center rounded-full bg-[#25D366] text-white shadow-soft transition hover:scale-110 hover:bg-[#1ebe57]"
       >
-        <svg viewBox="0 0 32 32" className="h-7 w-7 shrink-0" aria-hidden="true" fill="currentColor">
+        <svg viewBox="0 0 32 32" className="h-9 w-9" aria-hidden="true" fill="currentColor">
           <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.687.244-1.045 0-.387-1.347-.8-1.703-.946zm-2.97 7.973c-1.733 0-3.43-.516-4.886-1.45L7.93 24.97l1.27-3.776a8.79 8.79 0 0 1-1.69-5.193c0-4.886 3.984-8.87 8.87-8.87s8.87 3.984 8.87 8.87-3.985 8.87-8.87 8.87zm0-19.594c-5.926 0-10.738 4.812-10.738 10.738a10.7 10.7 0 0 0 1.526 5.5L5 27l3.31-1.063a10.65 10.65 0 0 0 5.83 1.728c5.926 0 10.738-4.812 10.738-10.738S22.066 5.584 16.14 5.584z"/>
         </svg>
-        <span className="text-sm font-semibold">WhatsApp</span>
       </a>
     </div>
   );
