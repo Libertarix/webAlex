@@ -96,7 +96,7 @@ const faqs = [
   },
   {
     q: "¿Trabajas solo o tienes un equipo?",
-    a: "Trabajo solo, así que la persona que valora tu caso por teléfono es la misma que acude a tu domicilio y la que hace el seguimiento. Además, colaboro habitualmente con clínicas privadas y centros de transfusión de Granada, y me coordino con tu equipo de Atención Primaria siempre que sea necesario para garantizar continuidad asistencial. Conoces a tu enfermero, no tienes que repetir tu historia y puedes contactar conmigo directamente entre visitas.",
+    a: "Trabajo solo, así que la persona que valora tu caso por teléfono es la misma que acude a tu domicilio y la que hace el seguimiento. Además, colaboro habitualmente con clínicas privadas y centros de extracciones de Granada, y me coordino con tu equipo de Atención Primaria siempre que sea necesario para garantizar continuidad asistencial. Conoces a tu enfermero, no tienes que repetir tu historia y puedes contactar conmigo directamente entre visitas.",
   },
   {
     q: "¿Puedo contratarte para cuidar de un familiar mayor o dependiente?",
