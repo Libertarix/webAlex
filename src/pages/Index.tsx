@@ -13,40 +13,23 @@ import {
 import {
   Phone,
   MessageCircle,
-  Syringe,
-  Bandage,
-  Pill,
   Activity,
-  Droplets,
   ShieldCheck,
   MapPin,
   Clock,
   CheckCircle2,
-  Scissors,
   ClipboardList,
-  TestTube,
   Mail,
   Award,
   Star,
   ExternalLink,
   Lock,
-  PhoneCall,
   Home,
-  Sparkles,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
 import serviceCare from "@/assets/service-care.jpg";
 import logo from "@/assets/logo-icon.png";
-import svcCuras from "@/assets/svc-curas.jpg";
-import svcPuntos from "@/assets/svc-puntos.jpg";
-import svcOstomias from "@/assets/svc-ostomias.jpg";
-import svcSondajes from "@/assets/svc-sondajes.jpg";
-import svcValoracion from "@/assets/svc-valoracion.jpg";
-import svcIntramuscular from "@/assets/svc-intramuscular.jpg";
-import svcSubcutanea from "@/assets/svc-subcutanea.jpg";
-import svcIntravenoso from "@/assets/svc-intravenoso.jpg";
-import svcExtraccion from "@/assets/svc-extraccion.jpg";
 
 const PHONE = "626784327";
 const PHONE_DISPLAY = "626 78 43 27";
@@ -57,18 +40,6 @@ const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
 )}`;
 // TODO: sustituir por el enlace real al perfil de Google Business cuando lo tengas
 const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Enfermero+en+Casa+Alejandro+Romero+Granada";
-
-const services = [
-  { icon: Bandage, image: svcCuras, title: "Curas de heridas, lesiones y escaras", desc: "Valoración inicial, cura con material estéril, seguimiento de heridas quirúrgicas, lesiones y úlceras, con recomendaciones individualizadas para el autocuidado.", price: "49 €", unit: "/sesión" },
-  { icon: Scissors, image: svcPuntos, title: "Retirada de puntos y grapas", desc: "Evaluación, cura, seguimiento y retirada de grapas o puntos de sutura en tu domicilio, con recomendaciones personalizadas.", price: "49 €", unit: "/sesión" },
-  { icon: ShieldCheck, image: svcOstomias, title: "Cuidados de ostomías", desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.", price: "49 €", unit: "/sesión" },
-  { icon: Droplets, image: svcSondajes, title: "Sondajes y dispositivos médicos", desc: "Cuidados y seguimiento de sondas vesicales, nasogástricas, drenajes y otros dispositivos, con educación al paciente y la familia.", price: "49 €", unit: "/sesión" },
-  { icon: ClipboardList, image: svcValoracion, title: "Valoración del estado de salud", desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.", price: "39 €", unit: "/sesión" },
-  { icon: Syringe, image: svcIntramuscular, title: "Medicación intramuscular", desc: "Preparación y administración con material adecuado de medicación intramuscular: vacunas, B12, corticoides recetados, entre otros.", price: "39 €", unit: "/sesión" },
-  { icon: Pill, image: svcSubcutanea, title: "Medicación subcutánea", desc: "Preparación y administración de medicación subcutánea: insulina, heparina, vacunas y otras pautas.", price: "39 €", unit: "/sesión" },
-  { icon: Activity, image: svcIntravenoso, title: "Tratamiento intravenoso", desc: "Canalización de catéter y administración aséptica de medicación intravenosa, con control del paciente durante todo el proceso.", price: "49 €", unit: "/sesión" },
-  { icon: TestTube, image: svcExtraccion, title: "Extracción de muestras", desc: "Extracción de sangre, orina, antígeno, PCR u otras muestras en el domicilio y posterior traslado al laboratorio para su análisis.", price: "39 €", unit: "/servicio" },
-];
 
 const coverage = [
   "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
