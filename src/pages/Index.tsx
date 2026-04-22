@@ -386,39 +386,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* RESEÑAS GOOGLE */}
-      <section className="bg-secondary/40 py-20 md:py-28">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Opiniones</span>
-            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Reseñas en Google</h2>
-            <p className="mt-4 text-muted-foreground">
-              Las valoraciones de mis pacientes están publicadas directamente en mi perfil de Google. Léelas, déjame la tuya o consulta la puntuación actualizada en cualquier momento.
-            </p>
-          </div>
-
-          <div className="mt-12 mx-auto max-w-2xl rounded-[2rem] border border-border/60 bg-card p-8 md:p-10 shadow-card text-center">
-            <div className="flex items-center justify-center gap-1 text-brand-green">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} className="h-6 w-6 fill-current" />
-              ))}
-            </div>
-            <p className="mt-4 text-foreground/90 leading-relaxed">
-              Conecto esta sección con mi <strong className="text-brand-navy">Perfil de Empresa de Google</strong>, donde puedes leer las opiniones reales de mis pacientes y dejar la tuya tras un servicio.
-            </p>
-            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block">
-              <Button size="lg" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
-                <ExternalLink className="h-4 w-4" /> Ver reseñas en Google
-              </Button>
-            </a>
-            <p className="mt-4 text-xs text-muted-foreground">
-              ¿Aún no tienes el enlace exacto? Pásame la URL de tu Perfil de Empresa de Google y lo conectamos. También podemos integrar un widget que muestre las reseñas dentro de la web automáticamente.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section id="faq" className="relative py-20 md:py-28 overflow-hidden">
         <img
