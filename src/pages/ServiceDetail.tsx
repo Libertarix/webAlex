@@ -208,9 +208,68 @@ const ServiceDetail = () => {
         </div>
       </section>
 
+      {/* DESCRIPCIÓN AMPLIADA */}
+      {service.longDescription.length > 0 && (
+        <section className="bg-gradient-soft py-16 md:py-24">
+          <div className="container max-w-3xl">
+            <h2 className="text-2xl font-semibold text-brand-navy md:text-3xl">
+              Sobre este servicio
+            </h2>
+            <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed">
+              {service.longDescription.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CÓMO ES LA VISITA */}
+      {service.process.length > 0 && (
+        <section className="py-16 md:py-24">
+          <div className="container">
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Cómo es la visita</span>
+              <h2 className="mt-3 text-2xl font-semibold text-brand-navy md:text-3xl">Paso a paso, sin sorpresas</h2>
+            </div>
+            <ol className="mt-10 grid gap-6 md:grid-cols-3">
+              {service.process.map((p, i) => (
+                <li key={i} className="relative rounded-2xl border border-border/60 bg-card p-6 shadow-card">
+                  <span className="absolute -top-4 left-6 rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-primary-foreground">
+                    Paso {i + 1}
+                  </span>
+                  <h3 className="mt-2 text-lg font-semibold text-brand-navy">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {/* BENEFICIOS */}
+      {service.benefits.length > 0 && (
+        <section className="bg-gradient-soft py-16 md:py-24">
+          <div className="container max-w-4xl">
+            <div className="text-center">
+              <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Por qué hacerlo en casa</span>
+              <h2 className="mt-3 text-2xl font-semibold text-brand-navy md:text-3xl">Ventajas para ti y tu familia</h2>
+            </div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {service.benefits.map((b) => (
+                <div key={b} className="flex items-start gap-3 rounded-2xl border border-border/60 bg-card p-5 shadow-card">
+                  <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-brand-green" />
+                  <span className="text-sm text-foreground/90 leading-relaxed">{b}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* FAQ específicas */}
       {service.faqs.length > 0 && (
-        <section className="bg-gradient-soft py-16 md:py-24">
+        <section className="py-16 md:py-24">
           <div className="container max-w-3xl">
             <h2 className="text-2xl font-semibold text-brand-navy md:text-3xl text-center">
               Preguntas sobre este servicio
