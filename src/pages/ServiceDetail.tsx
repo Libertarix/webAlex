@@ -5,7 +5,7 @@ import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  ArrowLeft, Phone, MessageCircle, CheckCircle2, Clock, Lock, ShieldCheck,
+  ArrowLeft, Phone, MessageCircle, CheckCircle2, Clock, Lock, ShieldCheck, Sparkles, Footprints,
 } from "lucide-react";
 import { getServiceBySlug, services } from "@/data/services";
 import WhatsAppFab from "@/components/WhatsAppFab";
