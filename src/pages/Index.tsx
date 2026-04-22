@@ -76,6 +76,26 @@ const faqs = [
     q: "¿Puedo contratarte para cuidar de un familiar mayor o dependiente?",
     a: "Sí, es uno de los perfiles que más atiendo. Realizo valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas, estado cognitivo), aplico los cuidados necesarios y formo a la familia o cuidadores principales para que puedan continuar el cuidado con seguridad entre visita y visita.",
   },
+  {
+    q: "¿Es legal contratar a un enfermero a domicilio de forma privada?",
+    a: "Sí, totalmente. Soy enfermero colegiado en activo y la atención sanitaria privada en domicilio es una práctica regulada y habitual en España. Tras cada visita te entrego un justificante con la técnica realizada que puedes presentar a tu seguro privado, mutua o donde lo necesites.",
+  },
+  {
+    q: "Mis datos médicos, ¿son confidenciales?",
+    a: "Absolutamente. Como enfermero colegiado estoy sujeto al secreto profesional sanitario y al cumplimiento del RGPD. Tu información clínica solo la uso para atenderte, no se comparte con terceros y no se cede para fines comerciales.",
+  },
+  {
+    q: "¿Puedo cancelar o cambiar la cita si me surge algo?",
+    a: "Sí. Solo te pido que me avises con la mayor antelación posible (idealmente unas horas antes) para poder reorganizar la agenda y, si lo necesitas, ofrecerte otro hueco ese mismo día o al siguiente. No cobro penalización por cancelaciones razonables.",
+  },
+  {
+    q: "¿Puedes coordinarte con mi médico de cabecera o con mi cirujano?",
+    a: "Sí. Si me facilitas el informe del alta o el plan de curas pautado por tu médico, lo sigo al pie de la letra y, si surge alguna incidencia (signos de infección, mala evolución, dudas con la pauta), me coordino con tu Atención Primaria o con el especialista que corresponda.",
+  },
+  {
+    q: "¿Atiendes a niños o solo a adultos?",
+    a: "Atiendo a personas de cualquier edad, siempre con autorización de los padres o tutores en el caso de menores. Trabajo habitualmente con extracciones de sangre, curas y administración de medicación pediátrica pautada.",
+  },
 ];
 
 const navLinks = [
@@ -229,6 +249,38 @@ const Index = () => {
         </div>
       </section>
 
+      {/* RESEÑAS GOOGLE */}
+      <section className="bg-secondary/40 py-20 md:py-28">
+        <div className="container">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Opiniones</span>
+            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Reseñas en Google</h2>
+            <p className="mt-4 text-muted-foreground">
+              Las valoraciones de mis pacientes están publicadas directamente en mi perfil de Google. Léelas, déjame la tuya o consulta la puntuación actualizada en cualquier momento.
+            </p>
+          </div>
+
+          <div className="mt-12 mx-auto max-w-2xl rounded-[2rem] border border-border/60 bg-card p-8 md:p-10 shadow-card text-center">
+            <div className="flex items-center justify-center gap-1 text-brand-green">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} className="h-6 w-6 fill-current" />
+              ))}
+            </div>
+            <p className="mt-4 text-foreground/90 leading-relaxed">
+              Conecto esta sección con mi <strong className="text-brand-navy">Perfil de Empresa de Google</strong>, donde puedes leer las opiniones reales de mis pacientes y dejar la tuya tras un servicio.
+            </p>
+            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block">
+              <Button size="lg" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
+                <ExternalLink className="h-4 w-4" /> Ver reseñas en Google
+              </Button>
+            </a>
+            <p className="mt-4 text-xs text-muted-foreground">
+              ¿Aún no tienes el enlace exacto? Pásame la URL de tu Perfil de Empresa de Google y lo conectamos. También podemos integrar un widget que muestre las reseñas dentro de la web automáticamente.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* SERVICIOS */}
       <section id="servicios" className="bg-gradient-soft py-20 md:py-28">
         <div className="container">
@@ -307,7 +359,7 @@ const Index = () => {
             {[
               { n: "1", icon: Phone, title: "Me llamas o escribes", desc: "Por teléfono, WhatsApp o email. Te respondo personalmente: ningún intermediario, ningún call center." },
               { n: "2", icon: ClipboardList, title: "Valoramos tu caso", desc: "Te explico qué necesitas, cuánto dura la visita, qué material hace falta y el coste exacto. Sin compromiso y sin sorpresas." },
-              { n: "3", icon: Award, title: "Voy a tu casa", desc: "Acudo en el horario acordado con todo el material necesario. Cuido, explico cada paso y te dejo tranquilidad y seguimiento." },
+              { n: "3", icon: Award, title: "Voy a tu casa", desc: "Acudo en el horario acordado con todo el material preparado y realizo la técnica con seguridad. Después te dejo recomendaciones claras y seguimiento por si surge cualquier duda." },
             ].map(({ n, icon: Icon, title, desc }) => (
               <li key={n} className="relative rounded-[1.75rem] border border-border/60 bg-card p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft">
                 <span className="absolute -top-4 left-7 rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-primary-foreground">Paso {n}</span>
@@ -366,39 +418,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* RESEÑAS GOOGLE */}
-      <section className="bg-secondary/40 py-20 md:py-28">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Opiniones</span>
-            <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Reseñas en Google</h2>
-            <p className="mt-4 text-muted-foreground">
-              Las valoraciones de mis pacientes están publicadas directamente en mi perfil de Google. Léelas, déjame la tuya o consulta la puntuación actualizada en cualquier momento.
-            </p>
-          </div>
-
-          <div className="mt-12 mx-auto max-w-2xl rounded-[2rem] border border-border/60 bg-card p-8 md:p-10 shadow-card text-center">
-            <div className="flex items-center justify-center gap-1 text-brand-green">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} className="h-6 w-6 fill-current" />
-              ))}
-            </div>
-            <p className="mt-4 text-foreground/90 leading-relaxed">
-              Conecto esta sección con mi <strong className="text-brand-navy">Perfil de Empresa de Google</strong>, donde puedes leer las opiniones reales de mis pacientes y dejar la tuya tras un servicio.
-            </p>
-            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block">
-              <Button size="lg" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
-                <ExternalLink className="h-4 w-4" /> Ver reseñas en Google
-              </Button>
-            </a>
-            <p className="mt-4 text-xs text-muted-foreground">
-              ¿Aún no tienes el enlace exacto? Pásame la URL de tu Perfil de Empresa de Google y lo conectamos. También podemos integrar un widget que muestre las reseñas dentro de la web automáticamente.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section id="faq" className="relative py-20 md:py-28 overflow-hidden">
         <img
