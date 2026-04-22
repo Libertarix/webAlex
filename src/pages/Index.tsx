@@ -76,7 +76,26 @@ const faqs = [
     q: "¿Puedo contratarte para cuidar de un familiar mayor o dependiente?",
     a: "Sí, es uno de los perfiles que más atiendo. Realizo valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas, estado cognitivo), aplico los cuidados necesarios y formo a la familia o cuidadores principales para que puedan continuar el cuidado con seguridad entre visita y visita.",
   },
-];
+  {
+    q: "¿Es legal contratar a un enfermero a domicilio de forma privada?",
+    a: "Sí, totalmente. Soy enfermero colegiado en activo y la atención sanitaria privada en domicilio es una práctica regulada y habitual en España. Tras cada visita te entrego un justificante con la técnica realizada que puedes presentar a tu seguro privado, mutua o donde lo necesites.",
+  },
+  {
+    q: "Mis datos médicos, ¿son confidenciales?",
+    a: "Absolutamente. Como enfermero colegiado estoy sujeto al secreto profesional sanitario y al cumplimiento del RGPD. Tu información clínica solo la uso para atenderte, no se comparte con terceros y no se cede para fines comerciales.",
+  },
+  {
+    q: "¿Puedo cancelar o cambiar la cita si me surge algo?",
+    a: "Sí. Solo te pido que me avises con la mayor antelación posible (idealmente unas horas antes) para poder reorganizar la agenda y, si lo necesitas, ofrecerte otro hueco ese mismo día o al siguiente. No cobro penalización por cancelaciones razonables.",
+  },
+  {
+    q: "¿Puedes coordinarte con mi médico de cabecera o con mi cirujano?",
+    a: "Sí. Si me facilitas el informe del alta o el plan de curas pautado por tu médico, lo sigo al pie de la letra y, si surge alguna incidencia (signos de infección, mala evolución, dudas con la pauta), me coordino con tu Atención Primaria o con el especialista que corresponda.",
+  },
+  {
+    q: "¿Atiendes a niños o solo a adultos?",
+    a: "Atiendo a personas de cualquier edad, siempre con autorización de los padres o tutores en el caso de menores. Trabajo habitualmente con extracciones de sangre, curas y administración de medicación pediátrica pautada.",
+  },
 
 const navLinks = [
   { href: "#sobre-mi", label: "Sobre mí" },
