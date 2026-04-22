@@ -34,7 +34,26 @@ const ServiceDetail = () => {
       }
       el.content = content;
     };
+    const setOg = (property: string, content: string) => {
+      let el = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute("property", property);
+        document.head.appendChild(el);
+      }
+      el.content = content;
+    };
     setMeta("description", service.metaDescription);
+    setOg("og:title", service.metaTitle);
+    setOg("og:description", service.metaDescription);
+    setOg("og:type", "article");
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = `https://enfermeroencasa.com/servicios/${service.slug}`;
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [service]);
 
@@ -43,7 +62,6 @@ const ServiceDetail = () => {
   const Icon = service.icon;
   const related = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
-  // JSON-LD Schema
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
@@ -55,6 +73,26 @@ const ServiceDetail = () => {
       areaServed: "Granada, España",
       telephone: `+34${PHONE}`,
     },
+  };
+
+  const faqJsonLd = service.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  } : null;
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://enfermeroencasa.com/" },
+      { "@type": "ListItem", position: 2, name: "Servicios", item: "https://enfermeroencasa.com/#servicios" },
+      { "@type": "ListItem", position: 3, name: service.title, item: `https://enfermeroencasa.com/servicios/${service.slug}` },
+    ],
   };
 
   return (
