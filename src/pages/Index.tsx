@@ -96,6 +96,7 @@ const faqs = [
     q: "¿Atiendes a niños o solo a adultos?",
     a: "Atiendo a personas de cualquier edad, siempre con autorización de los padres o tutores en el caso de menores. Trabajo habitualmente con extracciones de sangre, curas y administración de medicación pediátrica pautada.",
   },
+];
 
 const navLinks = [
   { href: "#sobre-mi", label: "Sobre mí" },
