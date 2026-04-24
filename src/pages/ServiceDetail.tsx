@@ -330,7 +330,7 @@ const ServiceDetail = () => {
                   className="group flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-soft"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img src={s.image} alt={s.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src={s.image} alt={`${s.title} a domicilio en Granada`} width={800} height={600} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-2xl bg-background/90 text-brand-navy backdrop-blur-sm">
                       <SIcon className="h-5 w-5" />
                     </div>
