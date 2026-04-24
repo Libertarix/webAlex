@@ -68,11 +68,21 @@ const ServiceDetail = () => {
     "@type": "MedicalProcedure",
     name: service.title,
     description: service.metaDescription,
+    image: `https://enfermeroencasa.com${service.image}`,
+    url: `https://enfermeroencasa.com/servicios/${service.slug}`,
     provider: {
       "@type": "MedicalBusiness",
       name: "Enfermero en Casa - Alejandro Romero",
       areaServed: "Granada, España",
       telephone: `+34${PHONE}`,
+      url: "https://enfermeroencasa.com/",
+    },
+    offers: {
+      "@type": "Offer",
+      price: service.price.replace(/[^\d]/g, ""),
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      url: `https://enfermeroencasa.com/servicios/${service.slug}`,
     },
   };
 
