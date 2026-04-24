@@ -187,9 +187,12 @@ const Index = () => {
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-20 blur-2xl" />
             <img
               src={heroNurse}
-              alt="Alejandro Romero, enfermero a domicilio en Granada, atendiendo a paciente"
+              alt="Alejandro Romero, enfermero a domicilio en Granada, atendiendo a un paciente en su casa"
               width={1600}
               height={1056}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="relative rounded-[2rem] shadow-soft object-cover w-full h-full max-h-[560px]"
             />
           </div>
@@ -209,10 +212,11 @@ const Index = () => {
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-15 blur-2xl" />
             <img
               src={aboutNurse}
-              alt="Alejandro Romero, enfermero colegiado nº 47384 en Granada"
+              alt="Alejandro Romero, enfermero colegiado en Granada con uniforme sanitario"
               width={1024}
               height={1280}
               loading="lazy"
+              decoding="async"
               className="relative rounded-[2rem] shadow-soft object-cover w-full max-h-[520px]"
             />
           </div>
@@ -229,7 +233,7 @@ const Index = () => {
               Hoy formo parte del <strong className="text-foreground">Servicio Andaluz de Salud</strong>, donde obtuve plaza, y trabajo en la <strong className="text-foreground">planta de Cirugía del Hospital Universitario San Cecilio de Granada</strong>. Compagino mi labor en el hospital con la atención a domicilio en la ciudad y los pueblos del cinturón.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Hoy llevo toda esa experiencia a casa de mis pacientes en Granada y los pueblos de alrededor. Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
+              Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
             </p>
             <div className="mt-8 grid grid-cols-3 gap-6">
               <div>
@@ -304,10 +308,11 @@ const Index = () => {
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                       src={image}
-                      alt={title}
+                      alt={`${title} a domicilio en Granada por enfermero colegiado`}
                       width={800}
                       height={600}
                       loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
@@ -409,10 +414,11 @@ const Index = () => {
           <div className="relative">
             <img
               src={serviceCare}
-              alt="Enfermero tomando la tensión a paciente a domicilio en Granada"
+              alt="Enfermero a domicilio tomando la tensión a una paciente mayor en Granada"
               width={1280}
               height={896}
               loading="lazy"
+              decoding="async"
               className="rounded-[2rem] shadow-card object-cover w-full max-h-[480px]"
             />
           </div>

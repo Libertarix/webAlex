@@ -47,6 +47,7 @@ const ServiceDetail = () => {
     setOg("og:title", service.metaTitle);
     setOg("og:description", service.metaDescription);
     setOg("og:type", "article");
+    setOg("og:image", `https://enfermeroencasa.com${service.image}`);
     let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement("link");
@@ -67,11 +68,21 @@ const ServiceDetail = () => {
     "@type": "MedicalProcedure",
     name: service.title,
     description: service.metaDescription,
+    image: `https://enfermeroencasa.com${service.image}`,
+    url: `https://enfermeroencasa.com/servicios/${service.slug}`,
     provider: {
       "@type": "MedicalBusiness",
       name: "Enfermero en Casa - Alejandro Romero",
       areaServed: "Granada, España",
       telephone: `+34${PHONE}`,
+      url: "https://enfermeroencasa.com/",
+    },
+    offers: {
+      "@type": "Offer",
+      price: service.price.replace(/[^\d]/g, ""),
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      url: `https://enfermeroencasa.com/servicios/${service.slug}`,
     },
   };
 
@@ -165,9 +176,12 @@ const ServiceDetail = () => {
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-15 blur-2xl" />
             <img
               src={service.image}
-              alt={service.title}
+              alt={`${service.title} a domicilio en Granada por enfermero colegiado`}
               width={1200}
               height={900}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="relative rounded-[2rem] shadow-soft object-cover w-full max-h-[480px]"
             />
           </div>
@@ -326,7 +340,7 @@ const ServiceDetail = () => {
                   className="group flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-soft"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img src={s.image} alt={s.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src={s.image} alt={`${s.title} a domicilio en Granada`} width={800} height={600} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-2xl bg-background/90 text-brand-navy backdrop-blur-sm">
                       <SIcon className="h-5 w-5" />
                     </div>
