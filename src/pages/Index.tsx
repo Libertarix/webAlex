@@ -187,9 +187,12 @@ const Index = () => {
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-20 blur-2xl" />
             <img
               src={heroNurse}
-              alt="Alejandro Romero, enfermero a domicilio en Granada, atendiendo a paciente"
+              alt="Alejandro Romero, enfermero a domicilio en Granada, atendiendo a un paciente en su casa"
               width={1600}
               height={1056}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="relative rounded-[2rem] shadow-soft object-cover w-full h-full max-h-[560px]"
             />
           </div>
