@@ -229,7 +229,7 @@ const Index = () => {
               Hoy formo parte del <strong className="text-foreground">Servicio Andaluz de Salud</strong>, donde obtuve plaza, y trabajo en la <strong className="text-foreground">planta de Cirugía del Hospital Universitario San Cecilio de Granada</strong>. Compagino mi labor en el hospital con la atención a domicilio en la ciudad y los pueblos del cinturón.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Hoy llevo toda esa experiencia a casa de mis pacientes en Granada y los pueblos de alrededor. Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
+              Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
             </p>
             <div className="mt-8 grid grid-cols-3 gap-6">
               <div>
