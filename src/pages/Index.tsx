@@ -414,10 +414,11 @@ const Index = () => {
           <div className="relative">
             <img
               src={serviceCare}
-              alt="Enfermero tomando la tensión a paciente a domicilio en Granada"
+              alt="Enfermero a domicilio tomando la tensión a una paciente mayor en Granada"
               width={1280}
               height={896}
               loading="lazy"
+              decoding="async"
               className="rounded-[2rem] shadow-card object-cover w-full max-h-[480px]"
             />
           </div>
