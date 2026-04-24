@@ -166,9 +166,12 @@ const ServiceDetail = () => {
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-15 blur-2xl" />
             <img
               src={service.image}
-              alt={service.title}
+              alt={`${service.title} a domicilio en Granada por enfermero colegiado`}
               width={1200}
               height={900}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="relative rounded-[2rem] shadow-soft object-cover w-full max-h-[480px]"
             />
           </div>
