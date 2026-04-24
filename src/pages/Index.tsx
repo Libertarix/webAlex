@@ -212,10 +212,11 @@ const Index = () => {
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-15 blur-2xl" />
             <img
               src={aboutNurse}
-              alt="Alejandro Romero, enfermero colegiado nº 47384 en Granada"
+              alt="Alejandro Romero, enfermero colegiado en Granada con uniforme sanitario"
               width={1024}
               height={1280}
               loading="lazy"
+              decoding="async"
               className="relative rounded-[2rem] shadow-soft object-cover w-full max-h-[520px]"
             />
           </div>
