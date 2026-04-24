@@ -304,10 +304,11 @@ const Index = () => {
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                       src={image}
-                      alt={title}
+                      alt={`${title} a domicilio en Granada por enfermero colegiado`}
                       width={800}
                       height={600}
                       loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
