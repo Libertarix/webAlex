@@ -47,6 +47,7 @@ const ServiceDetail = () => {
     setOg("og:title", service.metaTitle);
     setOg("og:description", service.metaDescription);
     setOg("og:type", "article");
+    setOg("og:image", `https://enfermeroencasa.com${service.image}`);
     let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement("link");
