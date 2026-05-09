@@ -421,15 +421,10 @@ const Index = () => {
             </div>
           </div>
           <div className="relative">
-            <img
-              src={serviceCare}
-              alt="Enfermero a domicilio tomando la tensión a una paciente mayor en Granada"
-              width={1280}
-              height={896}
-              loading="lazy"
-              decoding="async"
-              className="rounded-[2rem] shadow-card object-cover w-full max-h-[480px]"
-            />
+            <CoverageMap />
+            <p className="mt-3 text-center text-xs text-muted-foreground">
+              Cada punto verde marca una localidad donde atiendo habitualmente. El círculo difuso indica el radio principal de actuación.
+            </p>
           </div>
         </div>
       </section>
