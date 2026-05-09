@@ -25,11 +25,12 @@ import {
   ExternalLink,
   Lock,
   Home,
+  Linkedin,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
-import serviceCare from "@/assets/service-care.jpg";
 import logo from "@/assets/logo-icon.png";
+import CoverageMap from "@/components/CoverageMap";
 
 const PHONE = "626784327";
 const PHONE_DISPLAY = "626 78 43 27";
