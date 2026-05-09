@@ -40,7 +40,8 @@ const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
   "Hola Alejandro, me gustaría información sobre los servicios de enfermería a domicilio."
 )}`;
 // TODO: sustituir por el enlace real al perfil de Google Business cuando lo tengas
-const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Enfermero+en+Casa+Alejandro+Romero+Granada";
+const GOOGLE_REVIEWS_URL = "https://share.google/hw7EizH02BwXKApfC";
+const LINKEDIN_URL = "https://www.linkedin.com/in/alejandro-romero-mu%C3%B1oz-4a7984223";
 
 const coverage = [
   "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
