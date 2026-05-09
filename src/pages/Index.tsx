@@ -237,6 +237,13 @@ const Index = () => {
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
             </p>
+            <div className="mt-6">
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="rounded-full border-brand-navy/30 text-brand-navy hover:bg-secondary">
+                  <Linkedin className="h-4 w-4" /> Ver mi perfil en LinkedIn
+                </Button>
+              </a>
+            </div>
             <div className="mt-8 grid grid-cols-3 gap-6">
               <div>
                 <div className="text-3xl font-semibold text-brand-navy">+10</div>
