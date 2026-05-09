@@ -24,6 +24,8 @@ const points: Point[] = [
 
 const CoverageMap = () => {
   const center: [number, number] = [37.1773, -3.6200];
+  const navy = "hsl(224, 50%, 32%)";
+  const green = "hsl(152, 65%, 38%)";
   return (
     <div className="overflow-hidden rounded-[2rem] border border-border/60 shadow-card">
       <MapContainer
