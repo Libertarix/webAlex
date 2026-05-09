@@ -25,11 +25,12 @@ import {
   ExternalLink,
   Lock,
   Home,
+  Linkedin,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
 import aboutNurse from "@/assets/about-nurse.jpg";
-import serviceCare from "@/assets/service-care.jpg";
 import logo from "@/assets/logo-icon.png";
+import CoverageMap from "@/components/CoverageMap";
 
 const PHONE = "626784327";
 const PHONE_DISPLAY = "626 78 43 27";
@@ -39,7 +40,8 @@ const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
   "Hola Alejandro, me gustaría información sobre los servicios de enfermería a domicilio."
 )}`;
 // TODO: sustituir por el enlace real al perfil de Google Business cuando lo tengas
-const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Enfermero+en+Casa+Alejandro+Romero+Granada";
+const GOOGLE_REVIEWS_URL = "https://share.google/hw7EizH02BwXKApfC";
+const LINKEDIN_URL = "https://www.linkedin.com/in/alejandro-romero-mu%C3%B1oz-4a7984223";
 
 const coverage = [
   "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
@@ -235,6 +237,13 @@ const Index = () => {
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Para mí, cuidar bien es mezclar rigor clínico con cercanía: explicar las cosas con calma, respetar los tiempos de cada persona y tratar a quien tengo delante como me gustaría que tratasen a los míos.
             </p>
+            <div className="mt-6">
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="rounded-full border-brand-navy/30 text-brand-navy hover:bg-secondary">
+                  <Linkedin className="h-4 w-4" /> Ver mi perfil en LinkedIn
+                </Button>
+              </a>
+            </div>
             <div className="mt-8 grid grid-cols-3 gap-6">
               <div>
                 <div className="text-3xl font-semibold text-brand-navy">+10</div>
@@ -412,15 +421,10 @@ const Index = () => {
             </div>
           </div>
           <div className="relative">
-            <img
-              src={serviceCare}
-              alt="Enfermero a domicilio tomando la tensión a una paciente mayor en Granada"
-              width={1280}
-              height={896}
-              loading="lazy"
-              decoding="async"
-              className="rounded-[2rem] shadow-card object-cover w-full max-h-[480px]"
-            />
+            <CoverageMap />
+            <p className="mt-3 text-center text-xs text-muted-foreground">
+              Cada punto verde marca una localidad donde atiendo habitualmente. El círculo difuso indica el radio principal de actuación.
+            </p>
           </div>
         </div>
       </section>
