@@ -42,7 +42,7 @@ const CoverageMap = () => {
         <Circle
           center={center}
           radius={14000}
-          pathOptions={{ color: "" + green + "", fillColor: "" + green + "", fillOpacity: 0.08, weight: 1 }}
+          pathOptions={{ color: green, fillColor: green, fillOpacity: 0.08, weight: 1 }}
         />
         {points.map((p) => (
           <CircleMarker
