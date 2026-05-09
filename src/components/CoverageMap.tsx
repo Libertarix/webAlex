@@ -50,8 +50,8 @@ const CoverageMap = () => {
             center={[p.lat, p.lng]}
             radius={8}
             pathOptions={{
-              color: "" + navy + "",
-              fillColor: "" + green + "",
+              color: navy,
+              fillColor: green,
               fillOpacity: 0.9,
               weight: 2,
             }}
