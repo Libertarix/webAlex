@@ -289,14 +289,6 @@ const Index = () => {
               className="elfsight-app-96331b42-15cc-4f69-8ee6-6c6c714dfc94"
               data-elfsight-app-lazy
             />
-
-            <div className="mt-8 text-center">
-              <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="inline-block">
-                <Button size="lg" variant="outline" className="rounded-full border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white">
-                  <ExternalLink className="h-4 w-4" /> Ver todas en Google
-                </Button>
-              </a>
-            </div>
           </div>
         </div>
       </section>
