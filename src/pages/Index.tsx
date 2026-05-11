@@ -283,23 +283,20 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="mt-12 mx-auto max-w-2xl rounded-[2rem] border border-border/60 bg-card p-8 md:p-10 shadow-card text-center">
-            <div className="flex items-center justify-center gap-1 text-brand-green">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} className="h-6 w-6 fill-current" />
-              ))}
+          <div className="mt-12 mx-auto max-w-5xl">
+            {/* Widget Elfsight - Google Reviews */}
+            <div
+              className="elfsight-app-96331b42-15cc-4f69-8ee6-6c6c714dfc94"
+              data-elfsight-app-lazy
+            />
+
+            <div className="mt-8 text-center">
+              <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="inline-block">
+                <Button size="lg" variant="outline" className="rounded-full border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white">
+                  <ExternalLink className="h-4 w-4" /> Ver todas en Google
+                </Button>
+              </a>
             </div>
-            <p className="mt-4 text-foreground/90 leading-relaxed">
-              Conecto esta sección con mi <strong className="text-brand-navy">Perfil de Empresa de Google</strong>, donde puedes leer las opiniones reales de mis pacientes y dejar la tuya tras un servicio.
-            </p>
-            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block">
-              <Button size="lg" className="rounded-full bg-brand-navy hover:bg-brand-navy/90">
-                <ExternalLink className="h-4 w-4" /> Ver reseñas en Google
-              </Button>
-            </a>
-            <p className="mt-4 text-xs text-muted-foreground">
-              ¿Aún no tienes el enlace exacto? Pásame la URL de tu Perfil de Empresa de Google y lo conectamos. También podemos integrar un widget que muestre las reseñas dentro de la web automáticamente.
-            </p>
           </div>
         </div>
       </section>
