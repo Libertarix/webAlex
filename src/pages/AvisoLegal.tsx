@@ -97,7 +97,7 @@ const AvisoLegal = () => {
               <li><strong className="text-foreground">Nombre y apellidos:</strong> {TITULAR}</li>
               <li><strong className="text-foreground">Profesión:</strong> Enfermero colegiado</li>
               <li><strong className="text-foreground">N.º de colegiado:</strong> {COLEGIADO}</li>
-              <li><strong className="text-foreground">Domicilio profesional:</strong> {DOMICILIO}</li>
+              
               <li><strong className="text-foreground">Correo electrónico:</strong> <a href={`mailto:${EMAIL}`} className="text-brand-green hover:underline">{EMAIL}</a></li>
               <li><strong className="text-foreground">Teléfono de contacto:</strong> <a href="tel:+34626784327" className="text-brand-green hover:underline">{PHONE_DISPLAY}</a></li>
               <li><strong className="text-foreground">Sitio web:</strong> enfermeroencasa.com</li>
