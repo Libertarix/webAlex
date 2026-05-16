@@ -137,6 +137,7 @@ const Index = () => {
             {navLinks.map((l) => (
               <a key={l.href} href={l.href} className="whitespace-nowrap hover:text-brand-navy transition-colors">{l.label}</a>
             ))}
+            <Link to="/aviso-legal" className="whitespace-nowrap hover:text-brand-navy transition-colors">Aviso y privacidad</Link>
           </div>
 
         </nav>
@@ -530,10 +531,11 @@ const Index = () => {
             <img src={logo} alt="Logo" className="h-8 w-8 object-contain" />
             <span>© {new Date().getFullYear()} Enfermero en Casa · Alejandro Romero · Col. {COLEGIADO}</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <a href={`tel:+34${PHONE}`} className="hover:text-brand-navy transition-colors">{PHONE_DISPLAY}</a>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="hover:text-brand-navy transition-colors">WhatsApp</a>
             <a href={`mailto:${EMAIL}`} className="hover:text-brand-navy transition-colors">Email</a>
+            <Link to="/aviso-legal" className="hover:text-brand-navy transition-colors">Aviso y privacidad</Link>
           </div>
         </div>
       </footer>
