@@ -228,7 +228,7 @@ export const services: Service[] = [
     image: svcValoracion,
     title: "Valoración del estado de salud",
     desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.",
-    price: "29 €",
+    price: "39 €",
     unit: "/sesión",
     metaTitle: "Valoración de enfermería a domicilio en Granada (mayores y crónicos)",
     metaDescription: "Valoración integral del estado de salud en tu domicilio: constantes vitales, escalas validadas y plan de cuidados personalizado. Granada y área metropolitana.",
