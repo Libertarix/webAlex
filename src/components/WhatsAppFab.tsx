@@ -8,7 +8,7 @@ const WhatsAppFab = ({ href }: WhatsAppFabProps) => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Contactar por WhatsApp"
-    className="fixed bottom-6 right-6 z-50 grid h-16 w-16 place-items-center rounded-full bg-[#25D366] shadow-soft transition hover:scale-110 hover:bg-[#1ebe57]"
+    className="fixed bottom-6 left-6 z-50 grid h-16 w-16 place-items-center rounded-full bg-[#25D366] shadow-soft transition hover:scale-110 hover:bg-[#1ebe57]"
   >
     {/* Logo oficial de WhatsApp en SVG vectorial: siempre nítido */}
     <svg
