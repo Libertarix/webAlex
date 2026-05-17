@@ -121,11 +121,13 @@ export const ContactForm = () => {
       </div>
       <label className="flex items-start gap-3 text-sm text-muted-foreground">
         <input
+          id="contact-consent"
           type="checkbox"
           checked={form.consent}
           onChange={(e) => update("consent", e.target.checked as true)}
           className="mt-1 h-4 w-4 accent-brand-green"
           aria-invalid={!!errors.consent}
+          aria-label="Acepto la política de privacidad"
         />
         <span>
           He leído y acepto que mis datos se traten de forma <strong className="text-foreground">confidencial</strong> únicamente para responder a esta consulta. No se comparten con terceros.

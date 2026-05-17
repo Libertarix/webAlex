@@ -152,9 +152,9 @@ const Index = () => {
           className="pointer-events-none absolute -right-24 -bottom-24 w-[520px] opacity-10 blur-2xl select-none"
         />
         <div className="container relative text-center text-primary-foreground">
-          <h2 className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.05] md:text-7xl">
+          <p className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.05] md:text-7xl">
             Cuidar la salud no debería obligarte a salir de casa.
-          </h2>
+          </p>
           <p className="mx-auto mt-7 max-w-2xl text-lg text-primary-foreground/90 md:text-2xl leading-relaxed">
             Atención de enfermería profesional, cercana y a tu ritmo. Yo me desplazo, tú descansas.
           </p>
@@ -528,7 +528,7 @@ const Index = () => {
       <footer className="border-t border-border/60 py-10">
         <div className="container flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Logo" className="h-8 w-8 object-contain" />
+            <img src={logo} alt="Logo de Enfermero en Casa" className="h-8 w-8 object-contain" />
             <span>© {new Date().getFullYear()} Enfermero en Casa · Alejandro Romero · Col. {COLEGIADO}</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
