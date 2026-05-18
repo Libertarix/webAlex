@@ -356,6 +356,7 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <WhatsAppFab href={WHATSAPP(service.title)} />
     </div>
