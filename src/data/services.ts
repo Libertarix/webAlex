@@ -43,7 +43,7 @@ export const services: Service[] = [
     price: "39 €",
     unit: "/sesión",
     metaTitle: "Curas de heridas a domicilio en Granada | Enfermero en Casa",
-    metaDescription: "Cura de heridas quirúrgicas, úlceras por presión, escaras y pie diabético en tu casa en Granada. Material estéril, seguimiento profesional y trato cercano. Enfermero colegiado.",
+    metaDescription: "Cura de heridas quirúrgicas, úlceras y pie diabético en tu casa en Granada. Material estéril y seguimiento profesional con enfermero colegiado.",
     intro: "Realizo curas a domicilio en Granada con material estéril y un enfoque centrado en la cicatrización óptima de cada herida. Valoro la lesión, planifico el plan de curas y reviso la evolución en cada visita.",
     longDescription: [
       "La cura de una herida no es solo cambiar un apósito. Es valorar el lecho de la lesión, el estado de la piel de alrededor, controlar el exudado, prevenir la infección y elegir en cada momento el producto que mejor favorece la cicatrización. Cuando esto se hace bien y de forma constante, los tiempos de recuperación se acortan de manera muy notable.",
