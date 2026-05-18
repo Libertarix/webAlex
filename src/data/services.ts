@@ -93,7 +93,7 @@ export const services: Service[] = [
     price: "39 €",
     unit: "/sesión",
     metaTitle: "Retirada de puntos y grapas a domicilio en Granada",
-    metaDescription: "Retirada de puntos de sutura y grapas quirúrgicas en casa, sin desplazamientos, con cura posterior y consejos para cuidar la cicatriz. Granada y área metropolitana.",
+    metaDescription: "Retirada de puntos de sutura y grapas en casa con cura posterior y consejos para cuidar la cicatriz. Granada y área metropolitana.",
     intro: "Si tienes una intervención reciente y prefieres no desplazarte, voy a tu domicilio en Granada para retirar los puntos o grapas, valorar la herida y curarla si lo requiere.",
     longDescription: [
       "Tras una cirugía, la retirada de puntos o grapas marca el cierre de una etapa importante de la recuperación. Hacerlo en el momento adecuado y con la técnica correcta es clave para evitar dehiscencias, marcas innecesarias o infecciones tardías.",
