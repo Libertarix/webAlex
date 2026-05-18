@@ -132,6 +132,7 @@ const ServiceDetail = () => {
         </nav>
       </header>
 
+      <main>
       {/* HERO del servicio */}
       <section className="relative overflow-hidden bg-gradient-soft py-12 md:py-20">
         <div className="container relative grid gap-10 md:grid-cols-2 md:items-center">
@@ -355,6 +356,7 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <WhatsAppFab href={WHATSAPP(service.title)} />
     </div>

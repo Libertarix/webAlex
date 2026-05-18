@@ -143,6 +143,7 @@ const Index = () => {
         </nav>
       </header>
 
+      <main>
       {/* BANNER CAPTADOR */}
       <section id="inicio" className="relative overflow-hidden bg-gradient-hero py-20 md:py-32">
         <img
@@ -523,6 +524,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      </main>
 
       {/* FOOTER */}
       <footer className="border-t border-border/60 py-10">

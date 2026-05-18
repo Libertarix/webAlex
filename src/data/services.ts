@@ -43,7 +43,7 @@ export const services: Service[] = [
     price: "39 €",
     unit: "/sesión",
     metaTitle: "Curas de heridas a domicilio en Granada | Enfermero en Casa",
-    metaDescription: "Cura de heridas quirúrgicas, úlceras por presión, escaras y pie diabético en tu casa en Granada. Material estéril, seguimiento profesional y trato cercano. Enfermero colegiado.",
+    metaDescription: "Cura de heridas quirúrgicas, úlceras y pie diabético en tu casa en Granada. Material estéril y seguimiento profesional con enfermero colegiado.",
     intro: "Realizo curas a domicilio en Granada con material estéril y un enfoque centrado en la cicatrización óptima de cada herida. Valoro la lesión, planifico el plan de curas y reviso la evolución en cada visita.",
     longDescription: [
       "La cura de una herida no es solo cambiar un apósito. Es valorar el lecho de la lesión, el estado de la piel de alrededor, controlar el exudado, prevenir la infección y elegir en cada momento el producto que mejor favorece la cicatrización. Cuando esto se hace bien y de forma constante, los tiempos de recuperación se acortan de manera muy notable.",
@@ -93,7 +93,7 @@ export const services: Service[] = [
     price: "39 €",
     unit: "/sesión",
     metaTitle: "Retirada de puntos y grapas a domicilio en Granada",
-    metaDescription: "Retirada de puntos de sutura y grapas quirúrgicas en casa, sin desplazamientos, con cura posterior y consejos para cuidar la cicatriz. Granada y área metropolitana.",
+    metaDescription: "Retirada de puntos de sutura y grapas en casa con cura posterior y consejos para cuidar la cicatriz. Granada y área metropolitana.",
     intro: "Si tienes una intervención reciente y prefieres no desplazarte, voy a tu domicilio en Granada para retirar los puntos o grapas, valorar la herida y curarla si lo requiere.",
     longDescription: [
       "Tras una cirugía, la retirada de puntos o grapas marca el cierre de una etapa importante de la recuperación. Hacerlo en el momento adecuado y con la técnica correcta es clave para evitar dehiscencias, marcas innecesarias o infecciones tardías.",
@@ -138,7 +138,7 @@ export const services: Service[] = [
     desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.",
     price: "39 €",
     unit: "/sesión",
-    metaTitle: "Cuidados de ostomías a domicilio en Granada (colostomía, ileostomía, PEG)",
+    metaTitle: "Cuidados de ostomías a domicilio en Granada",
     metaDescription: "Cambio de bolsa, cura del estoma y educación a la familia para colostomías, ileostomías, urostomías y gastrostomías (PEG) en tu domicilio en Granada.",
     intro: "Acompaño a personas ostomizadas y a sus familias en el cuidado del estoma, con un enfoque práctico y respetuoso para que ganéis autonomía progresivamente.",
     longDescription: [
@@ -230,7 +230,7 @@ export const services: Service[] = [
     desc: "Examen físico, toma de constantes y valoración integral mediante escalas validadas (nutrición, dependencia, riesgo de caídas) al paciente y familiar.",
     price: "39 €",
     unit: "/sesión",
-    metaTitle: "Valoración de enfermería a domicilio en Granada (mayores y crónicos)",
+    metaTitle: "Valoración de enfermería a domicilio en Granada",
     metaDescription: "Valoración integral del estado de salud en tu domicilio: constantes vitales, escalas validadas y plan de cuidados personalizado. Granada y área metropolitana.",
     intro: "Una valoración integral de enfermería ayuda a detectar precozmente problemas y a planificar los cuidados que necesita una persona mayor o con patología crónica.",
     longDescription: [

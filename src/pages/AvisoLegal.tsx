@@ -15,7 +15,7 @@ const SITE_URL = "https://enfermeroencasa.com/aviso-legal";
 const AvisoLegal = () => {
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = "Aviso legal y Política de privacidad · Enfermero en Casa Granada";
+    document.title = "Aviso legal y privacidad · Enfermero en Casa Granada";
 
     const setMeta = (name: string, content: string, attr: "name" | "property" = "name") => {
       let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
@@ -28,7 +28,7 @@ const AvisoLegal = () => {
     };
 
     const description =
-      "Aviso legal y política de privacidad de Enfermero en Casa (Alejandro Romero, enfermero colegiado nº 47384 en Granada). Información LSSI-CE y tratamiento de datos conforme al RGPD.";
+      "Aviso legal y política de privacidad de Enfermero en Casa (Alejandro Romero, colegiado nº 47384, Granada). Información LSSI-CE y RGPD.";
     setMeta("description", description);
     setMeta("robots", "index, follow");
     setMeta("og:title", "Aviso legal y Política de privacidad · Enfermero en Casa", "property");

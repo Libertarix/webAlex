@@ -1,0 +1,22 @@
+# Enfermero en Casa
+
+> Servicio de enfermería profesional a domicilio en Granada y su área metropolitana, prestado por Alejandro Romero (colegiado nº 47384).
+
+Atención domiciliaria de curas, sondajes, inyectables, extracciones, cuidados de ostomías y valoraciones del estado de salud. Trato cercano, material estéril y experiencia hospitalaria.
+
+## Pages
+
+- [Inicio](/): Presentación del servicio, zonas de cobertura y contacto.
+- [Aviso legal y privacidad](/aviso-legal): Información LSSI-CE y política de datos (RGPD).
+
+## Servicios
+
+- [Curas de heridas, lesiones y escaras](/servicios/curas-heridas-domicilio-granada): Cura de heridas quirúrgicas, úlceras y pie diabético.
+- [Retirada de puntos y grapas](/servicios/retirada-puntos-grapas-granada): Retirada de suturas con cura posterior.
+- [Cuidados de ostomías](/servicios/cuidados-ostomias-domicilio-granada): Colostomía, ileostomía, urostomía y PEG.
+- [Sondajes y dispositivos médicos](/servicios/sondajes-dispositivos-medicos-granada): Sondas vesicales, nasogástricas y drenajes.
+- [Valoración del estado de salud](/servicios/valoracion-salud-domicilio-granada): Constantes, escalas validadas y plan de cuidados.
+- [Medicación intramuscular](/servicios/inyeccion-intramuscular-domicilio-granada): Inyecciones intramusculares a domicilio.
+- [Medicación subcutánea](/servicios/inyeccion-subcutanea-domicilio-granada): Heparinas, insulina y otras subcutáneas.
+- [Tratamiento intravenoso](/servicios/tratamiento-intravenoso-domicilio-granada): Sueroterapia y medicación IV pautada.
+- [Extracción de muestras](/servicios/extraccion-muestras-domicilio-granada): Analíticas de sangre y orina en tu casa.
