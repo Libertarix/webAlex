@@ -137,7 +137,7 @@ const Index = () => {
             {navLinks.map((l) => (
               <a key={l.href} href={l.href} className="whitespace-nowrap hover:text-brand-navy transition-colors">{l.label}</a>
             ))}
-            <Link to="/aviso-legal" className="whitespace-nowrap hover:text-brand-navy transition-colors">Aviso y privacidad</Link>
+            
           </div>
 
         </nav>
