@@ -138,7 +138,7 @@ export const services: Service[] = [
     desc: "Valoración del estoma, cura, cambio de dispositivos (disco y bolsa), seguimiento y educación sanitaria para colostomías, ileostomías o gastrostomías.",
     price: "39 €",
     unit: "/sesión",
-    metaTitle: "Cuidados de ostomías a domicilio en Granada (colostomía, ileostomía, PEG)",
+    metaTitle: "Cuidados de ostomías a domicilio en Granada",
     metaDescription: "Cambio de bolsa, cura del estoma y educación a la familia para colostomías, ileostomías, urostomías y gastrostomías (PEG) en tu domicilio en Granada.",
     intro: "Acompaño a personas ostomizadas y a sus familias en el cuidado del estoma, con un enfoque práctico y respetuoso para que ganéis autonomía progresivamente.",
     longDescription: [
