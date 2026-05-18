@@ -15,7 +15,7 @@ const SITE_URL = "https://enfermeroencasa.com/aviso-legal";
 const AvisoLegal = () => {
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = "Aviso legal y Política de privacidad · Enfermero en Casa Granada";
+    document.title = "Aviso legal y privacidad · Enfermero en Casa Granada";
 
     const setMeta = (name: string, content: string, attr: "name" | "property" = "name") => {
       let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
