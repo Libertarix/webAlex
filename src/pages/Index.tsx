@@ -143,6 +143,7 @@ const Index = () => {
         </nav>
       </header>
 
+      <main>
       {/* BANNER CAPTADOR */}
       <section id="inicio" className="relative overflow-hidden bg-gradient-hero py-20 md:py-32">
         <img
