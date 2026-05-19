@@ -219,7 +219,7 @@ const Index = () => {
           src={logo}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[10%] w-[700px] md:w-[900px] opacity-[0.05] select-none"
+          className="pointer-events-none absolute left-1/2 bottom-8 -translate-x-1/2 w-[500px] md:w-[650px] opacity-[0.09] select-none"
         />
         <div className="container relative max-w-3xl">
           <div className="relative mx-auto max-w-md">
