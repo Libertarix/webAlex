@@ -457,8 +457,14 @@ const Index = () => {
       </section>
 
       {/* CONTACTO */}
-      <section id="contacto" className="bg-gradient-soft py-20 md:py-28">
-        <div className="container">
+      <section id="contacto" className="relative overflow-hidden bg-gradient-soft py-20 md:py-28">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-32 bottom-0 w-[480px] opacity-[0.05] blur-2xl select-none"
+        />
+        <div className="container relative">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Contacto</span>
             <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">¿Necesitas un enfermero hoy?</h2>
