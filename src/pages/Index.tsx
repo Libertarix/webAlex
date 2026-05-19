@@ -221,8 +221,8 @@ const Index = () => {
           aria-hidden="true"
           className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[900px] opacity-[0.08] select-none"
         />
-        <div className="container relative grid gap-12 md:grid-cols-2 md:items-center">
-          <div className="relative order-2 md:order-1">
+        <div className="container relative max-w-3xl">
+          <div className="relative mx-auto max-w-md">
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-15 blur-2xl" />
             <img
               src={aboutNurse}
@@ -234,7 +234,8 @@ const Index = () => {
               className="relative rounded-[2rem] shadow-soft object-cover w-full max-h-[520px]"
             />
           </div>
-          <div className="order-1 md:order-2">
+          <div className="mt-12">
+
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Sobre mí</span>
             <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Mi historia</h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
