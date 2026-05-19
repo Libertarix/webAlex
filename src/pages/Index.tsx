@@ -219,7 +219,7 @@ const Index = () => {
           src={logo}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 w-[480px] opacity-[0.05] blur-2xl select-none"
+          className="pointer-events-none absolute right-[-8%] top-1/2 -translate-y-1/2 w-[700px] md:w-[900px] opacity-20 select-none"
         />
         <div className="container relative grid gap-12 md:grid-cols-2 md:items-center">
           <div className="relative order-2 md:order-1">
