@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-const SITE = "https://enfermeroencasa.lovable.app";
+const SITE = "https://enfermeroencasa.com";
 
 const NotFound = () => {
   const location = useLocation();
