@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-icon.png";
 
-const PHONE_DISPLAY = "626 78 43 27";
+const PHONE_DISPLAY = "626 78 43 27"; //todo
 const EMAIL = "cuidate@enfermeroencasa.com";
 const COLEGIADO = "47384";
 const TITULAR = "Alejandro Romero Muñoz";

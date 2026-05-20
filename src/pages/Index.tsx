@@ -33,8 +33,8 @@ import aboutNurse from "@/assets/about-nurse.jpg";
 import logo from "@/assets/logo-icon.png";
 import CoverageMap from "@/components/CoverageMap";
 
-const PHONE = "626784327";
-const PHONE_DISPLAY = "626 78 43 27";
+const PHONE = "626784327"; //TODO
+const PHONE_DISPLAY = "626 78 43 27"; //TODO
 const EMAIL = "cuidate@enfermeroencasa.com";
 const COLEGIADO = "47384";
 const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
