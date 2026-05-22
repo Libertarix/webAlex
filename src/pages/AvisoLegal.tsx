@@ -4,9 +4,9 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-icon.png";
 
-const PHONE_DISPLAY = "626 78 43 27"; //todo
+const PHONE_DISPLAY = "636 14 40 57";
 const EMAIL = "cuidate@enfermeroencasa.com";
-const COLEGIADO = "47384";
+const COLEGIADO = "76240";
 const TITULAR = "Alejandro Romero Muñoz";
 const DOMICILIO = "Granada, España (domicilio profesional disponible bajo solicitud por correo electrónico)";
 
@@ -28,7 +28,7 @@ const AvisoLegal = () => {
     };
 
     const description =
-      "Aviso legal y política de privacidad de Enfermero en Casa (Alejandro Romero, colegiado nº 47384, Granada). Información LSSI-CE y RGPD.";
+      "Aviso legal y política de privacidad de Enfermero en Casa (Alejandro Romero, colegiado nº 76240, Granada). Información LSSI-CE y RGPD.";
     setMeta("description", description);
     setMeta("robots", "index, follow");
     setMeta("og:title", "Aviso legal y Política de privacidad · Enfermero en Casa", "property");
@@ -99,7 +99,7 @@ const AvisoLegal = () => {
               <li><strong className="text-foreground">N.º de colegiado:</strong> {COLEGIADO}</li>
               
               <li><strong className="text-foreground">Correo electrónico:</strong> <a href={`mailto:${EMAIL}`} className="text-brand-green hover:underline">{EMAIL}</a></li>
-              <li><strong className="text-foreground">Teléfono de contacto:</strong> <a href="tel:+34626784327" className="text-brand-green hover:underline">{PHONE_DISPLAY}</a></li>
+              <li><strong className="text-foreground">Teléfono de contacto:</strong> <a href="tel:+34636144057" className="text-brand-green hover:underline">{PHONE_DISPLAY}</a></li>
               <li><strong className="text-foreground">Sitio web:</strong> enfermeroencasa.com</li>
             </ul>
 

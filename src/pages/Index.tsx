@@ -33,14 +33,13 @@ import aboutNurse from "@/assets/about-nurse.jpg";
 import logo from "@/assets/logo-icon.png";
 import CoverageMap from "@/components/CoverageMap";
 
-const PHONE = "626784327"; //TODO
-const PHONE_DISPLAY = "626 78 43 27"; //TODO
+const PHONE = "636144057";
+const PHONE_DISPLAY = "636 14 40 57";
 const EMAIL = "cuidate@enfermeroencasa.com";
-const COLEGIADO = "47384";
+const COLEGIADO = "76240";
 const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
   "Hola Alejandro, me gustaría información sobre los servicios de enfermería a domicilio."
 )}`;
-// TODO: sustituir por el enlace real al perfil de Google Business cuando lo tengas
 const GOOGLE_REVIEWS_URL = "https://share.google/hw7EizH02BwXKApfC";
 const LINKEDIN_URL = "https://www.linkedin.com/in/alejandro-romero-mu%C3%B1oz-4a7984223";
 

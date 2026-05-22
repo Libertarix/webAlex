@@ -11,8 +11,8 @@ import { getServiceBySlug, services } from "@/data/services";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import logo from "@/assets/logo-icon.png";
 
-const PHONE = "626784327"; //todo
-const PHONE_DISPLAY = "626 78 43 27"; //todo
+const PHONE = "636144057";
+const PHONE_DISPLAY = "636 14 40 57";
 const WHATSAPP = (title: string) =>
   `https://wa.me/34${PHONE}?text=${encodeURIComponent(
     `Hola Alejandro, me interesa el servicio de "${title}". ¿Puedes darme más información?`
