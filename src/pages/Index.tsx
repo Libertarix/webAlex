@@ -29,7 +29,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
-import aboutNurse from "@/assets/about-nurse.jpg";
+import aboutNurse from "@/assets/about-nurse.png";
 import logo from "@/assets/logo-icon.png";
 import CoverageMap from "@/components/CoverageMap";
 
@@ -220,7 +220,7 @@ const Index = () => {
           className="pointer-events-none absolute left-1/2 bottom-8 -translate-x-1/2 w-[500px] md:w-[650px] opacity-[0.09] select-none"
         />
         <div className="container relative max-w-3xl">
-          <div className="relative mx-auto max-w-md">
+          <div className="relative mx-auto max-w-lg">
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-hero opacity-15 blur-2xl" />
             <img
               src={aboutNurse}
@@ -229,7 +229,7 @@ const Index = () => {
               height={1280}
               loading="lazy"
               decoding="async"
-              className="relative rounded-[2rem] shadow-soft object-cover w-full max-h-[520px]"
+              className="relative rounded-[2rem] shadow-soft object-cover w-full h-[620px] md:h-[720px]"
             />
           </div>
           <div className="mt-12">
