@@ -104,7 +104,6 @@ const navLinks = [
   { href: "#sobre-mi", label: "Sobre mí" },
   { href: "#servicios", label: "Servicios" },
   { href: "#como-trabajo", label: "Cómo trabajo" },
-  { href: "#cobertura", label: "Cobertura" },
   { href: "#faq", label: "Preguntas" },
   { href: "#contacto", label: "Contacto" },
 ];
@@ -348,7 +347,8 @@ const Index = () => {
 
           <p className="mt-10 text-center text-sm text-muted-foreground">
             Disponibles <span className="font-semibold text-foreground">packs de varias sesiones</span> con condiciones especiales.{" "}
-            <a href={`tel:+34${PHONE}`} className="font-semibold text-brand-green hover:underline">Consulta sin compromiso</a>.
+            <a href={WHATSAPP} className="font-semibold text-brand-green hover:underline">Consulta sin compromiso</a>.
+
           </p>
         </div>
       </section>
@@ -372,9 +372,9 @@ const Index = () => {
 
           <ol className="mt-14 grid gap-6 md:grid-cols-3">
             {[
-              { n: "1", icon: Phone, title: "Me llamas o escribes", desc: "Por teléfono, WhatsApp o email. Te respondo personalmente: ningún intermediario, ningún call center." },
+              { n: "1", icon: Phone, title: "Contáctame", desc: "Por teléfono, WhatsApp o email. Te respondo personalmente: ningún intermediario, ningún call center." },
               { n: "2", icon: ClipboardList, title: "Valoramos tu caso", desc: "Te explico qué necesitas, cuánto dura la visita, qué material hace falta y el coste exacto. Sin compromiso y sin sorpresas." },
-              { n: "3", icon: Award, title: "Voy a tu casa", desc: "Acudo en el horario acordado con todo el material preparado y realizo la técnica con seguridad. Después te dejo recomendaciones claras y seguimiento por si surge cualquier duda." },
+              { n: "3", icon: Award, title: "Me desplazo a tu domicilio", desc: "Acudo en el horario acordado con todo el material preparado y realizo la técnica con seguridad. Después te dejo recomendaciones claras y seguimiento por si surge cualquier duda." },
             ].map(({ n, icon: Icon, title, desc }) => (
               <li key={n} className="relative rounded-[1.75rem] border border-border/60 bg-card p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft">
                 <span className="absolute -top-4 left-7 rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-primary-foreground">Paso {n}</span>
