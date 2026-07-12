@@ -6,7 +6,7 @@ import logo from "@/assets/logo-icon.png";
 
 const PHONE_DISPLAY = "636 14 40 57";
 const EMAIL = "cuidate@enfermeroencasa.com";
-const COLEGIADO = "76240";
+const COLEGIADO = "12386";
 const TITULAR = "Alejandro Romero Muñoz";
 const DOMICILIO = "Granada, España (domicilio profesional disponible bajo solicitud por correo electrónico)";
 
@@ -28,7 +28,7 @@ const AvisoLegal = () => {
     };
 
     const description =
-      "Aviso legal y política de privacidad de Enfermero en Casa (Alejandro Romero, colegiado nº 76240, Granada). Información LSSI-CE y RGPD.";
+      "Aviso legal y política de privacidad de Enfermero en Casa (Alejandro Romero, colegiado nº 12386, Granada). Información LSSI-CE y RGPD.";
     setMeta("description", description);
     setMeta("robots", "index, follow");
     setMeta("og:title", "Aviso legal y Política de privacidad · Enfermero en Casa", "property");

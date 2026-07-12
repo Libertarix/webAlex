@@ -36,12 +36,12 @@ import CoverageMap from "@/components/CoverageMap";
 const PHONE = "636144057";
 const PHONE_DISPLAY = "636 14 40 57";
 const EMAIL = "cuidate@enfermeroencasa.com";
-const COLEGIADO = "76240";
+const COLEGIADO = "12386";
 const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
   "Hola Alejandro, me gustaría información sobre los servicios de enfermería a domicilio."
 )}`;
 const GOOGLE_REVIEWS_URL = "https://share.google/hw7EizH02BwXKApfC";
-const LINKEDIN_URL = "https://www.linkedin.com/in/alejandro-romero-mu%C3%B1oz-4a7984223";
+const LINKEDIN_URL = "https://www.linkedin.com/in/enfermeroencasa/";
 
 const coverage = [
   "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
@@ -348,7 +348,9 @@ const Index = () => {
           <p className="mt-10 text-center text-sm text-muted-foreground">
             Disponibles <span className="font-semibold text-foreground">packs de varias sesiones</span> con condiciones especiales.{" "}
             <a href={WHATSAPP} className="font-semibold text-brand-green hover:underline">Consulta sin compromiso</a>.
-
+          </p>
+          <p className="mt-10 text-center text-sm text-muted-foreground">
+            *Servicios solicitados con menos de 24h de antelación, fin de semana y en horarios especiales tendrán un suplemento.
           </p>
         </div>
       </section>
