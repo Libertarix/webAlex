@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { useEffect, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
 import WhatsAppFab from "@/components/WhatsAppFab";
@@ -29,19 +30,12 @@ import {
   Linkedin,
 } from "lucide-react";
 import heroNurse from "@/assets/hero-nurse.jpg";
-import aboutNurse from "@/assets/about-nurse.png";
+import aboutNurse from "@/assets/about-nurse.jpg";
 import logo from "@/assets/logo-icon.png";
-import CoverageMap from "@/components/CoverageMap";
+const CoverageMap = lazy(() => import("@/components/CoverageMap"));
+import { PHONE, PHONE_DISPLAY, EMAIL, COLEGIADO, LINKEDIN_URL, SITE_URL, WHATSAPP_DEFAULT as WHATSAPP } from "@/data/contact";
 
-const PHONE = "636144057";
-const PHONE_DISPLAY = "636 14 40 57";
-const EMAIL = "cuidate@enfermeroencasa.com";
-const COLEGIADO = "12386";
-const WHATSAPP = `https://wa.me/34${PHONE}?text=${encodeURIComponent(
-  "Hola Alejandro, me gustaría información sobre los servicios de enfermería a domicilio."
-)}`;
 const GOOGLE_REVIEWS_URL = "https://share.google/hw7EizH02BwXKApfC";
-const LINKEDIN_URL = "https://www.linkedin.com/in/enfermeroencasa/";
 
 const coverage = [
   "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
@@ -120,6 +114,34 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Enfermero a domicilio en Granada · Curas, sondajes e inyectables</title>
+        <meta
+          name="description"
+          content="Cuidar la salud no debería obligarte a salir de casa. Atención de enfermería privada, profesional y cercana, a tu ritmo. Tel. 636 14 40 57."
+        />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <link rel="canonical" href={`${SITE_URL}/`} />
+        <meta property="og:title" content="Enfermero a domicilio en Granada · Curas, sondajes e inyectables" />
+        <meta
+          property="og:description"
+          content="Enfermero privado a domicilio en Granada. Curas, sondajes, inyectables y extracciones. Colegiado nº 12386. Tel. 636 14 40 57."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/`} />
+        <meta property="og:image" content={`${SITE_URL}/logo.png`} />
+        <meta name="twitter:title" content="Enfermero a domicilio en Granada · Curas, sondajes e inyectables" />
+        <meta
+          name="twitter:description"
+          content="Enfermero privado a domicilio en Granada. Curas, sondajes, inyectables y extracciones. Colegiado nº 12386. Tel. 636 14 40 57."
+        />
+      </Helmet>
+      <a
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+      >
+        Saltar al contenido
+      </a>
       {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
         <nav className="container flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3 md:py-4">
@@ -141,7 +163,7 @@ const Index = () => {
         </nav>
       </header>
 
-      <main>
+      <main id="contenido">
       {/* BANNER CAPTADOR */}
       <section id="inicio" className="relative overflow-hidden bg-gradient-hero py-20 md:py-32">
         <img
@@ -175,7 +197,7 @@ const Index = () => {
               Enfermero a domicilio en <span className="text-brand-green">Granada</span>
             </h1>
             <p className="mt-6 max-w-lg text-lg text-muted-foreground leading-relaxed">
-              Soy <strong className="text-foreground">Alejandro Romero</strong>, enfermero colegiado (nº {COLEGIADO}) con más de 10 años de experiencia en hospitales de referencia y atención a domicilio. Curas, sondajes, inyectables y cuidados profesionales en la comodidad de tu casa.
+              Soy <strong className="text-foreground">Alejandro Romero</strong>, enfermero colegiado (nº {COLEGIADO}) con más de 10 años de experiencia en hospitales de referencia y atención privada a domicilio. Curas, sondajes, inyectables y cuidados profesionales en la comodidad de tu casa.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={`tel:+34${PHONE}`}>
@@ -203,7 +225,9 @@ const Index = () => {
               width={1600}
               height={1056}
               loading="eager"
-              fetchPriority="high"
+              // @ts-expect-error React 18's DOM runtime only recognizes the lowercase
+              // "fetchpriority" attribute; its own type defs assume camelCase (React 19+).
+              fetchpriority="high"
               decoding="async"
               className="relative rounded-[2rem] shadow-soft object-cover w-full h-full max-h-[560px]"
             />
@@ -282,6 +306,14 @@ const Index = () => {
             <p className="mt-4 text-muted-foreground">
               Las valoraciones de mis pacientes están publicadas directamente en mi perfil de Google. Léelas, déjame la tuya o consulta la puntuación actualizada en cualquier momento.
             </p>
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-green hover:underline"
+            >
+              <Star className="h-4 w-4" /> Ver reseñas en Google <ExternalLink className="h-3.5 w-3.5" />
+            </a>
           </div>
 
           <div className="mt-12 mx-auto max-w-5xl">
@@ -424,7 +456,13 @@ const Index = () => {
             </div>
           </div>
           <div className="relative">
-            <CoverageMap />
+            <Suspense
+              fallback={
+                <div className="h-[480px] w-full animate-pulse rounded-[2rem] border border-border/60 bg-secondary/40" />
+              }
+            >
+              <CoverageMap />
+            </Suspense>
             <p className="mt-3 text-center text-xs text-muted-foreground">
               Cada punto verde marca una localidad donde atiendo habitualmente. El círculo difuso indica el radio principal de actuación.
             </p>

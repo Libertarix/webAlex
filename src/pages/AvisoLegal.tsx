@@ -1,58 +1,36 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-icon.png";
+import { EMAIL, COLEGIADO, PHONE, PHONE_DISPLAY, SITE_URL as BASE_URL } from "@/data/contact";
 
-const PHONE_DISPLAY = "636 14 40 57";
-const EMAIL = "cuidate@enfermeroencasa.com";
-const COLEGIADO = "12386";
 const TITULAR = "Alejandro Romero Muñoz";
 const DOMICILIO = "Granada, España (domicilio profesional disponible bajo solicitud por correo electrónico)";
 
-const SITE_URL = "https://enfermeroencasa.com/aviso-legal";
+const SITE_URL = `${BASE_URL}/aviso-legal`;
+const DESCRIPTION =
+  "Aviso legal y política de privacidad de Enfermero en Casa (Alejandro Romero, colegiado nº 12386, Granada). Información LSSI-CE y RGPD.";
 
 const AvisoLegal = () => {
-  useEffect(() => {
-    const prevTitle = document.title;
-    document.title = "Aviso legal y privacidad · Enfermero en Casa Granada";
-
-    const setMeta = (name: string, content: string, attr: "name" | "property" = "name") => {
-      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    const description =
-      "Aviso legal y política de privacidad de Enfermero en Casa (Alejandro Romero, colegiado nº 12386, Granada). Información LSSI-CE y RGPD.";
-    setMeta("description", description);
-    setMeta("robots", "index, follow");
-    setMeta("og:title", "Aviso legal y Política de privacidad · Enfermero en Casa", "property");
-    setMeta("og:description", description, "property");
-    setMeta("og:url", SITE_URL, "property");
-    setMeta("og:type", "website", "property");
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    const prevCanonical = canonical?.href;
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.rel = "canonical";
-      document.head.appendChild(canonical);
-    }
-    canonical.href = SITE_URL;
-
-    return () => {
-      document.title = prevTitle;
-      if (canonical && prevCanonical) canonical.href = prevCanonical;
-    };
-  }, []);
-
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Aviso legal y privacidad · Enfermero en Casa Granada</title>
+        <meta name="description" content={DESCRIPTION} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={SITE_URL} />
+        <meta property="og:title" content="Aviso legal y Política de privacidad · Enfermero en Casa" />
+        <meta property="og:description" content={DESCRIPTION} />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <a
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+      >
+        Saltar al contenido
+      </a>
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
         <nav className="container flex items-center justify-between gap-4 py-3 md:py-4">
           <Link to="/" className="flex items-center gap-3" aria-label="Volver al inicio">
@@ -72,7 +50,7 @@ const AvisoLegal = () => {
         </nav>
       </header>
 
-      <main className="container max-w-3xl py-12 md:py-20">
+      <main id="contenido" className="container max-w-3xl py-12 md:py-20">
         <header className="mb-10">
           <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Información legal</span>
           <h1 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">
@@ -97,9 +75,9 @@ const AvisoLegal = () => {
               <li><strong className="text-foreground">Nombre y apellidos:</strong> {TITULAR}</li>
               <li><strong className="text-foreground">Profesión:</strong> Enfermero colegiado</li>
               <li><strong className="text-foreground">N.º de colegiado:</strong> {COLEGIADO}</li>
-              
+              <li><strong className="text-foreground">Domicilio:</strong> {DOMICILIO}</li>
               <li><strong className="text-foreground">Correo electrónico:</strong> <a href={`mailto:${EMAIL}`} className="text-brand-green hover:underline">{EMAIL}</a></li>
-              <li><strong className="text-foreground">Teléfono de contacto:</strong> <a href="tel:+34636144057" className="text-brand-green hover:underline">{PHONE_DISPLAY}</a></li>
+              <li><strong className="text-foreground">Teléfono de contacto:</strong> <a href={`tel:+34${PHONE}`} className="text-brand-green hover:underline">{PHONE_DISPLAY}</a></li>
               <li><strong className="text-foreground">Sitio web:</strong> enfermeroencasa.com</li>
             </ul>
 

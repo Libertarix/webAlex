@@ -10,35 +10,33 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
 
+  <!--
+    El título, la descripción, el canonical y las etiquetas og:/twitter: por
+    página se gestionan con react-helmet-async (uno por ruta, ver Index.tsx,
+    ServiceDetail.tsx y AvisoLegal.tsx) para que cada página tenga su propio
+    contenido real. Aquí solo quedan las etiquetas verdaderamente globales
+    (favicons, fuentes, geo, tema, imagen social por defecto) — declarar las
+    mismas etiquetas aquí Y en Helmet duplicaba <meta name="description">,
+    <link rel="canonical">, etc. en el DOM en cada página de servicio.
+  -->
   <title>Enfermero a domicilio en Granada · Curas, sondajes e inyectables</title>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" href="/logo.png">
-  <meta name="description"
-    content="Cuidar la salud no debería obligarte a salir de casa. Atención de enfermería profesional, cercana y a tu ritmo. Tel. 636 14 40 57.">
   <meta name="keywords"
     content="enfermero a domicilio Granada, enfermería a domicilio Granada, curas a domicilio Granada, sondaje vesical Granada, inyectables a domicilio, retirada de puntos Granada, cuidados ostomía, extracción sangre domicilio Granada, enfermero colegiado Granada, atención domiciliaria sanitaria, enfermero privado" />
   <meta name="author" content="Alejandro Romero - Enfermero en Casa Granada" />
-  <link rel="canonical" href="https://enfermeroencasa.com/" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="geo.region" content="ES-GR" />
   <meta name="geo.placename" content="Granada" />
   <meta name="geo.position" content="37.1773;-3.5986" />
   <meta name="ICBM" content="37.1773, -3.5986" />
   <meta name="theme-color" content="#2a4d8f" />
 
-
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://enfermeroencasa.com/" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:site_name" content="Enfermero en Casa" />
-  <meta property="og:image" content="https://enfermeroencasa.com/images/logo.png">
 
   <meta name="twitter:card" content="summary_large_image" />
-
-
-  <meta name="twitter:image" content="https://enfermeroencasa.com/images/logo.png">
+  <meta name="twitter:image" content="https://enfermeroencasa.com/logo.png">
 
   <script type="application/ld+json">
     {
@@ -47,9 +45,9 @@
       "@id": "https://enfermeroencasa.com/#business",
       "name": "Enfermero en Casa - Alejandro Romero",
       "alternateName": "Enfermero a domicilio Granada",
-      "description": "Servicio de enfermería profesional a domicilio en Granada y área metropolitana. Curas, sondajes, inyectables, extracciones y cuidados especializados.",
+      "description": "Servicio de enfermería privada a domicilio en Granada y área metropolitana. Curas, sondajes, inyectables, extracciones y cuidados especializados.",
       "image": "https://enfermeroencasa.com/logo.png",
-      "logo": "https://enfermeroenca  sa.com/logo.png",
+      "logo": "https://enfermeroencasa.com/logo.png",
       "url": "https://enfermeroencasa.com",
       "parentOrganization": {
         "@id": "https://enfermeroencasa.com/#organization"
@@ -168,12 +166,6 @@
       ]
     }
     </script>
-  <meta property="og:title" content="Enfermero a domicilio en Granada · Curas, sondajes e inyectables">
-  <meta name="twitter:title" content="Enfermero a domicilio en Granada · Curas, sondajes e inyectables">
-  <meta property="og:description"
-    content="Enfermero a domicilio en Granada. Curas, sondajes, inyectables y extracciones. Colegiado nº 12386. Tel. 636 14 40 57.">
-  <meta name="twitter:description"
-    content="Enfermero a domicilio en Granada. Curas, sondajes, inyectables y extracciones. Colegiado nº 12386. Tel. 636 14 40 57.">
 </head>
 
 <body>

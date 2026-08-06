@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,13 +11,10 @@ import {
 import { getServiceBySlug, services } from "@/data/services";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import logo from "@/assets/logo-icon.png";
+import { PHONE, PHONE_DISPLAY, SITE_URL, whatsappUrl } from "@/data/contact";
 
-const PHONE = "636144057";
-const PHONE_DISPLAY = "636 14 40 57";
 const WHATSAPP = (title: string) =>
-  `https://wa.me/34${PHONE}?text=${encodeURIComponent(
-    `Hola Alejandro, me interesa el servicio de "${title}". ¿Puedes darme más información?`
-  )}`;
+  whatsappUrl(`Hola Alejandro, me interesa el servicio de "${title}". ¿Puedes darme más información?`);
 
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -24,37 +22,6 @@ const ServiceDetail = () => {
 
   useEffect(() => {
     if (!service) return;
-    document.title = service.metaTitle;
-    const setMeta = (name: string, content: string) => {
-      let el = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.name = name;
-        document.head.appendChild(el);
-      }
-      el.content = content;
-    };
-    const setOg = (property: string, content: string) => {
-      let el = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute("property", property);
-        document.head.appendChild(el);
-      }
-      el.content = content;
-    };
-    setMeta("description", service.metaDescription);
-    setOg("og:title", service.metaTitle);
-    setOg("og:description", service.metaDescription);
-    setOg("og:type", "article");
-    setOg("og:image", `https://enfermeroencasa.com${service.image}`);
-    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.rel = "canonical";
-      document.head.appendChild(canonical);
-    }
-    canonical.href = `https://enfermeroencasa.com/servicios/${service.slug}`;
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [service]);
 
@@ -68,21 +35,21 @@ const ServiceDetail = () => {
     "@type": "MedicalProcedure",
     name: service.title,
     description: service.metaDescription,
-    image: `https://enfermeroencasa.com${service.image}`,
-    url: `https://enfermeroencasa.com/servicios/${service.slug}`,
+    image: `${SITE_URL}${service.image}`,
+    url: `${SITE_URL}/servicios/${service.slug}`,
     provider: {
       "@type": "MedicalBusiness",
       name: "Enfermero en Casa - Alejandro Romero",
       areaServed: "Granada, España",
       telephone: `+34${PHONE}`,
-      url: "https://enfermeroencasa.com/",
+      url: `${SITE_URL}/`,
     },
     offers: {
       "@type": "Offer",
       price: service.price.replace(/[^\d]/g, ""),
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
-      url: `https://enfermeroencasa.com/servicios/${service.slug}`,
+      url: `${SITE_URL}/servicios/${service.slug}`,
     },
   };
 
@@ -100,19 +67,35 @@ const ServiceDetail = () => {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://enfermeroencasa.com/" },
-      { "@type": "ListItem", position: 2, name: "Servicios", item: "https://enfermeroencasa.com/#servicios" },
-      { "@type": "ListItem", position: 3, name: service.title, item: `https://enfermeroencasa.com/servicios/${service.slug}` },
+      { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Servicios", item: `${SITE_URL}/#servicios` },
+      { "@type": "ListItem", position: 3, name: service.title, item: `${SITE_URL}/servicios/${service.slug}` },
     ],
   };
 
   return (
     <div className="min-h-screen bg-background">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      {faqJsonLd && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      )}
+      <Helmet>
+        <title>{service.metaTitle}</title>
+        <meta name="description" content={service.metaDescription} />
+        <link rel="canonical" href={`${SITE_URL}/servicios/${service.slug}`} />
+        <meta property="og:title" content={service.metaTitle} />
+        <meta property="og:description" content={service.metaDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`${SITE_URL}/servicios/${service.slug}`} />
+        <meta property="og:image" content={`${SITE_URL}${service.image}`} />
+        <meta name="twitter:title" content={service.metaTitle} />
+        <meta name="twitter:description" content={service.metaDescription} />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        {faqJsonLd && <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>}
+      </Helmet>
+      <a
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+      >
+        Saltar al contenido
+      </a>
 
       {/* NAV mínima */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
@@ -132,7 +115,7 @@ const ServiceDetail = () => {
         </nav>
       </header>
 
-      <main>
+      <main id="contenido">
       {/* HERO del servicio */}
       <section className="relative overflow-hidden bg-gradient-soft py-12 md:py-20">
         <div className="container relative grid gap-10 md:grid-cols-2 md:items-center">
@@ -181,7 +164,9 @@ const ServiceDetail = () => {
               width={1200}
               height={900}
               loading="eager"
-              fetchPriority="high"
+              // @ts-expect-error React 18's DOM runtime only recognizes the lowercase
+              // "fetchpriority" attribute; its own type defs assume camelCase (React 19+).
+              fetchpriority="high"
               decoding="async"
               className="relative rounded-[2rem] shadow-soft object-cover w-full max-h-[480px]"
             />

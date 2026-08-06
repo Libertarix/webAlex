@@ -6,9 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { Send, MessageCircle, ShieldCheck } from "lucide-react";
-
-const PHONE = "636144057";
-const EMAIL = "cuidate@enfermeroencasa.com";
+import { PHONE, EMAIL } from "@/data/contact";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, { message: "Indica tu nombre" }).max(80),
