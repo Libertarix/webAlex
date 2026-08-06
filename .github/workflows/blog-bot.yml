@@ -1,0 +1,44 @@
+name: Blog bot — publica artículo automáticamente
+
+# Genera un artículo nuevo (texto con Gemini, ver scripts/blog-bot/) y lo
+# publica directamente en main los lunes y jueves. Sin revisión humana
+# previa: decisión expresa de la usuaria, a sabiendas de que es contenido
+# sanitario sin repasar antes de salir en producción.
+
+on:
+  schedule:
+    # Lunes y jueves, 07:00 UTC (~09:00 en Granada en verano, 08:00 en invierno).
+    - cron: "0 7 * * 1,4"
+  workflow_dispatch: {}
+
+jobs:
+  generar-y-publicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Generar artículo (solo texto, sin imagen)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/blog-bot/generar-articulo.mjs
+
+      - name: Publicar directamente en main (si se generó algo)
+        run: |
+          git config user.name "blog-bot"
+          git config user.email "actions@github.com"
+          git add scripts/blog-bot/temas.json src/data/blog-generado.json public/sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No hay artículo nuevo que publicar (sin temas pendientes o falló la generación)."
+          else
+            git commit -m "Blog: nuevo artículo generado automáticamente"
+            git push
+          fi

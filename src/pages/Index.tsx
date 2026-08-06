@@ -99,6 +99,7 @@ const navLinks = [
   { href: "#servicios", label: "Servicios" },
   { href: "#como-trabajo", label: "Cómo trabajo" },
   { href: "#faq", label: "Preguntas" },
+  { href: "/blog", label: "Blog" },
   { href: "#contacto", label: "Contacto" },
 ];
 
@@ -154,9 +155,17 @@ const Index = () => {
           </a>
 
           <div className="order-3 flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[13px] font-medium text-muted-foreground md:order-2 md:w-auto md:gap-x-6 md:text-sm">
-            {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="whitespace-nowrap hover:text-brand-navy transition-colors">{l.label}</a>
-            ))}
+            {navLinks.map((l) =>
+              l.href.startsWith("/") ? (
+                <Link key={l.href} to={l.href} className="whitespace-nowrap hover:text-brand-navy transition-colors">
+                  {l.label}
+                </Link>
+              ) : (
+                <a key={l.href} href={l.href} className="whitespace-nowrap hover:text-brand-navy transition-colors">
+                  {l.label}
+                </a>
+              )
+            )}
             
           </div>
 
