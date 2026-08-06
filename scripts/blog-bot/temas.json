@@ -78,5 +78,35 @@
     "tema": "Cómo organizar los cuidados en casa tras un alta hospitalaria",
     "palabraClave": "cuidados en casa tras el alta hospitalaria",
     "servicioRelacionado": "valoracion-salud-domicilio-granada"
+  },
+  {
+    "tema": "Vitamina B12 a domicilio: para qué sirve y cuándo se pauta",
+    "palabraClave": "vitamina B12 a domicilio",
+    "servicioRelacionado": "inyeccion-intramuscular-domicilio-granada"
+  },
+  {
+    "tema": "Heparina a domicilio: cuidados durante el tratamiento",
+    "palabraClave": "heparina a domicilio",
+    "servicioRelacionado": "inyeccion-subcutanea-domicilio-granada"
+  },
+  {
+    "tema": "Vacunación de la gripe: por qué es importante cada año en personas mayores",
+    "palabraClave": "vacuna de la gripe a domicilio",
+    "servicioRelacionado": "inyeccion-intramuscular-domicilio-granada"
+  },
+  {
+    "tema": "Golpe de calor en personas mayores: cómo prevenirlo en verano",
+    "palabraClave": "prevenir golpe de calor personas mayores",
+    "servicioRelacionado": "valoracion-salud-domicilio-granada"
+  },
+  {
+    "tema": "Extracción de sangre en ayunas: cómo prepararte para la analítica",
+    "palabraClave": "extracción de sangre a domicilio en ayunas",
+    "servicioRelacionado": "extraccion-muestras-domicilio-granada"
+  },
+  {
+    "tema": "Cuidados tras una cura de ostomía: rutina diaria recomendada",
+    "palabraClave": "cuidados diarios de una ostomía",
+    "servicioRelacionado": "cuidados-ostomias-domicilio-granada"
   }
 ]

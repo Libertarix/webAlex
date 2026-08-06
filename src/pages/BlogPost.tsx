@@ -7,7 +7,7 @@ import { blogPosts, getBlogPostBySlug } from "@/data/blog";
 import { getServiceBySlug } from "@/data/services";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import logo from "@/assets/logo-icon.png";
-import { PHONE, PHONE_DISPLAY, SITE_URL, whatsappUrl } from "@/data/contact";
+import { PHONE, PHONE_DISPLAY, COLEGIADO, SITE_URL, whatsappUrl } from "@/data/contact";
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
@@ -34,7 +34,13 @@ const BlogPost = () => {
     description: post.metaDescription,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
-    author: { "@type": "Person", name: "Alejandro Romero", jobTitle: "Enfermero colegiado" },
+    author: {
+      "@type": "Person",
+      name: "Alejandro Romero",
+      jobTitle: "Enfermero colegiado",
+      identifier: `Nº Colegiado ${COLEGIADO}`,
+      url: `${SITE_URL}/#sobre-mi`,
+    },
     publisher: {
       "@type": "Organization",
       name: "Enfermero en Casa",
@@ -104,13 +110,16 @@ const BlogPost = () => {
               <ArrowLeft className="h-3 w-3" /> Blog
             </Link>
             <h1 className="mt-4 text-3xl font-semibold leading-tight text-brand-navy md:text-5xl">{post.title}</h1>
-            <div className="mt-5 flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
                 <Calendar className="h-4 w-4" /> {formatDate(post.publishedAt)}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="h-4 w-4" /> {post.readingMinutes} min de lectura
               </span>
+              <Link to="/#sobre-mi" className="inline-flex items-center gap-1.5 hover:text-brand-navy transition-colors">
+                Por <strong className="font-semibold text-foreground">Alejandro Romero</strong>, enfermero colegiado nº {COLEGIADO}
+              </Link>
             </div>
 
             {post.coverImage && (
