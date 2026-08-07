@@ -80,4 +80,9 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://enfermeroencasa.com/blog/como-prevenir-las-ulceras-por-presion-en-personas-encamadas</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
