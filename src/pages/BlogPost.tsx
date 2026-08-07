@@ -24,6 +24,7 @@ const BlogPost = () => {
   if (!post) return <Navigate to="/blog" replace />;
 
   const relatedService = getServiceBySlug(post.relatedServiceSlug);
+  const Icon = relatedService?.icon;
   const otherPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
   const whatsapp = whatsappUrl(`Hola Alejandro, he leído tu artículo "${post.title}" y me gustaría más información.`);
 
@@ -104,24 +105,35 @@ const BlogPost = () => {
       </header>
 
       <main id="contenido">
-        <article className="py-12 md:py-20">
-          <div className="container max-w-3xl">
-            <Link to="/blog" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-green hover:underline">
-              <ArrowLeft className="h-3 w-3" /> Blog
-            </Link>
-            <h1 className="mt-4 text-3xl font-semibold leading-tight text-brand-navy md:text-5xl">{post.title}</h1>
-            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5">
-                <Calendar className="h-4 w-4" /> {formatDate(post.publishedAt)}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-4 w-4" /> {post.readingMinutes} min de lectura
-              </span>
-              <Link to="/#sobre-mi" className="inline-flex items-center gap-1.5 hover:text-brand-navy transition-colors">
-                Por <strong className="font-semibold text-foreground">Alejandro Romero</strong>, enfermero colegiado nº {COLEGIADO}
+        <article>
+          <div className="relative overflow-hidden bg-gradient-soft py-14 md:py-20">
+            <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-gradient-hero opacity-20 blur-3xl" />
+            <div className="pointer-events-none absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-brand-green/20 blur-3xl" />
+            <div className="container relative max-w-3xl">
+              <Link to="/blog" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-green hover:underline">
+                <ArrowLeft className="h-3 w-3" /> Blog
               </Link>
+              {Icon && (
+                <div className="mt-5 grid h-14 w-14 place-items-center rounded-2xl bg-background text-brand-green shadow-card">
+                  <Icon className="h-7 w-7" />
+                </div>
+              )}
+              <h1 className="mt-4 text-3xl font-semibold leading-tight text-brand-navy md:text-5xl">{post.title}</h1>
+              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5">
+                  <Calendar className="h-4 w-4" /> {formatDate(post.publishedAt)}
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock className="h-4 w-4" /> {post.readingMinutes} min de lectura
+                </span>
+                <Link to="/#sobre-mi" className="inline-flex items-center gap-1.5 hover:text-brand-navy transition-colors">
+                  Por <strong className="font-semibold text-foreground">Alejandro Romero</strong>, enfermero colegiado nº {COLEGIADO}
+                </Link>
+              </div>
             </div>
+          </div>
 
+          <div className="container max-w-3xl py-10 md:py-14">
             {post.coverImage && (
               <img
                 src={post.coverImage}
@@ -129,27 +141,32 @@ const BlogPost = () => {
                 aria-hidden="true"
                 loading="eager"
                 decoding="async"
-                className="mt-8 aspect-[16/9] w-full rounded-[2rem] object-cover shadow-soft"
+                className="mb-8 aspect-[16/9] w-full rounded-[2rem] object-cover shadow-soft"
               />
             )}
 
-            <p className="mt-8 text-lg text-muted-foreground leading-relaxed">{post.intro}</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">{post.intro}</p>
 
             <div className="mt-10 space-y-10">
-              {post.sections.map((section) => (
-                <section key={section.heading}>
-                  <h2 className="text-2xl font-semibold text-brand-navy">{section.heading}</h2>
-                  <div className="mt-4 space-y-4 text-muted-foreground leading-relaxed">
-                    {section.paragraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                    {section.list && (
-                      <ul className="list-disc space-y-2 pl-6">
-                        {section.list.map((item, i) => (
-                          <li key={i}>{item}</li>
-                        ))}
-                      </ul>
-                    )}
+              {post.sections.map((section, index) => (
+                <section key={section.heading} className="flex gap-4 md:gap-5">
+                  <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-sm font-semibold text-brand-green">
+                    {index + 1}
+                  </span>
+                  <div className="min-w-0">
+                    <h2 className="text-2xl font-semibold text-brand-navy">{section.heading}</h2>
+                    <div className="mt-4 space-y-4 text-muted-foreground leading-relaxed">
+                      {section.paragraphs.map((p, i) => (
+                        <p key={i}>{p}</p>
+                      ))}
+                      {section.list && (
+                        <ul className="list-disc space-y-2 pl-6">
+                          {section.list.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   </div>
                 </section>
               ))}

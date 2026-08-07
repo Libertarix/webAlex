@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blog";
+import { getServiceBySlug } from "@/data/services";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import logo from "@/assets/logo-icon.png";
 import { PHONE, SITE_URL, WHATSAPP_DEFAULT } from "@/data/contact";
@@ -73,14 +74,16 @@ const Blog = () => {
         <section className="py-16 md:py-24">
           <div className="container">
             <div className="grid gap-6 sm:grid-cols-2">
-              {blogPosts.map((post) => (
+              {blogPosts.map((post) => {
+                const Icon = getServiceBySlug(post.relatedServiceSlug)?.icon;
+                return (
                 <Link
                   key={post.slug}
                   to={`/blog/${post.slug}`}
                   aria-label={`Leer artículo: ${post.title}`}
                   className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border/60 bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  {post.coverImage && (
+                  {post.coverImage ? (
                     <div className="aspect-[16/9] overflow-hidden">
                       <img
                         src={post.coverImage}
@@ -90,6 +93,15 @@ const Blog = () => {
                         decoding="async"
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
+                    </div>
+                  ) : (
+                    <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-gradient-soft">
+                      <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-hero opacity-20 blur-2xl" />
+                      {Icon && (
+                        <div className="relative grid h-16 w-16 place-items-center rounded-2xl bg-background text-brand-green shadow-card transition-transform duration-500 group-hover:scale-105">
+                          <Icon className="h-8 w-8" />
+                        </div>
+                      )}
                     </div>
                   )}
                   <div className="flex flex-1 flex-col p-7">
@@ -108,7 +120,8 @@ const Blog = () => {
                   </span>
                   </div>
                 </Link>
-              ))}
+                );
+              })}
             </div>
 
             <p className="mt-12 text-center text-sm text-muted-foreground">
