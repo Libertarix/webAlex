@@ -4,7 +4,9 @@ import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, Clock, Phone, MessageCircle, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts, getBlogPostBySlug } from "@/data/blog";
+import { noticias } from "@/data/noticias";
 import { getServiceBySlug } from "@/data/services";
+import { itemsRelacionados } from "@/lib/relacionados";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import logo from "@/assets/logo-icon.png";
 import { PHONE, PHONE_DISPLAY, COLEGIADO, SITE_URL, whatsappUrl } from "@/data/contact";
@@ -26,6 +28,7 @@ const BlogPost = () => {
   const relatedService = getServiceBySlug(post.relatedServiceSlug);
   const Icon = relatedService?.icon;
   const otherPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const noticiasRelacionadas = itemsRelacionados(post, noticias);
   const whatsapp = whatsappUrl(`Hola Alejandro, he leído tu artículo "${post.title}" y me gustaría más información.`);
 
   const articleJsonLd = {
@@ -202,6 +205,21 @@ const BlogPost = () => {
                     </Button>
                   </a>
                 </div>
+              </div>
+            )}
+
+            {noticiasRelacionadas.length > 0 && (
+              <div className="mt-10">
+                <h2 className="text-lg font-semibold text-brand-navy">Noticias relacionadas</h2>
+                <ul className="mt-3 space-y-2">
+                  {noticiasRelacionadas.map((n) => (
+                    <li key={n.slug}>
+                      <Link to={`/noticias/${n.slug}`} className="text-sm font-medium text-brand-green hover:underline">
+                        {n.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </div>

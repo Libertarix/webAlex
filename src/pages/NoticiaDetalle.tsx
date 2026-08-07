@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, ExternalLink, Newspaper } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { noticias, getNoticiaBySlug } from "@/data/noticias";
+import { blogPosts } from "@/data/blog";
+import { itemsRelacionados } from "@/lib/relacionados";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import logo from "@/assets/logo-icon.png";
 import { SITE_URL, WHATSAPP_DEFAULT } from "@/data/contact";
@@ -23,6 +25,7 @@ const NoticiaDetalle = () => {
   if (!noticia) return <Navigate to="/noticias" replace />;
 
   const otrasNoticias = noticias.filter((n) => n.slug !== noticia.slug).slice(0, 3);
+  const articulosRelacionados = itemsRelacionados(noticia, blogPosts);
 
   const newsJsonLd = {
     "@context": "https://schema.org",
@@ -146,6 +149,21 @@ const NoticiaDetalle = () => {
                 Leer la noticia completa en {noticia.sourceName} <ExternalLink className="h-4 w-4" />
               </Button>
             </a>
+
+            {articulosRelacionados.length > 0 && (
+              <div className="mt-10">
+                <h2 className="text-lg font-semibold text-brand-navy">Artículos relacionados del blog</h2>
+                <ul className="mt-3 space-y-2">
+                  {articulosRelacionados.map((post) => (
+                    <li key={post.slug}>
+                      <Link to={`/blog/${post.slug}`} className="text-sm font-medium text-brand-green hover:underline">
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </article>
 
