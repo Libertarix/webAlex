@@ -32,7 +32,7 @@ const BLOG_GENERADO_PATH = path.join(ROOT, "src/data/blog-generado.json");
 const SITEMAP_PATH = path.join(ROOT, "public/sitemap.xml");
 
 const dryRun = process.argv.includes("--dry");
-const SITE_URL = "https://enfermeroencasa.com";
+const SITE_URL = "https://www.enfermeroencasa.com";
 
 const MODEL_TEXTO = "gemini-flash-latest";
 

@@ -56,6 +56,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://enfermeroencasa.com/noticias</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://enfermeroencasa.com/blog/cuidar-herida-en-casa-guia-practica</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -81,7 +86,37 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://enfermeroencasa.com/blog/como-prevenir-las-ulceras-por-presion-en-personas-encamadas</loc>
+    <loc>https://enfermeroencasa.com/noticias/un-estudio-identifica-los-principales-factores-que-condicionan-el-bienestar-de-l</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://enfermeroencasa.com/noticias/el-papel-esencial-de-la-enfermeria-militar-en-escenarios-de-emergencia-y</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://enfermeroencasa.com/noticias/reconocimiento-nacional-a-una-enfermera-palentina-por-su-labor-con-un-menor</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://enfermeroencasa.com/noticias/el-cecova-respalda-el-nuevo-comite-de-cuidados-valenciano-pero-supedita-su</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://enfermeroencasa.com/noticias/galicia-plantea-una-reforma-normativa-para-reforzar-la-enfermeria-y-la-atencion</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://enfermeroencasa.com/noticias/desafios-y-cuidados-de-la-enfermeria-de-emergencias-en-la-montana</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.enfermeroencasa.com/blog/como-prevenir-las-ulceras-por-presion-en-personas-encamadas</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

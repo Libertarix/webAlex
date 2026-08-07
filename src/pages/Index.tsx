@@ -100,6 +100,7 @@ const navLinks = [
   { href: "#como-trabajo", label: "Cómo trabajo" },
   { href: "#faq", label: "Preguntas" },
   { href: "/blog", label: "Blog" },
+  { href: "/noticias", label: "Noticias" },
   { href: "#contacto", label: "Contacto" },
 ];
 

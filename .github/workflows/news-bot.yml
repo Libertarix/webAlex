@@ -1,0 +1,57 @@
+name: News bot — publica noticia sanitaria diaria
+
+# Cada día, coge la noticia más reciente sin usar de una fuente RSS real
+# de salud/enfermería (ver scripts/news-bot/fuentes.json), le escribe un
+# resumen original con Gemini (nunca inventado) y despliega directamente
+# a producción en Vercel. Sin revisión humana previa.
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # todos los días, 08:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  generar-y-publicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Generar noticia (resumen original de una fuente real)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/news-bot/generar-noticia.mjs
+
+      - name: Comprobar si se generó una noticia nueva
+        id: cambios
+        run: |
+          git add scripts/news-bot/usadas.json src/data/noticias-generadas.json public/sitemap.xml
+          if git diff --cached --quiet; then
+            echo "hay_cambios=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "hay_cambios=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Guardar el nuevo estado en este repo
+        if: steps.cambios.outputs.hay_cambios == 'true'
+        run: |
+          git config user.name "news-bot"
+          git config user.email "actions@github.com"
+          git commit -m "Noticias: nueva noticia generada automáticamente"
+          git push
+
+      - name: Desplegar a producción en Vercel
+        if: steps.cambios.outputs.hay_cambios == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: npx vercel deploy --prod --token="$VERCEL_TOKEN" --yes

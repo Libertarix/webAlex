@@ -1,0 +1,17 @@
+[
+  {
+    "nombre": "Diario Enfermero",
+    "feed": "https://www.diarioenfermero.es/feed",
+    "prioridad": 1
+  },
+  {
+    "nombre": "Enfermería21",
+    "feed": "https://www.enfermeria21.com/feed/",
+    "prioridad": 2
+  },
+  {
+    "nombre": "Consalud",
+    "feed": "https://www.consalud.es/rss/",
+    "prioridad": 3
+  }
+]

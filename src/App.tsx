@@ -9,11 +9,13 @@ import ServiceDetail from "./pages/ServiceDetail.tsx";
 import AvisoLegal from "./pages/AvisoLegal.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
-// El blog crece con cada artículo que publica el blog-bot (ver
-// scripts/blog-bot/) — se carga aparte para no engordar el bundle principal
-// que se descarga en cualquier otra página.
+// El blog y las noticias crecen con cada publicación de sus bots (ver
+// scripts/blog-bot/ y scripts/news-bot/) — se cargan aparte para no
+// engordar el bundle principal que se descarga en cualquier otra página.
 const Blog = lazy(() => import("./pages/Blog.tsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.tsx"));
+const Noticias = lazy(() => import("./pages/Noticias.tsx"));
+const NoticiaDetalle = lazy(() => import("./pages/NoticiaDetalle.tsx"));
 
 const App = () => (
   <HelmetProvider>
@@ -27,6 +29,8 @@ const App = () => (
             <Route path="/servicios/:slug" element={<ServiceDetail />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/noticias" element={<Noticias />} />
+            <Route path="/noticias/:slug" element={<NoticiaDetalle />} />
             <Route path="/aviso-legal" element={<AvisoLegal />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
