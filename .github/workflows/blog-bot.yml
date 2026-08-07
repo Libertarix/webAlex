@@ -1,9 +1,13 @@
-name: Blog bot — publica artículo automáticamente
+name: Blog bot — genera y publica artículo directamente en Vercel
 
 # Genera un artículo nuevo (texto con Gemini, ver scripts/blog-bot/) y lo
-# publica directamente en main los lunes y jueves. Sin revisión humana
-# previa: decisión expresa de la usuaria, a sabiendas de que es contenido
-# sanitario sin repasar antes de salir en producción.
+# despliega directamente a producción en Vercel los lunes y jueves. Sin
+# revisión humana previa: decisión expresa de la usuaria, a sabiendas de
+# que es contenido sanitario sin repasar antes de salir en producción.
+#
+# Este repo (Libertarix/webAlex) es una copia del código de la web real,
+# usada solo para que el bot pueda publicar sin depender del repositorio
+# original (LidiaGarcia/enfermeroencasa) — ver CONTEXT del proyecto.
 
 on:
   schedule:
@@ -31,14 +35,28 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/blog-bot/generar-articulo.mjs
 
-      - name: Publicar directamente en main (si se generó algo)
+      - name: Comprobar si se generó un artículo nuevo
+        id: cambios
+        run: |
+          git add scripts/blog-bot/temas.json src/data/blog-generado.json public/sitemap.xml
+          if git diff --cached --quiet; then
+            echo "hay_cambios=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "hay_cambios=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Guardar el nuevo estado en este repo (para no repetir tema la próxima vez)
+        if: steps.cambios.outputs.hay_cambios == 'true'
         run: |
           git config user.name "blog-bot"
           git config user.email "actions@github.com"
-          git add scripts/blog-bot/temas.json src/data/blog-generado.json public/sitemap.xml
-          if git diff --cached --quiet; then
-            echo "No hay artículo nuevo que publicar (sin temas pendientes o falló la generación)."
-          else
-            git commit -m "Blog: nuevo artículo generado automáticamente"
-            git push
-          fi
+          git commit -m "Blog: nuevo artículo generado automáticamente"
+          git push
+
+      - name: Desplegar a producción en Vercel
+        if: steps.cambios.outputs.hay_cambios == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: npx vercel deploy --prod --token="$VERCEL_TOKEN" --yes
