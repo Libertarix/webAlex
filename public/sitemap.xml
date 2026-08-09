@@ -130,4 +130,9 @@
     <changefreq>never</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://www.enfermeroencasa.com/noticias/el-rol-esencial-de-la-enfermeria-en-la-educacion-para-la-salud-durante-el-dia</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
