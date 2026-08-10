@@ -135,4 +135,9 @@
     <changefreq>never</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://www.enfermeroencasa.com/blog/sonda-vesical-permanente-frente-a-sondaje-intermitente-diferencias-principales</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
