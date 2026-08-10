@@ -151,6 +151,25 @@
         "telephone": "+34636144057"
       }
   </script>
+  <!--
+    WebSite.name es la señal oficial que documenta Google para el "nombre
+    del sitio" que muestra en el snippet de resultados (la línea con el
+    favicon, antes de la URL) — sin esto, Google recurre por defecto al
+    propio dominio en minúsculas, que es justo lo que se veía. No hay
+    garantía de cuándo ni si Google lo adopta tal cual (puede tardar en
+    re-rastrear e indexar), pero es la vía correcta para pedirlo.
+  -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://www.enfermeroencasa.com/#website",
+        "name": "Enfermeroencasa.com",
+        "alternateName": "Enfermero en Casa",
+        "url": "https://www.enfermeroencasa.com",
+        "publisher": { "@id": "https://www.enfermeroencasa.com/#organization" }
+      }
+  </script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
