@@ -160,4 +160,9 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://www.enfermeroencasa.com/noticias/hallan-19-indicadores-biologicos-con-capacidad-para-anticipar-los-sintomas-de</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
