@@ -165,4 +165,9 @@
     <changefreq>never</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://www.enfermeroencasa.com/noticias/micardiapp-una-solucion-digital-desarrollada-por-enfermeria-frente-al-impacto</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>

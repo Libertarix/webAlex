@@ -240,5 +240,23 @@
     "publishedAt": "2026-08-13",
     "image": "https://doihojqqs770p.cloudfront.net/articulos/articulos-110730.jpeg",
     "imageAlt": "Investigadora analizando muestras de laboratorio para detectar biomarcadores de la ELA de forma precoz"
+  },
+  {
+    "slug": "micardiapp-una-solucion-digital-desarrollada-por-enfermeria-frente-al-impacto",
+    "title": "MiCardiApp: una solución digital desarrollada por enfermería frente al impacto de la insuficiencia cardiaca",
+    "metaTitle": "MiCardiApp e insuficiencia cardiaca | Enfermero en Casa",
+    "metaDescription": "Conoce MiCardiApp, la herramienta de enfermería para ayudar a pacientes con insuficiencia cardiaca a comprender su estado y reducir ingresos evitables.",
+    "summary": "La insuficiencia cardiaca continúa situándose como un grave problema de salud en España, estrechamente asociado al progresivo envejecimiento poblacional y responsable de alrededor de 19.000 fallecimientos anuales según el INE. Esta patología representa además una de las mayores causas de ingresos hospitalarios que podrían ser evitados con un seguimiento adecuado. Para abordar esta situación, se ha presentado MiCardiApp, un recurso digital creado desde el ámbito de la enfermería con el objetivo de facilitar a las personas afectadas un mayor conocimiento sobre su enfermedad.",
+    "keywords": [
+      "MiCardiApp",
+      "insuficiencia cardiaca",
+      "enfermería",
+      "salud digital"
+    ],
+    "sourceName": "Diario Enfermero",
+    "sourceUrl": "https://diarioenfermero.es/insuficiencia-cardiaca-aplicacion/",
+    "publishedAt": "2026-08-14",
+    "image": "https://diarioenfermero.es/wp-content/uploads/2026/08/micardiapp.png",
+    "imageAlt": "Enfermera explicando el funcionamiento de la aplicación MiCardiApp a un paciente con insuficiencia cardiaca"
   }
 ]
