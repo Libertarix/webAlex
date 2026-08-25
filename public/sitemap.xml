@@ -170,4 +170,9 @@
     <changefreq>never</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://www.enfermeroencasa.com/noticias/el-sistema-andaluz-de-telecuidados-para-enfermos-cronicos-alcanza-cerca-de-20</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
