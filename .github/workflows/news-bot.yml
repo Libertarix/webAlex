@@ -7,7 +7,12 @@ name: News bot — publica noticia sanitaria diaria
 
 on:
   schedule:
-    - cron: "0 8 * * *" # todos los días, 08:00 UTC
+    - cron: "0 8 * * *" # intento principal, todos los días, 08:00 UTC
+    # Intento de respaldo, mismo día, 6 horas después. Si el intento
+    # principal ya publicó hoy, el script (generar-noticia.mjs) lo detecta
+    # y no hace nada — esta segunda pasada solo actúa si la primera falló
+    # del todo pese a sus reintentos y modelos de repuesto.
+    - cron: "0 14 * * *"
   workflow_dispatch: {}
 
 jobs:

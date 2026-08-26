@@ -11,8 +11,14 @@ name: Blog bot — genera y publica artículo directamente en Vercel
 
 on:
   schedule:
-    # Lunes y jueves, 07:00 UTC (~09:00 en Granada en verano, 08:00 en invierno).
+    # Intento principal: lunes y jueves, 07:00 UTC (~09:00 en Granada en
+    # verano, 08:00 en invierno).
     - cron: "0 7 * * 1,4"
+    # Intento de respaldo, mismos días, 6 horas después. Si el intento
+    # principal ya publicó hoy, el script (generar-articulo.mjs) lo
+    # detecta y no hace nada — esta segunda pasada solo actúa si la
+    # primera falló del todo pese a sus reintentos y modelos de repuesto.
+    - cron: "0 13 * * 1,4"
   workflow_dispatch: {}
 
 jobs:

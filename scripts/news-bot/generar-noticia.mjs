@@ -192,10 +192,11 @@ Reglas importantes:
 // la ejecución diaria entera. Dos capas de resistencia:
 //  1) reintentos con espera creciente sobre el mismo modelo (fallos de red
 //     o códigos claramente temporales);
-//  2) si aun así ese modelo sigue caído, se prueba con un segundo modelo
-//     (capacidad/cuota separada en Gemini, así que puede seguir libre
-//     aunque el primero esté saturado) antes de rendirse del todo.
-const MODELOS_TEXTO = [MODEL_TEXTO, "gemini-flash-lite-latest"];
+//  2) si aun así ese modelo sigue caído, se prueba en cascada con otros
+//     modelos de Gemini (cada uno con su propia capacidad/cuota, así que
+//     pueden seguir libres aunque el primero esté saturado) antes de
+//     rendirse del todo.
+const MODELOS_TEXTO = [MODEL_TEXTO, "gemini-flash-lite-latest", "gemini-pro-latest"];
 const ESPERAS_REINTENTO_MS = [10_000, 30_000, 60_000];
 const CODIGOS_REINTENTABLES = new Set([429, 500, 502, 503, 504]);
 
@@ -262,7 +263,23 @@ function actualizarSitemap(slug) {
   writeFileSync(SITEMAP_PATH, xml.replace("</urlset>", entrada));
 }
 
+function yaPublicadoHoy() {
+  const noticias = JSON.parse(readFileSync(NOTICIAS_PATH, "utf-8"));
+  const hoy = new Date().toISOString().slice(0, 10);
+  return noticias.some((n) => n.publishedAt === hoy);
+}
+
 async function main() {
+  // Capa 3 de respaldo: este workflow también corre una segunda vez más
+  // tarde el mismo día (ver news-bot.yml) por si la ejecución principal
+  // falla del todo pese a los reintentos y el modelo de repuesto. Si la
+  // principal ya publicó hoy, esta segunda pasada no hace nada — evita
+  // publicar dos noticias el mismo día y no gasta ninguna llamada a Gemini.
+  if (!dryRun && yaPublicadoHoy()) {
+    console.log("Ya se ha publicado una noticia hoy — esta ejecución de respaldo no hace nada.");
+    return;
+  }
+
   const noticia = await elegirSiguienteNoticia();
   if (!noticia) {
     console.log("No hay noticias nuevas sin usar en ninguna de las fuentes configuradas.");

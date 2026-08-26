@@ -108,10 +108,11 @@ ${ejemplo}
 // la ejecución entera. Dos capas de resistencia:
 //  1) reintentos con espera creciente sobre el mismo modelo (fallos de red
 //     o códigos claramente temporales);
-//  2) si aun así ese modelo sigue caído, se prueba con un segundo modelo
-//     (capacidad/cuota separada en Gemini, así que puede seguir libre
-//     aunque el primero esté saturado) antes de rendirse del todo.
-const MODELOS_TEXTO = [MODEL_TEXTO, "gemini-flash-lite-latest"];
+//  2) si aun así ese modelo sigue caído, se prueba en cascada con otros
+//     modelos de Gemini (cada uno con su propia capacidad/cuota, así que
+//     pueden seguir libres aunque el primero esté saturado) antes de
+//     rendirse del todo.
+const MODELOS_TEXTO = [MODEL_TEXTO, "gemini-flash-lite-latest", "gemini-pro-latest"];
 const ESPERAS_REINTENTO_MS = [10_000, 30_000, 60_000];
 const CODIGOS_REINTENTABLES = new Set([429, 500, 502, 503, 504]);
 
@@ -182,11 +183,27 @@ function actualizarSitemap(slug) {
   writeFileSync(SITEMAP_PATH, xml.replace("</urlset>", entrada));
 }
 
+function yaPublicadoHoy() {
+  const posts = JSON.parse(readFileSync(BLOG_GENERADO_PATH, "utf-8"));
+  const hoy = new Date().toISOString().slice(0, 10);
+  return posts.some((p) => p.publishedAt === hoy);
+}
+
 async function main() {
   if (new Date() > FIN_PERIODO_PRUEBA && !dryRun) {
     console.log(
       `Periodo de prueba del blog-bot terminado (${FIN_PERIODO_PRUEBA.toISOString().slice(0, 10)}). No se genera ningún artículo. Revisa el resultado y, si se continúa, adelanta FIN_PERIODO_PRUEBA en este script.`
     );
+    return;
+  }
+
+  // Capa 3 de respaldo: este workflow también corre una segunda vez más
+  // tarde el mismo día de publicación (ver blog-bot.yml) por si la
+  // ejecución principal falla del todo pese a los reintentos y el modelo
+  // de repuesto. Si la principal ya publicó hoy, esta segunda pasada no
+  // hace nada — evita publicar dos artículos el mismo día.
+  if (!dryRun && yaPublicadoHoy()) {
+    console.log("Ya se ha publicado un artículo hoy — esta ejecución de respaldo no hace nada.");
     return;
   }
 
