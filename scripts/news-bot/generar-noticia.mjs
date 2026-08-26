@@ -187,24 +187,73 @@ Reglas importantes:
 - Escribe también "imageAlt": el texto alternativo SEO de la imagen que acompaña a la noticia (no la ves, pero trata del mismo tema que el titular) — describe qué se esperaría ver en una foto de esta noticia, con la palabra clave principal, natural y no genérico.`;
 }
 
-async function llamarGeminiTexto(prompt) {
+// Gemini devuelve 503 "high demand" con bastante frecuencia (fallo
+// transitorio, no un problema de la petición) — sin reintentos, eso tiraba
+// la ejecución diaria entera. Dos capas de resistencia:
+//  1) reintentos con espera creciente sobre el mismo modelo (fallos de red
+//     o códigos claramente temporales);
+//  2) si aun así ese modelo sigue caído, se prueba con un segundo modelo
+//     (capacidad/cuota separada en Gemini, así que puede seguir libre
+//     aunque el primero esté saturado) antes de rendirse del todo.
+const MODELOS_TEXTO = [MODEL_TEXTO, "gemini-flash-lite-latest"];
+const ESPERAS_REINTENTO_MS = [10_000, 30_000, 60_000];
+const CODIGOS_REINTENTABLES = new Set([429, 500, 502, 503, 504]);
+
+async function llamarModeloGemini(modelo, prompt, intento = 1) {
   const apiKey = process.env.GEMINI_API_KEY;
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_TEXTO}:generateContent?key=${apiKey}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ role: "user", parts: [{ text: prompt }] }],
-        generationConfig: { responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA, temperature: 0.7 },
-      }),
+  const maxIntentos = ESPERAS_REINTENTO_MS.length + 1;
+
+  let res;
+  try {
+    res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ role: "user", parts: [{ text: prompt }] }],
+          generationConfig: { responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA, temperature: 0.7 },
+        }),
+      }
+    );
+  } catch (err) {
+    if (intento < maxIntentos) {
+      const espera = ESPERAS_REINTENTO_MS[intento - 1];
+      console.warn(`[${modelo}] Fallo de red (intento ${intento}/${maxIntentos}): ${err.message}. Reintentando en ${espera / 1000}s...`);
+      await new Promise((r) => setTimeout(r, espera));
+      return llamarModeloGemini(modelo, prompt, intento + 1);
     }
-  );
-  if (!res.ok) throw new Error(`Gemini texto: ${res.status} ${await res.text()}`);
+    throw err;
+  }
+
+  if (!res.ok) {
+    const cuerpo = await res.text();
+    if (CODIGOS_REINTENTABLES.has(res.status) && intento < maxIntentos) {
+      const espera = ESPERAS_REINTENTO_MS[intento - 1];
+      console.warn(`[${modelo}] Gemini texto: ${res.status} (intento ${intento}/${maxIntentos}). Reintentando en ${espera / 1000}s...`);
+      await new Promise((r) => setTimeout(r, espera));
+      return llamarModeloGemini(modelo, prompt, intento + 1);
+    }
+    throw new Error(`Gemini texto (${modelo}): ${res.status} ${cuerpo}`);
+  }
+
   const data = await res.json();
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error("Gemini texto: respuesta vacía o bloqueada por seguridad");
+  if (!text) throw new Error(`Gemini texto (${modelo}): respuesta vacía o bloqueada por seguridad`);
   return JSON.parse(text);
+}
+
+async function llamarGeminiTexto(prompt) {
+  let ultimoError;
+  for (const modelo of MODELOS_TEXTO) {
+    try {
+      return await llamarModeloGemini(modelo, prompt);
+    } catch (err) {
+      console.warn(`Modelo ${modelo} no disponible tras los reintentos: ${err.message}`);
+      ultimoError = err;
+    }
+  }
+  throw ultimoError;
 }
 
 function actualizarSitemap(slug) {
