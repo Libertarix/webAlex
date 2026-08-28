@@ -185,4 +185,9 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://www.enfermeroencasa.com/noticias/campana-de-inmunizacion-contra-el-ebola-dirigida-al-personal-sanitario-esencial</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
