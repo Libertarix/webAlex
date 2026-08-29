@@ -21,6 +21,15 @@ on:
     - cron: "0 13 * * 1,4"
   workflow_dispatch: {}
 
+# Mismo grupo de concurrencia que news-bot.yml (los dos tocan
+# public/sitemap.xml) — si dos ejecuciones cayeran a la vez, la segunda
+# espera en cola en vez de arriesgarse a que su "git push" final sea
+# rechazado por el de la otra. Ver el comentario largo en news-bot.yml
+# para el caso real que motivó esto.
+concurrency:
+  group: bots-contenido-publicar
+  cancel-in-progress: false
+
 jobs:
   generar-y-publicar:
     runs-on: ubuntu-latest
@@ -57,7 +66,18 @@ jobs:
           git config user.name "blog-bot"
           git config user.email "actions@github.com"
           git commit -m "Blog: nuevo artículo generado automáticamente"
-          git push
+          intento=1
+          until git push; do
+            if [ "$intento" -ge 3 ]; then
+              echo "No se pudo hacer push tras 3 intentos."
+              exit 1
+            fi
+            echo "Push rechazado (intento $intento/3) — reintentando tras sincronizar con main..."
+            git fetch origin main
+            git rebase origin/main
+            intento=$((intento + 1))
+            sleep 5
+          done
 
       - name: Desplegar a producción en Vercel
         if: steps.cambios.outputs.hay_cambios == 'true'

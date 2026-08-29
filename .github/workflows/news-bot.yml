@@ -15,6 +15,19 @@ on:
     - cron: "0 14 * * *"
   workflow_dispatch: {}
 
+# GitHub a veces retrasa los cron y "amontona" ejecuciones perdidas, que
+# entonces disparan varias a la vez (visto en producción: dos ejecuciones
+# de este workflow a 3 minutos una de otra, ninguna de las horas
+# programadas). Si dos ejecuciones corren en paralelo, la segunda hace
+# checkout antes de que la primera haga push y su "git push" final es
+# rechazado sin más (no hay rebase automático) — así fallaba. El grupo de
+# concurrencia comparte cola con blog-bot.yml (los dos tocan
+# public/sitemap.xml) para que nunca haya dos publicaciones a la vez: la
+# segunda simplemente espera en cola a que la primera termine del todo.
+concurrency:
+  group: bots-contenido-publicar
+  cancel-in-progress: false
+
 jobs:
   generar-y-publicar:
     runs-on: ubuntu-latest
@@ -51,7 +64,18 @@ jobs:
           git config user.name "news-bot"
           git config user.email "actions@github.com"
           git commit -m "Noticias: nueva noticia generada automáticamente"
-          git push
+          intento=1
+          until git push; do
+            if [ "$intento" -ge 3 ]; then
+              echo "No se pudo hacer push tras 3 intentos."
+              exit 1
+            fi
+            echo "Push rechazado (intento $intento/3) — reintentando tras sincronizar con main..."
+            git fetch origin main
+            git rebase origin/main
+            intento=$((intento + 1))
+            sleep 5
+          done
 
       - name: Desplegar a producción en Vercel
         if: steps.cambios.outputs.hay_cambios == 'true'
