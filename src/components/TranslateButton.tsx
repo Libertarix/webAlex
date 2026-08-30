@@ -12,16 +12,33 @@ function idiomaActual(): "es" | "en" {
   return match && decodeURIComponent(match[1]) === "/es/en" ? "en" : "es";
 }
 
+// El widget puede fijar su propia cookie en el dominio raíz sin "www"
+// (".enfermeroencasa.com"), no solo en el host exacto de la página
+// ("www.enfermeroencasa.com") — probado antes solo en localhost, donde esa
+// distinción no existe, así que el fallo real (no volvía a español en
+// producción) no se veía ahí. Sin borrar también esa variante, quedaba una
+// cookie residual en el dominio raíz que el widget seguía leyendo.
+function dominiosPosibles(): (string | null)[] {
+  const host = window.location.hostname;
+  const variantes = new Set<string | null>([null, host, `.${host}`]);
+  const partes = host.split(".");
+  if (partes.length > 2) {
+    const raiz = partes.slice(-2).join(".");
+    variantes.add(raiz);
+    variantes.add(`.${raiz}`);
+  }
+  return [...variantes];
+}
+
 function escribirCookie(valor: string | null) {
-  const dominio = window.location.hostname;
   const expira = "expires=Thu, 01 Jan 1970 00:00:00 UTC";
   // Borra en todas las variantes de dominio que el widget puede usar —
   // dejar una a medias es la causa más común de que "no vuelva" a español.
-  for (const d of [null, dominio, `.${dominio}`]) {
+  for (const d of dominiosPosibles()) {
     document.cookie = `${COOKIE}=; path=/;${d ? ` domain=${d};` : ""} ${expira}`;
   }
   if (valor) {
-    for (const d of [null, dominio, `.${dominio}`]) {
+    for (const d of dominiosPosibles()) {
       document.cookie = `${COOKIE}=${valor}; path=/;${d ? ` domain=${d};` : ""}`;
     }
   }
