@@ -195,4 +195,9 @@
     <changefreq>never</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://www.enfermeroencasa.com/noticias/la-inteligencia-artificial-da-un-paso-clave-para-identificar-sustancias</loc>
+    <changefreq>never</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
