@@ -373,6 +373,7 @@ const Index = () => {
                       <Icon className="h-5 w-5" />
                     </div>
                     <div className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-right backdrop-blur-sm">
+                      <span className="mr-1 text-[10px] text-muted-foreground">Desde</span>
                       <span className="text-base font-semibold text-brand-green">{price}</span>
                       <span className="ml-1 text-[11px] text-muted-foreground">{unit}</span>
                     </div>
