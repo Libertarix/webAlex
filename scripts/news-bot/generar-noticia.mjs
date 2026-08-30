@@ -100,6 +100,71 @@ function puntuarNoticia(titulo) {
   return puntos;
 }
 
+// Detecta la misma noticia real cubierta por dos fuentes distintas (p. ej.
+// Diario Enfermero y Enfermería21 escribiendo cada uno su propio artículo
+// sobre el lanzamiento de la misma app de salud) — usadas.json solo evita
+// repetir el mismo enlace exacto, así que esto se colaba sin más. Compara
+// por solapamiento de palabras significativas contra TODO lo ya publicado
+// (no solo lo de esta tanda), no solo por coincidencia exacta de URL/GUID.
+const PALABRAS_VACIAS_DUPLICADO = new Set([
+  "de", "la", "el", "en", "a", "y", "para", "con", "que", "los", "las",
+  "una", "un", "del", "al", "su", "sus", "es", "se", "por", "como", "esta",
+  "este", "sobre", "más", "mas", "entre", "sin", "también", "tambien",
+  "domicilio", "granada", "casa", "salud", "enfermeria", "enfermería",
+  "enfermero", "enfermera", "cuidado", "cuidados",
+]);
+
+function palabrasSignificativas(texto) {
+  const normalizado = (texto || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "");
+  return new Set(
+    normalizado
+      .split(/[^a-z0-9]+/)
+      // >2, no >3: siglas de 3 letras como "RDC", "ELA", "VIH", "UCI" suelen
+      // ser justo la palabra más identificativa de una noticia médica — se
+      // perdía "RDC" con el corte anterior y dejaba pasar sin detectar un
+      // segundo caso real de duplicado (misma campaña de vacunación contra
+      // el ébola en la RDC, cubierta por dos fuentes).
+      .filter((palabra) => palabra.length > 2 && !PALABRAS_VACIAS_DUPLICADO.has(palabra))
+  );
+}
+
+function solapamiento(a, b) {
+  let contador = 0;
+  for (const palabra of a) if (b.has(palabra)) contador += 1;
+  return contador;
+}
+
+function esNoticiaYaCubierta(tituloCandidato, historialPublicado) {
+  // Comparar contra el RESUMEN completo ya publicado se probó primero y
+  // dio falsos positivos reales: dos noticias de vacunación totalmente
+  // distintas (Cantabria/patologías respiratorias vs Ébola en la RDC)
+  // puntuaban más alto que el duplicado real, porque Gemini reutiliza el
+  // mismo vocabulario de "campaña de inmunización/autoridades
+  // sanitarias/busca proteger" en cualquier noticia de vacunas, sea cual
+  // sea. Comparar el título del candidato solo contra las KEYWORDS ya
+  // publicadas (términos curados y específicos, no prosa genérica) separa
+  // mucho mejor: el duplicado real conocido (misma app de salud cardiaca
+  // cubierta por dos medios) puntúa 3; el caso más parecido que no es
+  // duplicado (dos noticias distintas sobre la misma enfermedad rara)
+  // puntúa 2; todo lo demás, ≤1 — verificado contra las 19 noticias reales
+  // ya publicadas antes de fijar este umbral.
+  const palabrasCandidato = palabrasSignificativas(tituloCandidato);
+  for (const publicada of historialPublicado) {
+    const palabrasPublicada = palabrasSignificativas((publicada.keywords || []).join(" "));
+    const compartidas = solapamiento(palabrasCandidato, palabrasPublicada);
+    if (compartidas >= 3) {
+      console.log(
+        `Descartada por posible duplicado de "${publicada.title}" (${compartidas} palabras clave compartidas): ${tituloCandidato}`
+      );
+      return true;
+    }
+  }
+  return false;
+}
+
 async function elegirSiguienteNoticia() {
   const fuentes = JSON.parse(readFileSync(FUENTES_PATH, "utf-8")).sort((a, b) => a.prioridad - b.prioridad);
   let usadas = [];
@@ -131,7 +196,21 @@ async function elegirSiguienteNoticia() {
 
   // Orden: puntuación de relevancia primero, prioridad de fuente después.
   candidatos.sort((a, b) => b.puntos - a.puntos || a.fuente.prioridad - b.fuente.prioridad);
-  const elegido = candidatos[0];
+
+  let historialPublicado = [];
+  try {
+    historialPublicado = JSON.parse(readFileSync(NOTICIAS_PATH, "utf-8"));
+  } catch {
+    historialPublicado = [];
+  }
+
+  // Recorre los candidatos en orden y coge el primero que no sea la misma
+  // noticia real que ya se publicó (venga de la fuente que venga) — no
+  // basta con tomar candidatos[0] a ciegas.
+  const elegido = candidatos.find(
+    (c) => !esNoticiaYaCubierta(c.item.title, historialPublicado)
+  );
+  if (!elegido) return null;
   const { fuente, item, id } = elegido;
 
   const contenidoHtml = item["content:encoded"] || item.content || item.contentSnippet || "";
