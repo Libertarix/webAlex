@@ -101,3 +101,39 @@
     letter-spacing: -0.02em;
   }
 }
+
+/*
+  Google Translate (ver TranslateButton.tsx): ocultamos toda su interfaz
+  propia (el desplegable del widget y el banner superior que añade solo)
+  porque el botón visible en la web es el nuestro. Sin esto, el banner de
+  Google empuja todo el contenido hacia abajo y añade su propia franja gris
+  encima de la cabecera.
+*/
+#google_translate_element,
+.goog-te-banner-frame,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+/*
+  El nombre de clase del banner superior ha cambiado con el tiempo (ya no
+  es .goog-te-banner-frame en las versiones actuales del widget, sino una
+  clase ofuscada tipo "VIpgJd-..."), así que en vez de perseguir un nombre
+  que Google puede volver a cambiar sin aviso, se ocultan directamente
+  TODOS los iframes que el propio widget marca con su clase "skiptranslate"
+  — no necesitamos ver ninguna interfaz de Google, todo se controla desde
+  nuestro propio botón.
+*/
+iframe.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}

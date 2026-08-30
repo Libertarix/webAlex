@@ -7,6 +7,7 @@ import { noticias, getNoticiaBySlug } from "@/data/noticias";
 import { blogPosts } from "@/data/blog";
 import { itemsRelacionados } from "@/lib/relacionados";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import TranslateButton from "@/components/TranslateButton";
 import logo from "@/assets/logo-icon.png";
 import { SITE_URL, WHATSAPP_DEFAULT } from "@/data/contact";
 
@@ -89,9 +90,12 @@ const NoticiaDetalle = () => {
               <div className="text-[10px] text-muted-foreground md:text-[11px]">Alejandro Romero · Granada</div>
             </div>
           </Link>
-          <Link to="/noticias" className="text-sm font-medium text-muted-foreground hover:text-brand-navy transition-colors inline-flex items-center gap-1">
-            <ArrowLeft className="h-4 w-4" /> Noticias
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link to="/noticias" className="text-sm font-medium text-muted-foreground hover:text-brand-navy transition-colors inline-flex items-center gap-1">
+              <ArrowLeft className="h-4 w-4" /> Noticias
+            </Link>
+            <TranslateButton />
+          </div>
         </nav>
       </header>
 

@@ -4,6 +4,7 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blog";
 import { getServiceBySlug } from "@/data/services";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import TranslateButton from "@/components/TranslateButton";
 import logo from "@/assets/logo-icon.png";
 import { PHONE, SITE_URL, WHATSAPP_DEFAULT } from "@/data/contact";
 
@@ -51,9 +52,12 @@ const Blog = () => {
               <div className="text-[10px] text-muted-foreground md:text-[11px]">Alejandro Romero · Granada</div>
             </div>
           </Link>
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-brand-navy transition-colors">
-            Volver al inicio
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-brand-navy transition-colors">
+              Volver al inicio
+            </Link>
+            <TranslateButton />
+          </div>
         </nav>
       </header>
 

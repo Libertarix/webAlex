@@ -4,6 +4,7 @@ import { useEffect, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import TranslateButton from "@/components/TranslateButton";
 import { services } from "@/data/services";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -167,9 +168,10 @@ const Index = () => {
                 </a>
               )
             )}
-            
+
           </div>
 
+          <TranslateButton />
         </nav>
       </header>
 

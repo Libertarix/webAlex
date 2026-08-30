@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { getServiceBySlug, services } from "@/data/services";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import TranslateButton from "@/components/TranslateButton";
 import logo from "@/assets/logo-icon.png";
 import { PHONE, PHONE_DISPLAY, SITE_URL, whatsappUrl } from "@/data/contact";
 
@@ -109,9 +110,12 @@ const ServiceDetail = () => {
               <div className="text-[10px] text-muted-foreground md:text-[11px]">Alejandro Romero · Granada</div>
             </div>
           </Link>
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-brand-navy transition-colors inline-flex items-center gap-1">
-            <ArrowLeft className="h-4 w-4" /> Volver
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-brand-navy transition-colors inline-flex items-center gap-1">
+              <ArrowLeft className="h-4 w-4" /> Volver
+            </Link>
+            <TranslateButton />
+          </div>
         </nav>
       </header>
 

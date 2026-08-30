@@ -201,6 +201,27 @@
 </head>
 
 <body>
+  <!--
+    Widget oficial de Google (Website Translator) — el mismo mecanismo que
+    usan la mayoría de webs pequeñas para traducirse ("Powered by Google
+    Translate"). Vive fuera de #root a propósito: React nunca debe tocar
+    este nodo, porque el widget reescribe el DOM por su cuenta y eso
+    rompería la reconciliación de React si estuviera dentro de su árbol.
+    Su desplegable propio se oculta por CSS (ver index.css) — el botón real
+    que ve la persona es <TranslateButton /> (src/components/), que
+    controla el widget por cookie sin mostrar la interfaz de Google.
+  -->
+  <div id="google_translate_element" style="display:none"></div>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        { pageLanguage: "es", includedLanguages: "en", autoDisplay: false },
+        "google_translate_element"
+      );
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TranslateButton from "@/components/TranslateButton";
 import logo from "@/assets/logo-icon.png";
 import { EMAIL, COLEGIADO, PHONE, PHONE_DISPLAY, SITE_URL as BASE_URL } from "@/data/contact";
 
@@ -42,11 +43,14 @@ const AvisoLegal = () => {
               <div className="text-[10px] text-muted-foreground md:text-[11px]">Alejandro Romero · Col. {COLEGIADO}</div>
             </div>
           </Link>
-          <Link to="/">
-            <Button variant="outline" size="sm" className="rounded-full">
-              <ArrowLeft className="h-4 w-4" /> Volver
-            </Button>
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link to="/">
+              <Button variant="outline" size="sm" className="rounded-full">
+                <ArrowLeft className="h-4 w-4" /> Volver
+              </Button>
+            </Link>
+            <TranslateButton />
+          </div>
         </nav>
       </header>
 
