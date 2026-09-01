@@ -1,6 +1,34 @@
 User-agent: *
 Allow: /
 
+# Permiso explícito para los rastreadores de asistentes de IA — con
+# "User-agent: *" ya estaban permitidos por defecto, pero se listan aparte
+# para que la intención sea inequívoca (el objetivo del sitio es salir
+# citado en respuestas de estas herramientas, no solo en Google clásico).
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Host: https://www.enfermeroencasa.com
 
 Sitemap: https://www.enfermeroencasa.com/sitemap.xml

@@ -29,7 +29,6 @@ const FIN_PERIODO_PRUEBA = new Date("2026-10-08T00:00:00Z");
 
 const TEMAS_PATH = path.join(__dirname, "temas.json");
 const BLOG_GENERADO_PATH = path.join(ROOT, "src/data/blog-generado.json");
-const SITEMAP_PATH = path.join(ROOT, "public/sitemap.xml");
 
 const dryRun = process.argv.includes("--dry");
 const SITE_URL = "https://www.enfermeroencasa.com";
@@ -177,10 +176,12 @@ async function llamarGeminiTexto(prompt) {
   throw ultimoError;
 }
 
-function actualizarSitemap(slug) {
-  const xml = readFileSync(SITEMAP_PATH, "utf-8");
-  const entrada = `  <url>\n    <loc>${SITE_URL}/blog/${slug}</loc>\n    <changefreq>yearly</changefreq>\n    <priority>0.6</priority>\n  </url>\n</urlset>`;
-  writeFileSync(SITEMAP_PATH, xml.replace("</urlset>", entrada));
+// El sitemap completo (con <lastmod> real por URL) se regenera desde los
+// datos reales, no se parchea una entrada suelta — ver
+// scripts/generar-sitemap.mjs.
+async function actualizarSitemap() {
+  const { regenerarSitemap } = await import("../generar-sitemap.mjs");
+  regenerarSitemap();
 }
 
 function yaPublicadoHoy() {
@@ -255,7 +256,7 @@ async function main() {
   temas[temaIndex].publicadoEn = slug;
   writeFileSync(TEMAS_PATH, JSON.stringify(temas, null, 2) + "\n");
 
-  actualizarSitemap(slug);
+  await actualizarSitemap();
 
   console.log(`Artículo generado: ${generado.title} (/blog/${slug})`);
 }
