@@ -18,4 +18,11 @@ export default defineConfig(() => ({
     },
     dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
   },
+  ssgOptions: {
+    // "nested" -> /blog/index.html (URL limpia /blog), como ya sirve
+    // Vercel por defecto para un directorio estático. Con "flat" (el valor
+    // por defecto del plugin) generaría /blog.html, que no coincide con
+    // las URLs que ya usa la web ni con lo que espera vercel.json.
+    dirStyle: "nested",
+  },
 }));

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Head, ClientOnly } from "vite-react-ssg";
 import { useEffect, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
@@ -117,7 +117,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
+      <Head>
         <title>Enfermero a domicilio en Granada · Curas, sondajes e inyectables</title>
         <meta
           name="description"
@@ -138,7 +138,7 @@ const Index = () => {
           name="twitter:description"
           content="Enfermero privado a domicilio en Granada. Curas, sondajes, inyectables y extracciones. Colegiado nº 12386. Tel. 636 14 40 57."
         />
-      </Helmet>
+      </Head>
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
@@ -469,13 +469,25 @@ const Index = () => {
             </div>
           </div>
           <div className="relative">
-            <Suspense
-              fallback={
-                <div className="h-[480px] w-full animate-pulse rounded-[2rem] border border-border/60 bg-secondary/40" />
-              }
-            >
-              <CoverageMap />
-            </Suspense>
+            {/*
+              Leaflet toca `window` en cuanto se importa su módulo (no solo
+              al renderizar), lo que rompe el prerenderizado en Node — no
+              hay ninguna localidad real que perder aquí, ClientOnly hace
+              que el mapa se monte solo en el navegador, igual que antes
+              visualmente para quien lo ve, solo que ahora también sobrevive
+              al build de vite-react-ssg.
+            */}
+            <ClientOnly>
+              {() => (
+                <Suspense
+                  fallback={
+                    <div className="h-[480px] w-full animate-pulse rounded-[2rem] border border-border/60 bg-secondary/40" />
+                  }
+                >
+                  <CoverageMap />
+                </Suspense>
+              )}
+            </ClientOnly>
             <p className="mt-3 text-center text-xs text-muted-foreground">
               Cada punto verde marca una localidad donde atiendo habitualmente. El círculo difuso indica el radio principal de actuación.
             </p>

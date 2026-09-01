@@ -1,6 +1,6 @@
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import { ViteReactSSG } from "vite-react-ssg";
+import { routes } from "./App.tsx";
 import "./index.css";
 import "./lib/parcheGoogleTranslate.ts";
 
-createRoot(document.getElementById("root")!).render(<App />);
+export const createRoot = ViteReactSSG({ routes, basename: "/" });

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TranslateButton from "@/components/TranslateButton";
@@ -16,7 +16,7 @@ const DESCRIPTION =
 const AvisoLegal = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
+      <Head>
         <title>Aviso legal y privacidad · Enfermero en Casa Granada</title>
         <meta name="description" content={DESCRIPTION} />
         <meta name="robots" content="index, follow" />
@@ -25,7 +25,7 @@ const AvisoLegal = () => {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:url" content={SITE_URL} />
         <meta property="og:type" content="website" />
-      </Helmet>
+      </Head>
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { Calendar, Newspaper, ArrowRight } from "lucide-react";
 import { noticias } from "@/data/noticias";
 import WhatsAppFab from "@/components/WhatsAppFab";
@@ -13,7 +13,7 @@ const formatDate = (iso: string) =>
 const Noticias = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
+      <Head>
         <title>Noticias de salud y enfermería | Enfermero en Casa Granada</title>
         <meta
           name="description"
@@ -27,7 +27,7 @@ const Noticias = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${SITE_URL}/noticias`} />
-      </Helmet>
+      </Head>
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"

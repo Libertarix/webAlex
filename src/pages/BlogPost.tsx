@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { ArrowLeft, Calendar, Clock, Phone, MessageCircle, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts, getBlogPostBySlug } from "@/data/blog";
@@ -68,7 +68,7 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
+      <Head>
         <title>{post.metaTitle}</title>
         <meta name="description" content={post.metaDescription} />
         <meta name="keywords" content={post.keywords.join(", ")} />
@@ -83,7 +83,7 @@ const BlogPost = () => {
         {post.coverImage && <meta name="twitter:image" content={`${SITE_URL}${post.coverImage}`} />}
         <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
-      </Helmet>
+      </Head>
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"

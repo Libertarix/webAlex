@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blog";
 import { getServiceBySlug } from "@/data/services";
@@ -14,7 +14,7 @@ const formatDate = (iso: string) =>
 const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
+      <Head>
         <title>Blog de enfermería a domicilio | Enfermero en Casa Granada</title>
         <meta
           name="description"
@@ -33,7 +33,7 @@ const Blog = () => {
           name="twitter:description"
           content="Artículos prácticos sobre cuidado de heridas, sondas, ostomías y cuidado de mayores en casa, escritos por un enfermero colegiado en Granada."
         />
-      </Helmet>
+      </Head>
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"

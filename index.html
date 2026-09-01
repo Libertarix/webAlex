@@ -12,14 +12,16 @@
 
   <!--
     El título, la descripción, el canonical y las etiquetas og:/twitter: por
-    página se gestionan con react-helmet-async (uno por ruta, ver Index.tsx,
-    ServiceDetail.tsx y AvisoLegal.tsx) para que cada página tenga su propio
-    contenido real. Aquí solo quedan las etiquetas verdaderamente globales
-    (favicons, fuentes, geo, tema, imagen social por defecto) — declarar las
-    mismas etiquetas aquí Y en Helmet duplicaba <meta name="description">,
-    <link rel="canonical">, etc. en el DOM en cada página de servicio.
+    página se gestionan con <Head> de vite-react-ssg (uno por ruta, ver
+    Index.tsx, ServiceDetail.tsx, etc.) — con el prerenderizado, cada ruta
+    ya genera su propio HTML estático con estas etiquetas correctas de
+    verdad (no solo tras ejecutar JS), así que NO debe haber un <title>
+    fijo aquí: un bug real dejaba un <title> duplicado (el de esta página y
+    el de <Head>) en el HTML de cada página que no fuera la portada, y los
+    navegadores/rastreadores no garantizan cuál de los dos usan. Aquí solo
+    quedan las etiquetas verdaderamente globales (favicons, fuentes, geo,
+    tema, imagen social por defecto).
   -->
-  <title>Enfermero a domicilio en Granada · Curas, sondajes e inyectables</title>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" href="/logo.png">

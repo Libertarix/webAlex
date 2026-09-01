@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { ArrowLeft, Calendar, ExternalLink, Newspaper } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { noticias, getNoticiaBySlug } from "@/data/noticias";
@@ -59,7 +59,7 @@ const NoticiaDetalle = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
+      <Head>
         <title>{noticia.metaTitle}</title>
         <meta name="description" content={noticia.metaDescription} />
         <meta name="keywords" content={noticia.keywords.join(", ")} />
@@ -71,7 +71,7 @@ const NoticiaDetalle = () => {
         {noticia.image && <meta property="og:image" content={noticia.image} />}
         <script type="application/ld+json">{JSON.stringify(newsJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
-      </Helmet>
+      </Head>
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
