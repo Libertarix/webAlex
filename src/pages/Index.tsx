@@ -125,6 +125,9 @@ const Index = () => {
         />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="canonical" href={`${SITE_URL}/`} />
+        <link rel="alternate" hrefLang="es" href={`${SITE_URL}/`} />
+        <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en`} />
+        <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/`} />
         <meta property="og:title" content="Enfermero a domicilio en Granada · Curas, sondajes e inyectables" />
         <meta
           property="og:description"
@@ -457,8 +460,12 @@ const Index = () => {
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-green">Zona de cobertura</span>
             <h2 className="mt-3 text-3xl font-semibold text-brand-navy md:text-5xl">Granada capital y área metropolitana</h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
-              Atiendo en Granada ciudad y en los pueblos del cinturón metropolitano. Si tu localidad no aparece,
-              llámame y lo confirmamos sin compromiso.
+              Atiendo en Granada ciudad y en los pueblos del cinturón metropolitano, entre ellos Armilla, Maracena y
+              Santa Fe. Si tu localidad no aparece,
+              llámame y lo confirmamos sin compromiso.{" "}
+              <Link to="/zonas-cobertura" className="font-semibold text-brand-green hover:underline">
+                Ver la distancia real desde tu zona →
+              </Link>
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
               {coverage.map((c) => (
@@ -489,7 +496,10 @@ const Index = () => {
               )}
             </ClientOnly>
             <p className="mt-3 text-center text-xs text-muted-foreground">
-              Cada punto verde marca una localidad donde atiendo habitualmente. El círculo difuso indica el radio principal de actuación.
+              Cada punto verde marca una localidad donde atiendo habitualmente. El círculo difuso indica el radio principal de actuación.{" "}
+              <Link to="/zonas-cobertura" className="font-semibold text-brand-green hover:underline">
+                Ver el detalle de cada zona →
+              </Link>
             </p>
           </div>
         </div>

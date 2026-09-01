@@ -4,7 +4,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
+import EnHome from "./pages/EnHome.tsx";
 import ServiceDetail from "./pages/ServiceDetail.tsx";
+import ZonasCobertura from "./pages/ZonasCobertura.tsx";
 import AvisoLegal from "./pages/AvisoLegal.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { services } from "@/data/services";
@@ -39,6 +41,7 @@ export const routes: RouteRecord[] = [
     Component: RootLayout,
     children: [
       { index: true, Component: Index },
+      { path: "en", Component: EnHome },
       {
         path: "servicios/:slug",
         Component: ServiceDetail,
@@ -62,6 +65,7 @@ export const routes: RouteRecord[] = [
         lazy: () => import("./pages/NoticiaDetalle.tsx").then((m) => ({ Component: m.default })),
         getStaticPaths: () => noticias.map((n) => `/noticias/${n.slug}`),
       },
+      { path: "zonas-cobertura", Component: ZonasCobertura },
       { path: "aviso-legal", Component: AvisoLegal },
       { path: "*", Component: NotFound },
     ],
