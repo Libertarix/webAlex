@@ -385,5 +385,74 @@
     ],
     "disclaimer": "Este artículo tiene carácter exclusivamente informativo y divulgativo. No sustituye la valoración clínica, el diagnóstico ni las instrucciones personalizadas de un profesional sanitario. Ante cualquier duda o complicación con el manejo de la sonda, consulta con tu equipo de enfermería o médico de referencia.",
     "generatedByBot": true
+  },
+  {
+    "slug": "como-prevenir-caidas-en-casa-en-personas-mayores",
+    "title": "Cómo prevenir caídas en casa en personas mayores",
+    "metaTitle": "Cómo prevenir caídas en personas mayores | Enfermero en Casa",
+    "metaDescription": "Consejos prácticos y sencillos para adaptar el hogar y prevenir caídas en personas mayores, mejorando su seguridad y autonomía.",
+    "excerpt": "Descubre pautas prácticas y adaptaciones sencillas para hacer del hogar un entorno más seguro y evitar caídas en personas mayores.",
+    "publishedAt": "2026-09-03",
+    "readingMinutes": 5,
+    "keywords": [
+      "prevenir caídas personas mayores",
+      "seguridad en el hogar",
+      "prevención de caídas ancianos",
+      "autonomía personas mayores"
+    ],
+    "relatedServiceSlug": "valoracion-salud-domicilio-granada",
+    "intro": "El hogar debería ser el lugar donde las personas mayores se sienten más seguras y cómodas. Sin embargo, pequeños detalles cotidianos pueden convertirse en riesgos que aumentan la probabilidad de sufrir un tropiezo o resbalón.",
+    "sections": [
+      {
+        "heading": "Adaptar los espacios de paso y eliminar obstáculos",
+        "paragraphs": [
+          "El primer paso para mejorar la seguridad en la vivienda es revisar las zonas por las que se transita a diario. A veces, la acumulación de muebles o pequeños objetos decorativos reduce el espacio y dificulta el paso.",
+          "Es muy recomendable despejar los pasillos y las habitaciones principales para permitir el uso cómodo de bastones, andadores o simplemente garantizar una marcha estable."
+        ],
+        "list": [
+          "Retirar alfombras pequeñas o fijarlas firmemente al suelo con adhesivos antideslizantes.",
+          "Evitar dejar cables sueltos de lámparas, cargadores o electrodomésticos en medio de las zonas de paso.",
+          "Asegurar que los muebles estén bien distribuidos y no obstaculicen las rutas habituales."
+        ]
+      },
+      {
+        "heading": "Mejorar la iluminación en todas las estancias",
+        "paragraphs": [
+          "Una visión adecuada es fundamental para detectar desniveles, alfombras o cualquier objeto inesperado en el suelo. Con el paso de los años, la capacidad visual disminuye, por lo que la luz ambiental cobra especial relevancia.",
+          "Conviene revisar que todas las bombillas funcionen correctamente y aportar puntos de luz extra en aquellas zonas más oscuras o de tránsito nocturno."
+        ],
+        "list": [
+          "Instalar luces piloto o nocturnas en el pasillo y en el trayecto entre el dormitorio y el baño.",
+          "Colocar interruptores accesibles desde la cama o la entrada de las habitaciones.",
+          "Evitar zonas de penumbra en escaleras y rellanos."
+        ]
+      },
+      {
+        "heading": "Acondicionar el baño para evitar resbalones",
+        "paragraphs": [
+          "El baño es una de las estancias de la casa donde existe mayor riesgo de caída debido a la presencia de superficies mojadas, suelos resbaladizos y espacios reducidos.",
+          "Pequeñas modificaciones en esta zona pueden marcar una gran diferencia en la seguridad diaria de la persona mayor sin perder su privacidad."
+        ],
+        "list": [
+          "Colocar alfombrillas antideslizantes tanto dentro de la ducha o bañera como a la salida de las mismas.",
+          "Instalar barras de sujeción firmes en la pared junto al inodoro y en la zona de la ducha.",
+          "Valorar el uso de un asiento adaptado para la ducha si resulta necesario para mayor comodidad."
+        ]
+      },
+      {
+        "heading": "Elegir el calzado y la ropa adecuados",
+        "paragraphs": [
+          "La prevención de caídas también depende de los hábitos personales y de la indumentaria que se utiliza dentro de casa. Muchas veces se comete el error de caminar descalzo o con zapatillas demasiado usadas y sin suela firme.",
+          "Un buen calzado aporta estabilidad, sujeción y previene resbalones imprevistos sobre suelos lisos como baldosas o parqué."
+        ],
+        "list": [
+          "Utilizar zapatos cerrados, con suela antideslizante y que recojan bien el pie.",
+          "Evitar caminar en calcetines o medias por suelos resbaladizos.",
+          "Revisar que la ropa no sea excesivamente larga o arrastre por el suelo, evitando posibles tropiezos."
+        ]
+      }
+    ],
+    "disclaimer": "Este contenido tiene carácter meramente informativo y general, y no sustituye en ningún caso la valoración, el diagnóstico o las recomendaciones de un profesional sanitario cualificado. Ante cualquier duda sobre la movilidad o la salud de una persona mayor, consulte con su especialista.",
+    "generatedByBot": true
   }
 ]
