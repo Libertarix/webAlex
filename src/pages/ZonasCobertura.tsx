@@ -9,7 +9,7 @@ import { zonas } from "@/data/zonas";
 import { services } from "@/data/services";
 import { PHONE, PHONE_DISPLAY, SITE_URL, WHATSAPP_DEFAULT } from "@/data/contact";
 
-const comarcas = ["Granada capital", "Zona sur", "Zona norte", "Vega de Granada"] as const;
+const comarcas = ["Granada capital", "Zona sur", "Sierra Nevada", "Zona norte", "Vega de Granada"] as const;
 
 const ZonasCobertura = () => {
   const webPageJsonLd = {
@@ -25,6 +25,7 @@ const ZonasCobertura = () => {
         "@type": "ListItem",
         position: i + 1,
         name: z.nombre,
+        url: z.slug === "granada-capital" ? `${SITE_URL}/` : `${SITE_URL}/zonas-cobertura/${z.slug}`,
       })),
     },
   };
@@ -41,10 +42,10 @@ const ZonasCobertura = () => {
   return (
     <div className="min-h-screen bg-background">
       <Head>
-        <title>Enfermero a domicilio en Armilla, Maracena, Santa Fe y toda el área de Granada | Enfermero en Casa</title>
+        <title>{`Enfermero a domicilio en Armilla, Maracena, Santa Fe y ${zonas.length - 1} pueblos de Granada | Enfermero en Casa`}</title>
         <meta
           name="description"
-          content="Zonas donde atiendo como enfermero privado a domicilio: Granada capital y 15 localidades del área metropolitana (Armilla, Maracena, Santa Fe, Atarfe, La Zubia y más), con distancia real desde el centro."
+          content={`Zonas donde atiendo como enfermero privado a domicilio: Granada capital y ${zonas.length - 1} localidades en un radio de 25 km (Armilla, Maracena, Santa Fe, Atarfe, Monachil, Fuente Vaqueros y más), con distancia real desde el centro.`}
         />
         <link rel="canonical" href={`${SITE_URL}/zonas-cobertura`} />
         <meta property="og:title" content="Zonas de cobertura | Enfermero a domicilio en Granada y su área metropolitana" />
@@ -92,9 +93,10 @@ const ZonasCobertura = () => {
               Enfermero a domicilio en Granada y su área metropolitana
             </h1>
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              Además de Granada capital, atiendo con regularidad en {zonas.length - 1} localidades del área
-              metropolitana. Aquí tienes la distancia real desde el centro de Granada a cada una — si la tuya no
-              aparece, llámame de todas formas: muchas veces puedo desplazarme valorando antes la zona y el horario.
+              Además de Granada capital, atiendo con regularidad en {zonas.length - 1} localidades en un radio de
+              unos 25 km. Aquí tienes la distancia real desde el centro de Granada a cada una — pulsa en la tuya
+              para ver más detalle, o llámame de todas formas si no aparece: muchas veces puedo desplazarme
+              valorando antes la zona y el horario.
             </p>
           </div>
         </section>
@@ -108,23 +110,44 @@ const ZonasCobertura = () => {
                 <div key={comarca} className="mb-14 last:mb-0">
                   <h2 className="text-xl font-semibold text-brand-navy md:text-2xl">{comarca}</h2>
                   <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {zonasComarca.map((zona) => (
-                      <div
-                        key={zona.slug}
-                        id={zona.slug}
-                        className="scroll-mt-24 rounded-[1.75rem] bg-card p-6 shadow-card"
-                      >
-                        <div className="flex items-center justify-between gap-3">
-                          <h3 className="text-lg font-semibold text-brand-navy">{zona.nombre}</h3>
-                          {zona.distanciaKm > 0 && (
-                            <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
-                              <MapPin className="h-3 w-3" /> {zona.distanciaKm} km
+                    {zonasComarca.map((zona) => {
+                      const esCapital = zona.slug === "granada-capital";
+                      const contenido = (
+                        <>
+                          <div className="flex items-center justify-between gap-3">
+                            <h3 className="text-lg font-semibold text-brand-navy">{zona.nombre}</h3>
+                            {zona.distanciaKm > 0 && (
+                              <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+                                <MapPin className="h-3 w-3" /> {zona.distanciaKm} km
+                              </span>
+                            )}
+                          </div>
+                          <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{zona.texto}</p>
+                          {!esCapital && (
+                            <span className="mt-3 inline-block text-sm font-semibold text-brand-green">
+                              Ver más de {zona.nombre} →
                             </span>
                           )}
-                        </div>
-                        <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{zona.texto}</p>
-                      </div>
-                    ))}
+                        </>
+                      );
+                      if (esCapital) {
+                        return (
+                          <div key={zona.slug} id={zona.slug} className="scroll-mt-24 rounded-[1.75rem] bg-card p-6 shadow-card">
+                            {contenido}
+                          </div>
+                        );
+                      }
+                      return (
+                        <Link
+                          key={zona.slug}
+                          to={`/zonas-cobertura/${zona.slug}`}
+                          id={zona.slug}
+                          className="scroll-mt-24 rounded-[1.75rem] bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft"
+                        >
+                          {contenido}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               );

@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx";
 import { services } from "@/data/services";
 import { blogPosts } from "@/data/blog";
 import { noticias } from "@/data/noticias";
+import { zonas } from "@/data/zonas";
 
 // Proveedores globales (tooltips, toasts) que envolvían <BrowserRouter> en
 // la versión anterior — con vite-react-ssg las rutas se declaran como datos
@@ -69,6 +70,12 @@ export const routes: RouteRecord[] = [
       {
         path: "zonas-cobertura",
         lazy: () => import("./pages/ZonasCobertura.tsx").then((m) => ({ Component: m.default })),
+      },
+      {
+        path: "zonas-cobertura/:slug",
+        lazy: () => import("./pages/ZonaDetalle.tsx").then((m) => ({ Component: m.default })),
+        getStaticPaths: () =>
+          zonas.filter((z) => z.slug !== "granada-capital").map((z) => `/zonas-cobertura/${z.slug}`),
       },
       { path: "aviso-legal", Component: AvisoLegal },
       { path: "*", Component: NotFound },

@@ -65,10 +65,18 @@ export function regenerarSitemap() {
 
   const noticias = JSON.parse(readFileSync(path.join(ROOT, "src/data/noticias-generadas.json"), "utf-8"));
 
+  const zonaSlugs = extraerSlugs(
+    path.join(ROOT, "src/data/zonas.ts"),
+    /slug: "([^"]+)"/g
+  ).filter((slug) => slug !== "granada-capital");
+
   const entradas = [
     url(`${SITE_URL}/`, { changefreq: "monthly", priority: "1.0", lastmod: HOY }),
     url(`${SITE_URL}/en`, { changefreq: "monthly", priority: "0.9", lastmod: HOY }),
     url(`${SITE_URL}/zonas-cobertura`, { changefreq: "monthly", priority: "0.8", lastmod: HOY }),
+    ...zonaSlugs.map((slug) =>
+      url(`${SITE_URL}/zonas-cobertura/${slug}`, { changefreq: "monthly", priority: "0.7", lastmod: HOY })
+    ),
     ...serviceSlugs.map((slug) =>
       url(`${SITE_URL}/servicios/${slug}`, { changefreq: "monthly", priority: "0.9", lastmod: HOY })
     ),

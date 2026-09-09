@@ -6,6 +6,7 @@ import ContactForm from "@/components/ContactForm";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import TranslateButton from "@/components/TranslateButton";
 import { services } from "@/data/services";
+import { zonas } from "@/data/zonas";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
@@ -38,16 +39,14 @@ import { PHONE, PHONE_DISPLAY, EMAIL, COLEGIADO, LINKEDIN_URL, SITE_URL, WHATSAP
 
 const GOOGLE_REVIEWS_URL = "https://share.google/hw7EizH02BwXKApfC";
 
-const coverage = [
-  "Granada capital", "Armilla", "Maracena", "Albolote", "Atarfe", "Peligros",
-  "Pulianas", "Cájar", "La Zubia", "Cenes de la Vega", "Huétor Vega", "Ogíjares",
-  "Las Gabias", "Churriana de la Vega", "Santa Fe", "Pinos Puente",
-];
+// Una sola fuente de verdad (src/data/zonas.ts) para no arriesgar que esta
+// lista y la de /zonas-cobertura se desincronicen con el tiempo.
+const coverage = zonas.map((z) => z.nombre);
 
 const faqs = [
   {
     q: "¿En qué zonas de Granada atiendes?",
-    a: "Atiendo en Granada capital y en todo el área metropolitana: Armilla, Maracena, Albolote, Atarfe, La Zubia, Cájar, Huétor Vega, Ogíjares, Las Gabias, Churriana de la Vega, Cenes de la Vega, Peligros, Pulianas, Santa Fe y Pinos Puente. Si tu localidad no aparece en el listado, llámame y lo confirmamos sin compromiso; muchas veces puedo desplazarme a poblaciones cercanas valorando previamente la zona y el horario.",
+    a: `Atiendo en Granada capital y en ${zonas.length - 1} localidades más en un radio de unos 25 km: desde las más cercanas (Huétor Vega, Armilla, Pulianas, Cájar) hasta pueblos de la Vega como Santa Fe, Chauchina o Fuente Vaqueros, y de camino a Sierra Nevada como Monachil o Dílar. Tienes el listado completo, con la distancia real a cada una, en la página de zonas de cobertura. Si tu localidad no aparece, llámame y lo confirmamos sin compromiso; muchas veces puedo desplazarme valorando antes la zona y el horario.`,
   },
   {
     q: "¿Cuánto tardas en venir a casa?",
